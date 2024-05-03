@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Модуль moexalgo.market &mdash; документация moexalgo 2</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=70586b46"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=29b1f277"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Модуль moexalgo.session" href="moexalgo.session.html" />
+    <link rel="prev" title="Модуль moexalgo.indices" href="moexalgo.indices.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            moexalgo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">MOEX API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="candels.html">MoexAlgo: Получение уникальных данных от MOEX 📈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.models.html">Модели данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.html">moexalgo package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.indices.html">Модуль moexalgo.indices</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Модуль moexalgo.market</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#moexalgo.market.Market"><code class="docutils literal notranslate"><span class="pre">Market</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.market.Market.futoi"><code class="docutils literal notranslate"><span class="pre">Market.futoi()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.market.Market.marketdata"><code class="docutils literal notranslate"><span class="pre">Market.marketdata()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.market.Market.obstats"><code class="docutils literal notranslate"><span class="pre">Market.obstats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.market.Market.orderstats"><code class="docutils literal notranslate"><span class="pre">Market.orderstats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.market.Market.tickers"><code class="docutils literal notranslate"><span class="pre">Market.tickers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.market.Market.tradestats"><code class="docutils literal notranslate"><span class="pre">Market.tradestats()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#moexalgo.market.market_for"><code class="docutils literal notranslate"><span class="pre">market_for()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.session.html">Модуль moexalgo.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.stocks.html">Модуль moexalgo.stocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.tickers.html">Модуль moexalgo.tickers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.utils.html">Модуль moexalgo.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.currency.html">Модуль moexalgo.currency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.futures.html">Модуль moexalgo.futures</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">moexalgo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">MOEX API</a></li>
+      <li class="breadcrumb-item active">Модуль moexalgo.market</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/moexalgo.market.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-moexalgo.market">
+<span id="moexalgo-market"></span><h1>Модуль moexalgo.market<a class="headerlink" href="#module-moexalgo.market" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="moexalgo.market.Market">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moexalgo.market.</span></span><span class="sig-name descname"><span class="pre">Market</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boardid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#moexalgo.market.Market" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Представление конкретного раздела биржевого рынка.</p>
+<p>Больше информации о FUTOI можно найти на странице: <a class="reference external" href="https://moexalgo.github.io/des/futoi/">https://moexalgo.github.io/des/futoi/</a></p>
+<p>Этот класс предоставляет доступ к информации о биржевом рынке, а также позволяет
+оперировать данными конкретного рынка по его уникальному идентификатору.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Название рынка или его символическое имя.</p></li>
+<li><p><strong>boardid</strong> (<em>str</em><em>, </em><em>optional</em>) – Идентификатор рынка, указывающий на специфическую торговую площадку или сегмент рынка.
+Если не указан, класс попытается автоматически определить идентификатор на основе общих правил.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">tickers</span> <span class="pre">:</span> <span class="pre">Callable[[Session,</span> <span class="pre">bool],</span> <span class="pre">Union[List[Dict[str,</span> <span class="pre">Any]],</span> <span class="pre">pandas.DataFrame]]</span></span></dt>
+<dd><p>Возвращает список всех инструментов рынка.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">marketdata</span> <span class="pre">:</span> <span class="pre">Callable[[Session,</span> <span class="pre">bool],</span> <span class="pre">Union[List[Dict[str,</span> <span class="pre">Any]],</span> <span class="pre">pandas.DataFrame]]</span></span></dt>
+<dd><p>Возвращает статистическую информацию о всех инструментах рынка.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">tradestats</span> <span class="pre">:</span> <span class="pre">Callable[[Session,</span> <span class="pre">bool],</span> <span class="pre">Union[Iterator[TradeStat],</span> <span class="pre">pandas.DataFrame]]</span></span></dt>
+<dd><p>Возвращает метрики <cite>TradeStat</cite> по заданным параметрам.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">orderstats</span> <span class="pre">:</span> <span class="pre">Callable[[Session,</span> <span class="pre">bool],</span> <span class="pre">Union[Iterator[OrderStat],</span> <span class="pre">pandas.DataFrame]]</span></span></dt>
+<dd><p>Возвращает метрики <cite>OrderStat</cite> по заданным параметрам.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">obstats</span> <span class="pre">:</span> <span class="pre">Callable[[Session,</span> <span class="pre">bool],</span> <span class="pre">Union[Iterator[ObStat],</span> <span class="pre">pandas.DataFrame]]</span></span></dt>
+<dd><p>Возвращает метрики <cite>ObStat</cite> по заданным параметрам.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">futoi</span> <span class="pre">:</span> <span class="pre">Callable[[Session,</span> <span class="pre">bool],</span> <span class="pre">Union[Iterator[FUTOI],</span> <span class="pre">pandas.DataFrame]]</span></span></dt>
+<dd><p>Возвращает метрики <cite>FUTOI</cite> по заданным параметрам.</p>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>return</strong> – Экземпляр класса Market, представляющий указанный рынок.</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#moexalgo.market.Market" title="moexalgo.market.Market">Market</a></p>
+</dd>
+<dt class="field-odd">Исключение<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – Вызывается, если рынок с указанным названием не поддерживается.</p>
+</dd>
+</dl>
+<p class="rubric">Пример</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Получение информации об акции</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">&gt;&gt;&gt;</span>     <span class="n">market_instance</span> <span class="o">=</span> <span class="n">Market</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;MOEX&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>     <span class="nb">print</span><span class="p">(</span><span class="n">market_instance</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>     <span class="n">market_instance</span><span class="o">.</span><span class="n">_ensure_loaded</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+<span class="o">&gt;&gt;&gt;</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Рынок не поддерживается.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="moexalgo.market.Market.futoi">
+<span class="sig-name descname"><span class="pre">futoi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">date</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><span class="pre">Session</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">iter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#moexalgo.market.Market.futoi" title="Link to this definition"></a></dt>
+<dd><p>Возвращает метрики <cite>FUTOI</cite> по заданным параметрам.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>date</em><em>]</em><em>, </em><em>optional</em>) – Дата данных. Если не указано, данные выдаются за сегодняшнее число.</p></li>
+<li><p><strong>latest</strong> (<em>bool</em><em>, </em><em>optional</em>) – Включает режим выдачи последних записей в наборе.</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – Начальная позиция в последовательности записей.</p></li>
+<li><p><strong>cs</strong> (<a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><em>Session</em></a><em>, </em><em>optional</em>) – Клиентская сессия, если используется.</p></li>
+<li><p><strong>use_dataframe</strong> (<em>bool</em><em>, </em><em>optional</em>) – Изменяет тип возвращаемого объекта, by default <cite>True</cite>.
+Если <cite>True</cite>, то возвращает <cite>pd.DataFrame</cite>, иначе итератор.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>return</strong> – Итератор или <cite>pd.DataFrame</cite> метрик <cite>FUTOI</cite>.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[iter, pd.DataFrame]</p>
+</dd>
+<dt class="field-even">Исключение<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – Вызывается, если <cite>FUTOI</cite> не поддерживается для данного рынка.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moexalgo.market.Market.marketdata">
+<span class="sig-name descname"><span class="pre">marketdata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><span class="pre">Session</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#moexalgo.market.Market.marketdata" title="Link to this definition"></a></dt>
+<dd><p>Возвращает статистическую информацию о всех инструментах рынка.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cs</strong> (<a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><em>Session</em></a><em>, </em><em>optional</em>) – Клиентская сессия, если используется.</p></li>
+<li><p><strong>use_dataframe</strong> (<em>bool</em><em>, </em><em>optional</em>) – Изменяет тип возвращаемого объекта, by default <cite>True</cite>.
+Если <cite>True</cite>, то возвращает <cite>pd.DataFrame</cite>, иначе список.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>return</strong> – Объекты типа List или <cite>pd.DataFrame</cite>.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[list[dict], pd.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moexalgo.market.Market.obstats">
+<span class="sig-name descname"><span class="pre">obstats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">date</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><span class="pre">Session</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">iter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#moexalgo.market.Market.obstats" title="Link to this definition"></a></dt>
+<dd><p>Возвращает метрики <cite>ObStat</cite> по заданным параметрам.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>date</em><em>]</em><em>, </em><em>optional</em>) – Дата данных. Если не указано, данные выдаются за сегодняшнее число.</p></li>
+<li><p><strong>latest</strong> (<em>bool</em><em>, </em><em>optional</em>) – Включает режим выдачи последних записей в наборе.</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – Начальная позиция в последовательности записей.</p></li>
+<li><p><strong>cs</strong> (<a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><em>Session</em></a><em>, </em><em>optional</em>) – Клиентская сессия, если используется.</p></li>
+<li><p><strong>use_dataframe</strong> (<em>bool</em><em>, </em><em>optional</em>) – Изменяет тип возвращаемого объекта, by default <cite>True</cite>.
+Если <cite>True</cite>, то возвращает <cite>pd.DataFrame</cite>, иначе итератор.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>return</strong> – Итератор или <cite>pd.DataFrame</cite> метрик <cite>ObStat</cite>.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[iter, pd.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moexalgo.market.Market.orderstats">
+<span class="sig-name descname"><span class="pre">orderstats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">date</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><span class="pre">Session</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">iter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#moexalgo.market.Market.orderstats" title="Link to this definition"></a></dt>
+<dd><p>Возвращает метрики <cite>OrderStat</cite> по заданным параметрам.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>date</em><em>]</em><em>, </em><em>optional</em>) – Дата данных. Если не указано, данные выдаются за сегодняшнее число.</p></li>
+<li><p><strong>latest</strong> (<em>bool</em><em>, </em><em>optional</em>) – Включает режим выдачи последних записей в наборе.</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – Начальная позиция в последовательности записей.</p></li>
+<li><p><strong>cs</strong> (<a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><em>Session</em></a><em>, </em><em>optional</em>) – Клиентская сессия, если используется.</p></li>
+<li><p><strong>use_dataframe</strong> (<em>bool</em><em>, </em><em>optional</em>) – Изменяет тип возвращаемого объекта, by default <cite>True</cite>.
+Если <cite>True</cite>, то возвращает <cite>pd.DataFrame</cite>, иначе итератор.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>return</strong> – Итератор или pd.DataFrame метрик <cite>OrderStat</cite>.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[iter, pd.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moexalgo.market.Market.tickers">
+<span class="sig-name descname"><span class="pre">tickers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><span class="pre">Session</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#moexalgo.market.Market.tickers" title="Link to this definition"></a></dt>
+<dd><p>Возвращает список всех инструментов рынка.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cs</strong> (<a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><em>Session</em></a><em>, </em><em>optional</em>) – Клиентская сессия, если используется.</p></li>
+<li><p><strong>use_dataframe</strong> (<em>bool</em><em>, </em><em>optional</em>) – Изменяет тип возвращаемого объекта, by default <cite>True</cite>.
+Если <cite>True</cite>, то возвращает <cite>pd.DataFrame</cite>, иначе список.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>return</strong> – Объекты типа List или <cite>pd.DataFrame</cite>.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[list[dict], pd.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moexalgo.market.Market.tradestats">
+<span class="sig-name descname"><span class="pre">tradestats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">date</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><span class="pre">Session</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">iter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#moexalgo.market.Market.tradestats" title="Link to this definition"></a></dt>
+<dd><p>Возвращает метрики <cite>TradeStat</cite> по заданным параметрам.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>date</em><em>]</em><em>, </em><em>optional</em>) – Дата данных. Если не указано, данные выдаются за сегодняшнее число.</p></li>
+<li><p><strong>latest</strong> (<em>bool</em><em>, </em><em>optional</em>) – Включает режим выдачи последних записей в наборе.</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – Начальная позиция в последовательности записей.</p></li>
+<li><p><strong>cs</strong> (<a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><em>Session</em></a><em>, </em><em>optional</em>) – Клиентская сессия, если используется.</p></li>
+<li><p><strong>use_dataframe</strong> (<em>bool</em><em>, </em><em>optional</em>) – Изменяет тип возвращаемого объекта, by default <cite>True</cite>.
+Если True, то возвращает pd.DataFrame, иначе итератор.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>return</strong> – Итератор или pd.DataFrame метрик <cite>TradeStat</cite>.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[iter, pd.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moexalgo.market.market_for">
+<span class="sig-prename descclassname"><span class="pre">moexalgo.market.</span></span><span class="sig-name descname"><span class="pre">market_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boardid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><span class="pre">Session</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#moexalgo.market.Market" title="moexalgo.market.Market"><span class="pre">Market</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#moexalgo.market.market_for" title="Link to this definition"></a></dt>
+<dd><p>Возвращает рынок, на котором торгуется заданный инструмент.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>secid</strong> (<em>str</em>) – Уникальный идентификатор инструмента.</p></li>
+<li><p><strong>boardid</strong> (<em>str</em>) – Идентификатор рынка, указывающий на специфическую торговую площадку или сегмент рынка.</p></li>
+<li><p><strong>cs</strong> (<a class="reference internal" href="moexalgo.session.html#moexalgo.session.Session" title="moexalgo.session.Session"><em>Session</em></a><em>, </em><em>optional</em>) – Клиентская сессия, если используется.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>return</strong> – Экземпляр класса Market, представляющий рынок, на котором торгуется заданный инструмент.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="#moexalgo.market.Market" title="moexalgo.market.Market">Market</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="moexalgo.indices.html" class="btn btn-neutral float-left" title="Модуль moexalgo.indices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="moexalgo.session.html" class="btn btn-neutral float-right" title="Модуль moexalgo.session" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2024, MOEX Group. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

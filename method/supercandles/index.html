@@ -886,21 +886,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="vwap">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Средневзвешенная цена — это средняя цена заявок, весом которых является объем заявок
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -909,13 +894,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#orderbook-stats" class="md-nav__link">
+  <a href="#obstats" class="md-nav__link">
     <span class="md-ellipsis">
-      ORDERBOOK STATS
+      OBStats
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ORDERBOOK STATS">
+    <nav class="md-nav" aria-label="OBStats">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1217,21 +1202,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="vwap">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Средневзвешенная цена — это средняя цена заявок, весом которых является объем заявок
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -1240,13 +1210,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#orderbook-stats" class="md-nav__link">
+  <a href="#obstats" class="md-nav__link">
     <span class="md-ellipsis">
-      ORDERBOOK STATS
+      OBStats
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ORDERBOOK STATS">
+    <nav class="md-nav" aria-label="OBStats">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1681,7 +1651,7 @@
 </table>
 <p><img alt="image" src="https://data.moex.com/static/media/countImages8.36a645eacc86af187690.png" /></p>
 <h3 id="vwap_1">vwap</h3>
-<h4 id="_1">Средневзвешенная цена — это средняя цена заявок, весом которых является объем заявок</h4>
+<p>Средневзвешенная цена — это средняя цена заявок, весом которых является объем заявок</p>
 <blockquote>
 <p><em>Было выставлено 3 заявки</em></p>
 </blockquote>
@@ -1720,7 +1690,7 @@
 </blockquote>
 <pre><code>put_vwap_b = (100*10 + 200*20) / (100 + 200) = 16.67 ₽
 </code></pre>
-<h2 id="orderbook-stats">ORDERBOOK STATS</h2>
+<h2 id="obstats">OBStats</h2>
 <h3 id="spread">spread</h3>
 <p><img alt="image" src="https://data.moex.com/static/media/countImages10.04dd95089e95fc2d2306.png" /></p>
 <table>
@@ -1775,11 +1745,25 @@
 <p><em>Большое количество уровней обычно означает большую ликвидность и глубину рынка. Просто подсчитывается количество уровней цен в стакане для покупки и продажи. Например, если в стакане 10 различных цен для покупки, то levels_b = 10.</em></p>
 </blockquote>
 <h3 id="vol_2">vol</h3>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages12.616bd0e18349428b1f58.png" />
-|         | Описание                                                       |
-|---------|-------------------------------------------------------------------|
-| <strong>vol_b</strong>| Это совокупный объем заявок в стакане на всех уровнях для покупки. |
-| <strong>vol_s</strong>| Это совокупный объем заявок в стакане на всех уровнях для продажи.|</p>
+<p><img alt="image" src="https://data.moex.com/static/media/countImages12.616bd0e18349428b1f58.png" /></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>vol_b</strong></td>
+<td>Это совокупный объем заявок в стакане на всех уровнях для покупки.</td>
+</tr>
+<tr>
+<td><strong>vol_s</strong></td>
+<td>Это совокупный объем заявок в стакане на всех уровнях для продажи.</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p><em>Метрика показывает общее количество активов, которые трейдеры хотят купить/продать. Это дает представление о потенциальной активности на рынке.</em></p>
 </blockquote>

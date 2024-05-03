@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoexAlgo: Получение уникальных данных от MOEX 📈 &mdash; документация moexalgo 2</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=70586b46"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=29b1f277"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Модели данных" href="moexalgo.models.html" />
+    <link rel="prev" title="MOEX API" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            moexalgo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">MOEX API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MoexAlgo: Получение уникальных данных от MOEX 📈</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#moexalgo">MoexAlgo предоставляет наборы данных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Пример использования</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">💻 Установка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">🔍 Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">🤝 Комьюнити</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">❓ Вопросы?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#licence">📜 Licence</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.models.html">Модели данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.html">moexalgo package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.indices.html">Модуль moexalgo.indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.market.html">Модуль moexalgo.market</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.session.html">Модуль moexalgo.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.stocks.html">Модуль moexalgo.stocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.tickers.html">Модуль moexalgo.tickers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.utils.html">Модуль moexalgo.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.currency.html">Модуль moexalgo.currency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.futures.html">Модуль moexalgo.futures</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">moexalgo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">MOEX API</a></li>
+      <li class="breadcrumb-item active">MoexAlgo: Получение уникальных данных от MOEX 📈</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/candels.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="moexalgo-moex">
+<h1>MoexAlgo: Получение уникальных данных от MOEX 📈<a class="headerlink" href="#moexalgo-moex" title="Link to this heading"></a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Website<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://moexalgo.github.io/">Сайт с полной документацией по продукту Algopack</a></p>
+</dd>
+</dl>
+<hr class="docutils" />
+<p>MoexAlgo предоставляет данные и аналитику по рынку акций Московской Биржи (MOEX).
+Более 100 уникальных метрик!
+С помощью Algopack можно получать:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Исторические данные - для тестирования торговых стратегий, проверки гипотез и бэктестов</p></li>
+<li><p>Онлайн данные - для алгоритмической торговли</p></li>
+</ul>
+</div></blockquote>
+<section id="moexalgo">
+<h2>MoexAlgo предоставляет наборы данных<a class="headerlink" href="#moexalgo" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>⏰📊 Real-time market data.</p>
+<ol class="arabic simple">
+<li><p>🕯️ <code class="docutils literal notranslate"><span class="pre">Candles</span></code> - свечи по тикеру за заданный период</p></li>
+<li><p>📚 <code class="docutils literal notranslate"><span class="pre">OrderBook</span></code> - стакан по тикеру</p></li>
+</ol>
+</li>
+<li><p>🚀🕯️ Super Candles</p>
+<ol class="arabic simple">
+<li><p>💹 <code class="docutils literal notranslate"><span class="pre">TradeStats</span></code> - метрики, рассчитанные на потоке сделок: цены, объемы, соотношения покупок и продаж</p></li>
+<li><p>📊 <code class="docutils literal notranslate"><span class="pre">OrderStats</span></code> - метрики, рассчитанные на потоке заявок: кол-во и объемы выставленных/снятых заявок</p></li>
+<li><p>📈 <code class="docutils literal notranslate"><span class="pre">OBStats</span></code> - метрики, рассчитанные на стакане котировок: кол-во уровней цен, спреды, ликвидность и дисбаланс покупок/продаж</p></li>
+</ol>
+</li>
+<li><p>🎯 <code class="docutils literal notranslate"><span class="pre">HI2</span></code> - Индекс рыночной концентрации</p></li>
+<li><p>💼 <code class="docutils literal notranslate"><span class="pre">FUTOI</span></code> - Открытые позиции по фьючерсным контрактам в разрезе физ. и юр. лиц</p></li>
+</ul>
+<p>Также, можно получить справочную информацию по инструментам, свечи и прочую торговую статистику</p>
+</section>
+<section id="id1">
+<h2>Пример использования<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>Быстрое знакомство с библиотекой moexalgo - <a class="reference external" href="https://github.com/moexalgo/moexalgo/blob/main/samples/quick_start.ipynb">quick_start.ipynb</a></p>
+<p>Пример авторизации - <a class="reference external" href="https://github.com/moexalgo/moexalgo/blob/main/samples/auth.ipynb">auth.ipynb</a></p>
+<p>Для работы с библиотекой необходимо авторизоваться на <a class="reference external" href="https://passport.moex.com">https://passport.moex.com</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">moexalgo</span> <span class="kn">import</span> <span class="n">session</span>
+
+<span class="n">username</span> <span class="o">=</span> <span class="s2">&quot;&lt;email&gt;&quot;</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;&lt;password&gt;&quot;</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Чтобы получить доступ к полному набору данных, необходимо оформить бесплатную подписку на <a class="reference external" href="https://www.moex.com/ru/analyticalproducts?futoi">странице</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">moexalgo</span> <span class="kn">import</span> <span class="n">Ticker</span>
+
+<span class="c1"># выбираем акции Сбера</span>
+<span class="n">sber</span> <span class="o">=</span> <span class="n">Ticker</span><span class="p">(</span><span class="s1">&#39;SBER&#39;</span><span class="p">)</span>
+
+<span class="c1"># получим дневные свечи с 2020 года</span>
+<span class="n">sber</span><span class="o">.</span><span class="n">candles</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2023-11-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>💻 Установка<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>Установка с помощью <code class="docutils literal notranslate"><span class="pre">`pip`</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>moexalgo
+</pre></div>
+</div>
+</section>
+<section id="requirements">
+<h2>🔍 Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.python.org">Python</a> &gt;= 3.8+</p></li>
+<li><p><a class="reference external" href="https://github.com/pydata/pandas">Pandas</a></p></li>
+<li><p><a class="reference external" href="http://www.numpy.org">Numpy</a> &gt;= 1.15.0</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>🤝 Комьюнити<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>Самые важные новости ALGOPACK <a class="reference external" href="https://t.me/moex_algopack_news">Подписывайтесь</a></p>
+<p>Добавляйтесь в телеграмм-чат <a class="reference external" href="https://t.me/moex_algopack">Algopack</a></p>
+</section>
+<section id="id7">
+<h2>❓ Вопросы?<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>Библиотека MoexAlgo будет дополняться. Если есть пожелания, идеи, замечания, пишите на <a class="reference external" href="mailto:algopack&#37;&#52;&#48;moex&#46;com">algopack<span>&#64;</span>moex<span>&#46;</span>com</a></p>
+</section>
+<section id="licence">
+<h2>📜 Licence<a class="headerlink" href="#licence" title="Link to this heading"></a></h2>
+<p>Apache Software License</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="modules.html" class="btn btn-neutral float-left" title="MOEX API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="moexalgo.models.html" class="btn btn-neutral float-right" title="Модели данных" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2024, MOEX Group. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

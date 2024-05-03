@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Модуль moexalgo.utils &mdash; документация moexalgo 2</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=70586b46"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=29b1f277"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Модуль moexalgo.currency" href="moexalgo.currency.html" />
+    <link rel="prev" title="Модуль moexalgo.tickers" href="moexalgo.tickers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            moexalgo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">MOEX API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="candels.html">MoexAlgo: Получение уникальных данных от MOEX 📈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.models.html">Модели данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.html">moexalgo package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.indices.html">Модуль moexalgo.indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.market.html">Модуль moexalgo.market</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.session.html">Модуль moexalgo.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.stocks.html">Модуль moexalgo.stocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.tickers.html">Модуль moexalgo.tickers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Модуль moexalgo.utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#moexalgo.utils.CandlePeriod"><code class="docutils literal notranslate"><span class="pre">CandlePeriod</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.CandlePeriod.ONE_MINUTE"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.ONE_MINUTE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.CandlePeriod.TEN_MINUTES"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.TEN_MINUTES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.CandlePeriod.ONE_HOUR"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.ONE_HOUR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.CandlePeriod.ONE_DAY"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.ONE_DAY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.CandlePeriod.ONE_WEEK"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.ONE_WEEK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.CandlePeriod.ONE_MONTH"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.ONE_MONTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.ONE_DAY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.ONE_HOUR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.ONE_MINUTE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.ONE_MONTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.ONE_WEEK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">CandlePeriod.TEN_MINUTES</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#moexalgo.utils.ISSDateParamException"><code class="docutils literal notranslate"><span class="pre">ISSDateParamException</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.ISSDateParamException.message"><code class="docutils literal notranslate"><span class="pre">ISSDateParamException.message</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#moexalgo.utils.ISSTickerParamException"><code class="docutils literal notranslate"><span class="pre">ISSTickerParamException</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.ISSTickerParamException.message"><code class="docutils literal notranslate"><span class="pre">ISSTickerParamException.message</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#moexalgo.utils.RequiredImport"><code class="docutils literal notranslate"><span class="pre">RequiredImport</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.RequiredImport.__name"><code class="docutils literal notranslate"><span class="pre">RequiredImport.__name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#moexalgo.utils.item_normalizer"><code class="docutils literal notranslate"><span class="pre">item_normalizer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moexalgo.utils.json"><code class="docutils literal notranslate"><span class="pre">json</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.json.loads"><code class="docutils literal notranslate"><span class="pre">json.loads</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.json.JSONDecodeError"><code class="docutils literal notranslate"><span class="pre">json.JSONDecodeError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moexalgo.utils.json.dumps"><code class="docutils literal notranslate"><span class="pre">json.dumps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">json.dumps()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#moexalgo.utils.result_deserializer"><code class="docutils literal notranslate"><span class="pre">result_deserializer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.currency.html">Модуль moexalgo.currency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moexalgo.futures.html">Модуль moexalgo.futures</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">moexalgo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">MOEX API</a></li>
+      <li class="breadcrumb-item active">Модуль moexalgo.utils</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/moexalgo.utils.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-moexalgo.utils">
+<span id="moexalgo-utils"></span><h1>Модуль moexalgo.utils<a class="headerlink" href="#module-moexalgo.utils" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="moexalgo.utils.CandlePeriod">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moexalgo.utils.</span></span><span class="sig-name descname"><span class="pre">CandlePeriod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#moexalgo.utils.CandlePeriod" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Временные интервалы для свечей.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.CandlePeriod.ONE_MINUTE">
+<span class="sig-name descname"><span class="pre">ONE_MINUTE</span></span><a class="headerlink" href="#moexalgo.utils.CandlePeriod.ONE_MINUTE" title="Link to this definition"></a></dt>
+<dd><p>1 минута</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.CandlePeriod.TEN_MINUTES">
+<span class="sig-name descname"><span class="pre">TEN_MINUTES</span></span><a class="headerlink" href="#moexalgo.utils.CandlePeriod.TEN_MINUTES" title="Link to this definition"></a></dt>
+<dd><p>10 минут</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.CandlePeriod.ONE_HOUR">
+<span class="sig-name descname"><span class="pre">ONE_HOUR</span></span><a class="headerlink" href="#moexalgo.utils.CandlePeriod.ONE_HOUR" title="Link to this definition"></a></dt>
+<dd><p>1 час = 60 минут</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.CandlePeriod.ONE_DAY">
+<span class="sig-name descname"><span class="pre">ONE_DAY</span></span><a class="headerlink" href="#moexalgo.utils.CandlePeriod.ONE_DAY" title="Link to this definition"></a></dt>
+<dd><p>1 день = 24 часа</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.CandlePeriod.ONE_WEEK">
+<span class="sig-name descname"><span class="pre">ONE_WEEK</span></span><a class="headerlink" href="#moexalgo.utils.CandlePeriod.ONE_WEEK" title="Link to this definition"></a></dt>
+<dd><p>1 неделя = 7 дней</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.CandlePeriod.ONE_MONTH">
+<span class="sig-name descname"><span class="pre">ONE_MONTH</span></span><a class="headerlink" href="#moexalgo.utils.CandlePeriod.ONE_MONTH" title="Link to this definition"></a></dt>
+<dd><p>1 месяц = 31 день</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">ONE_DAY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">24</span></em><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">ONE_HOUR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">60</span></em><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">ONE_MINUTE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">ONE_MONTH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">31</span></em><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">ONE_WEEK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">TEN_MINUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="moexalgo.utils.ISSDateParamException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moexalgo.utils.</span></span><span class="sig-name descname"><span class="pre">ISSDateParamException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'start</span> <span class="pre">must</span> <span class="pre">be</span> <span class="pre">less</span> <span class="pre">than</span> <span class="pre">or</span> <span class="pre">equal</span> <span class="pre">to</span> <span class="pre">end.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#moexalgo.utils.ISSDateParamException" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Исключение, возникающее при некорректном формате даты.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.ISSDateParamException.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#moexalgo.utils.ISSDateParamException.message" title="Link to this definition"></a></dt>
+<dd><p>Сообщение об ошибке</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="moexalgo.utils.ISSTickerParamException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moexalgo.utils.</span></span><span class="sig-name descname"><span class="pre">ISSTickerParamException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'The</span> <span class="pre">start</span> <span class="pre">and</span> <span class="pre">end</span> <span class="pre">parameters</span> <span class="pre">are</span> <span class="pre">required'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#moexalgo.utils.ISSTickerParamException" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Исключение, возникающее при отсутствии параметра <cite>ticker</cite>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.ISSTickerParamException.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#moexalgo.utils.ISSTickerParamException.message" title="Link to this definition"></a></dt>
+<dd><p>Сообщение об ошибке</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="moexalgo.utils.RequiredImport">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moexalgo.utils.</span></span><span class="sig-name descname"><span class="pre">RequiredImport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#moexalgo.utils.RequiredImport" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс для импорта библиотеки, если она не была установлена.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.RequiredImport.__name">
+<span class="sig-name descname"><span class="pre">__name</span></span><a class="headerlink" href="#moexalgo.utils.RequiredImport.__name" title="Link to this definition"></a></dt>
+<dd><p>Название библиотеки (модуля).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moexalgo.utils.item_normalizer">
+<span class="sig-prename descclassname"><span class="pre">moexalgo.utils.</span></span><span class="sig-name descname"><span class="pre">item_normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#moexalgo.utils.item_normalizer" title="Link to this definition"></a></dt>
+<dd><p>Нормализация данных.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>metadata</strong> (<em>dict</em>) – Метаданные.</p></li>
+<li><p><strong>item</strong> (<em>dict</em>) – Элемент данных.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Заметки</p>
+<p><cite>lambda s: …</cite> - очень дорогая операция на больших данных без numpy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>return</strong> – Словарь с нормализованными данными.</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="moexalgo.utils.json">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moexalgo.utils.</span></span><span class="sig-name descname"><span class="pre">json</span></span><a class="headerlink" href="#moexalgo.utils.json" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс для работы с JSON.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.json.loads">
+<span class="sig-name descname"><span class="pre">loads</span></span><a class="headerlink" href="#moexalgo.utils.json.loads" title="Link to this definition"></a></dt>
+<dd><p>Загрузка JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.json.JSONDecodeError">
+<span class="sig-name descname"><span class="pre">JSONDecodeError</span></span><a class="headerlink" href="#moexalgo.utils.json.JSONDecodeError" title="Link to this definition"></a></dt>
+<dd><p>Исключение при ошибке декодирования JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Exception</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="moexalgo.utils.json.dumps">
+<span class="sig-name descname"><span class="pre">dumps</span></span><a class="headerlink" href="#moexalgo.utils.json.dumps" title="Link to this definition"></a></dt>
+<dd><p>Сохранение JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id6">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dumps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – Аргументы.</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – Ключевые аргументы.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>return</strong> – Строка JSON.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moexalgo.utils.result_deserializer">
+<span class="sig-prename descclassname"><span class="pre">moexalgo.utils.</span></span><span class="sig-name descname"><span class="pre">result_deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">sections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#moexalgo.utils.result_deserializer" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>dict</em>) – Слоаврь с данными от ISS.</p></li>
+<li><p><strong>sections</strong> (<em>Tuple</em>) – Секции данных, by default („securities“, „marketdata“).</p></li>
+<li><p><strong>key</strong> (<em>Callable</em>) – Ключевая функция, которая принимает элемент данных и возвращает ключ, by default None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>return</strong> – Словарь с данными.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="moexalgo.tickers.html" class="btn btn-neutral float-left" title="Модуль moexalgo.tickers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="moexalgo.currency.html" class="btn btn-neutral float-right" title="Модуль moexalgo.currency" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2024, MOEX Group. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

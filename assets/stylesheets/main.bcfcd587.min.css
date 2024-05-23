@@ -9,7 +9,7 @@
 }
 
 .auth-wrapper {
-	display: none;
+	display: none !important;
 }
 
 .try-out {

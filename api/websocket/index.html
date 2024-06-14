@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://data.moex.com/about/about/">
+        <link rel="canonical" href="https://data.moex.com/api/websocket/">
       
       
+        <link rel="prev" href="../rest/">
+      
+      
+        <link rel="next" href="../../modules/realtime/">
       
       
       <link rel="icon" href="../../img/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Protinus mecum undas muneris Thybridis iecit exploratis - ALGOPACK</title>
+        <title>WEBSOCKET - ALGOPACK</title>
       
     
     
@@ -28,6 +32,14 @@
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
+  
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');}</style>
+
 
 
     
@@ -45,6 +57,8 @@
     
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -70,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#protinus-mecum-undas-muneris-thybridis-iecit-exploratis" class="md-skip">
+        <a href="#iss-websockets" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Protinus mecum undas muneris Thybridis iecit exploratis
+              WEBSOCKET
             
           </span>
         </div>
@@ -206,17 +220,20 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../../api/" class="md-tabs__link">
-        
   
     
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../rest/" class="md-tabs__link">
+          
   
   API
 
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -230,7 +247,7 @@
         <a href="../../modules/realtime/" class="md-tabs__link">
           
   
-  Разделы ALGOPACK
+  Датасеты
 
         </a>
       </li>
@@ -394,18 +411,265 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../api/" class="md-nav__link">
+  
+    
+    
+    
+      
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
   
   <span class="md-ellipsis">
     API
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST API
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    WEBSOCKET
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    WEBSOCKET
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Подключение
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Подключение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Точка доступа
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Процесс подключения
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Аутентификация
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stomp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Протокол STOMP и команды
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Протокол STOMP и команды">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Клиентские команды
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ответы сервера
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Примеры команд
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Форматы данных
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Форматы данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пакет данных JSON
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Коды ошибок
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример подключения (Python)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример подписки на данные (Python)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -434,7 +698,7 @@
             
   
   <span class="md-ellipsis">
-    Разделы ALGOPACK
+    Датасеты
   </span>
   
 
@@ -444,7 +708,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Разделы ALGOPACK
+            Датасеты
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1135,45 +1399,135 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#confessam-et-hastam-inritaturque-tibi" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Confessam et hastam inritaturque tibi
+      Подключение
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Подключение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Точка доступа
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Процесс подключения
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Аутентификация
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stomp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Протокол STOMP и команды
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Протокол STOMP и команды">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Клиентские команды
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ответы сервера
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Примеры команд
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Форматы данных
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Форматы данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пакет данных JSON
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Коды ошибок
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#peteretis-pronos-illuc-cephalum-quem-urbem-iunonia" class="md-nav__link">
+  <a href="#python" class="md-nav__link">
     <span class="md-ellipsis">
-      Peteretis pronos illuc Cephalum quem urbem Iunonia
+      Пример подключения (Python)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pectoraque-clausaeque-dentes" class="md-nav__link">
+  <a href="#python_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Pectoraque clausaeque dentes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#terris-resupino-parenti-imperiumque" class="md-nav__link">
-    <span class="md-ellipsis">
-      Terris resupino parenti imperiumque
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inponere-mollibat-aranea-accipe-interitura-requiem-nunc" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inponere mollibat aranea accipe interitura requiem nunc
+      Пример подписки на данные (Python)
     </span>
   </a>
   
@@ -1197,97 +1551,280 @@
   
 
 
-<h1 id="protinus-mecum-undas-muneris-thybridis-iecit-exploratis">Protinus mecum undas muneris Thybridis iecit exploratis</h1>
-<h2 id="confessam-et-hastam-inritaturque-tibi">Confessam et hastam inritaturque tibi</h2>
-<p>Lorem markdownum silvis medio: cur rigebant ingens me sincera. Per fulvae; iam
-duro urbes magnas, et sensibus calathis securaque. Partu <em>est inponis gremio</em>. A
-sentit lunaria et radiabant.</p>
-<pre><code>cloud_multithreading.xp_dvd += brouterTerabyteSpam(5 / 88,
-        zone_compression);
-if (5) {
-    checksumRegistry.utf_multicasting += 509469;
-    nodeDot.flash(flowchartHalfVirtual, classBar, fsb.ddl(-1, osi));
-    num(tweak_extranet);
-} else {
-    skuTrackbackGraphics.server_tablet(twain, dashboardCodeJpeg(
-            yahooTigerSecondary), namespace_language_windows);
-}
-if (horse_clipboard + hardening_codec == room_repository_scroll) {
-    degaussSku(ldap - url_device);
-    memoryDevice += express.interface_data(bios) + data;
-} else {
-    frozenMotionIgp.eps_drive += 2;
-    dma_bitmap -= rootkit_blob_del;
-    cloudIvrLaser = 5;
-}
-</code></pre>
-<h2 id="peteretis-pronos-illuc-cephalum-quem-urbem-iunonia">Peteretis pronos illuc Cephalum quem urbem Iunonia</h2>
-<pre><code>Cultros merumque palato si inquit pyram talibus ferar. Crimine socios, **solvere
-in fatentis** indulgens ullis discubuere cumque stipata pullosque tendens; mei
-ubi obambulat illam.
-</code></pre>
+<h1 id="iss-websockets">Подключению к ISS+ через Websockets</h1>
+<p>ISS+ - система распространения биржевой информации в реальном времени. Подключение осуществляется через Websocket по протоколу STOMP</p>
+<h2 id="_1">Подключение</h2>
+<h3 id="_2">Точка доступа</h3>
 <ul>
-<li>Ire est</li>
-<li>Phoebus Terea</li>
-<li>Opifex fuerunt metuendus pastoris prior qua hic</li>
-<li>Bellique mando</li>
-<li>Hoc pars cogam armiferos turba insequitur in</li>
-<li>Somnus prosit antrum</li>
+<li><strong>WebSocket URL:</strong> <code>wss://iss.moex.com/infocx/v3/websocket</code></li>
 </ul>
-<h2 id="pectoraque-clausaeque-dentes">Pectoraque clausaeque dentes</h2>
-<p>Vulcanum manusque, qua rursus videre. Voce quoque, ut est iamque iniqua.
-Certamina nymphaeque sulcavitque mille, tua, iam sequendo pariter pennis
-<a href="http://www.nec.io/moles">salus</a> retinacula fugis, tene: est.</p>
-<pre><code>png(markup_disk_pcmcia, 35);
-word(syntax + -1, directx_d);
-if (peripheral_koffice_e(tweetRom(5, 5, database), gnutella_import +
-        station, -5)) {
-    keyboard = tiger_mode_computing;
-    processFloodDomain(cell, mirrored_binary_add(iteration_biometrics,
-            domain, fileDigitalMatrix), alu_nic_meta(htmlWeb));
-} else {
-    display_hacker_ppga.icann_wpa_bit(clusterCodeArt + pngHibernateShell, 3,
-            server_dynamic);
-    adsl = inkjet;
-    ibmJavaInput = serverLossy.www(dslOverclockingOs, scanner_dos) +
-            row_mini_megahertz;
-}
-if (rootkitTopology * defragment != asp - transistor_hard) {
-    smishing = netmask(record_risc, 3);
-    up = networking(overclocking, localhost_python_dot, -1 * 1);
-} else {
-    drm_smm(portBrowserPng, nosql_tweet(34, animated, 1));
-}
-if (opticNasSoftware) {
-    system_transfer_mtu = vlb_mirrored_meta - 3;
-    ascii_impact_direct = 2;
-    encoding_server_box = cyberspace_hard_snapshot(-3, pdfMpRegular);
-}
+<h3 id="_3">Процесс подключения</h3>
+<ol>
+<li>Создайте объект WebSocket, указав URL.</li>
+<li>Отправьте STOMP-команду CONNECT с заголовками для аутентификации.</li>
+<li>При успешной аутентификации получите ответ CONNECTED, который включает информацию о доступных данных. В случае ошибки получите фрейм ERROR.</li>
+</ol>
+<h3 id="_4">Аутентификация</h3>
+<p><strong>Команда:</strong> CONNECT</p>
+<ul>
+<li><code>domain: DEMO</code> (для гостей) или <code>passport</code> (для подписчиков ALGOPACK)</li>
+<li><code>login: guest</code> или ваш логин</li>
+<li><code>passcode: guest</code> или ваш пароль</li>
+</ul>
+<p><strong>Ответы:</strong></p>
+<ul>
+<li>Успешная аутентификация: CONNECTED</li>
+<li>Ошибка аутентификации: ERROR</li>
+</ul>
+<h2 id="stomp">Протокол STOMP и команды</h2>
+<p>STOMP (Simple Text Oriented Messaging Subscription Protocol) — протокол, основанный на текстовых сообщениях.</p>
+<h3 id="_5">Клиентские команды</h3>
+<ul>
+<li>CONNECT / DISCONNECT</li>
+<li>SUBSCRIBE / UNSUBSCRIBE</li>
+<li>REQUEST</li>
+<li>SEND</li>
+</ul>
+<h3 id="_6">Ответы сервера</h3>
+<ul>
+<li>CONNECTED</li>
+<li>ERROR</li>
+<li>RECEIPT</li>
+<li>MESSAGE</li>
+<li>REPLY</li>
+<li>CLOSED</li>
+</ul>
+<h3 id="_7">Примеры команд</h3>
+<p><strong>SUBSCRIBE</strong>: подписка на поток данных</p>
+<pre><code>SUBSCRIBE\n
+id: уникальный_ID\n
+receipt: уникальный_ID\n
+destination: MXSE.securities\n
+selector: TICKER="MXSE.TQBR.SBER" and LANGUAGE="en"\n
+\n^@
 </code></pre>
-<h2 id="terris-resupino-parenti-imperiumque">Terris resupino parenti imperiumque</h2>
-<p>Nisi patuitque neque Tellus conspicui quem: que aura silva et inventa iuvenis.
-Moras facientibus nervis pennae herbis languida signa suo terres nec amnesque
-stagna inimica plebis dicturus confertque talia in! Imperat datura aequalis io
-capacis ignem precantia solis tolerare sparsas. Est vos esse pretium <a href="http://certo-magnis.com/fata-classem">vos
-silvarum</a> nec coniurataeque Olympum
-tramite lacertis qua; inmemores cunctos petiit condi; mihi. Sideraque dixi, non,
-contingere et formae artibus, gemmae.</p>
-<h2 id="inponere-mollibat-aranea-accipe-interitura-requiem-nunc">Inponere mollibat aranea accipe interitura requiem nunc</h2>
-<p>Adii sic genus rationis, crimina an generi Olenios arvum ecce dum parte rapit me
-montis electus, dea! Femineae matris, aures inmutatque effervescere Cretaei
-flamma lato agros pudor, in capillis tamen, <em>feres sit aret</em>. Loquenti utque ore
-deciperetur iamque gravidus origo et haec vacet.</p>
-<p>Accipiter meorum coniugis aequor, ursa valuit? Flumina timentia his est votaque
-dolorque: nos bellum nunc Troiae. Modo imago oraque <em>nunc</em>, causa visura
-<a href="http://motu.net/enim.html">populumque dolebat</a> natis valens leto Procnes;
-descendit. Mentis in inminet ne nidis flores, aut, comantur forti, nec altis
-facerent tenui narrare pectus penetratque.</p>
+<blockquote>
+<p><strong>Ответы сервера:</strong></p>
+<ul>
+<li>Успешная подписка: MESSAGE содержит данные</li>
+<li>Ошибка: ERROR с описанием проблемы</li>
+</ul>
+</blockquote>
+<p><strong>UNSUBSCRIBE</strong>: отписаться от потока данных</p>
+<pre><code>UNSUBSCRIBE\n
+id: уникальный_ID\n
+\n^@
+</code></pre>
+<p><strong>REQUEST</strong>: запрос данных из справочника</p>
+<pre><code>REQUEST\n
+id: уникальный_ID\n
+destination: SEARCH.ticker\n
+selector: pattern=""\n
+\n^@
+</code></pre>
+<blockquote>
+<p><strong>Ответы сервера:</strong></p>
+<ul>
+<li>Успешный ответ: REPLY с данными в формате JSON</li>
+<li>Ошибка: ERROR</li>
+</ul>
+</blockquote>
+<h2 id="_8">Форматы данных</h2>
+<h3 id="json">Пакет данных JSON</h3>
+<p><img alt="image" src="../../img/api_json.png" /></p>
+<ul>
+<li>properties (тип, номер последовательности, временные метки)</li>
+<li>columns (названия колонок)</li>
+<li>data (массив данных)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>properties.type</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>snapshot</code></td>
+<td>Полное обновление данных. Предыдущие данные замещаются новыми.</td>
+</tr>
+<tr>
+<td><code>updates</code></td>
+<td>Обновление (добавление или изменение) имеющихся данных. Решение принимается на основании поиска по ключевым полям.</td>
+</tr>
+<tr>
+<td><code>removal</code></td>
+<td>Удаление по ключевым полям (если применимо для данного ресурса).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">Коды ошибок</h2>
+<table>
+<thead>
+<tr>
+<th>Код ошибки</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gateway.exception</code></td>
+<td>Неожиданная ошибка обработки на сервере доступа</td>
+</tr>
+<tr>
+<td><code>gateway.timeout</code></td>
+<td>Таймаут исполнения запрошенной операции</td>
+</tr>
+<tr>
+<td><code>gateway.transport</code></td>
+<td>Ошибка связи сервера доступа с RabbitMQ</td>
+</tr>
+<tr>
+<td><code>gateway.access-denied</code></td>
+<td>Доступ запрещен - при аутентификации или при запросе ресурса</td>
+</tr>
+<tr>
+<td><code>gateway.invalidrequest</code></td>
+<td>Неверный запрос ресурса - несуществующий/неразрешенный клиенту ресурс или неверные параметры</td>
+</tr>
+<tr>
+<td><code>gateway.notimplemented</code></td>
+<td>Запрос еще не реализованного функционала</td>
+</tr>
+<tr>
+<td><code>gateway.not-connected</code></td>
+<td>Попытка обращения к ресурсу без аутентификации</td>
+</tr>
+</tbody>
+</table>
+<h2 id="python">Пример подключения (Python)</h2>
+<pre><code class="language-python">import asyncio
+import json
+from websockets import connect, WebSocketClientProtocol, ConnectionClosed
+from stomp.utils import Frame, convert_frame, parse_frame
+
+async def connect_stomp(url, credentials):
+    &quot;&quot;&quot; Create a STOMP WebSocket connection &quot;&quot;&quot;
+    websocket = await connect(url, subprotocols=['STOMP'])
+    login_frame = Frame('CONNECT', headers=credentials)
+    await websocket.send(b''.join(convert_frame(login_frame)))
+    return websocket
+
+async def receive_messages(websocket):
+    &quot;&quot;&quot; Receive messages from the WebSocket connection &quot;&quot;&quot;
+    async for message in websocket:
+        frame = parse_frame(message)
+        print('Received frame', frame.cmd, frame.headers)
+        body = json.loads(frame.body.decode('utf8').strip('\0'))
+        return body  # Simplifying to return the first received message
+
+async def main(url, credentials):
+    try:
+        websocket = await connect_stomp(url, credentials)
+        try:
+            body = await receive_messages(websocket)
+            print(&quot;Received Data:&quot;, body)
+        finally:
+            await websocket.close()
+    except ConnectionClosed:
+        print(&quot;Connection was closed&quot;)
+    except Exception as e:
+       print(f&quot;An error occurred: {e}&quot;)
+
+
+if __name__ == '__main__':
+    url = 'wss://iss.moex.com/infocx/v3/websocket'
+    credentials = {
+        'domain': 'passport',
+        'login': 'login',
+        'passcode': 'password'
+    }
+
+    asyncio.run(main(url, credentials))
+
+
+</code></pre>
+<h2 id="python_1">Пример подписки на данные (Python)</h2>
+<pre><code>
+import asyncio
+import json
+import uuid
+
+from websockets import connect, ConnectionClosed
+from stomp.utils import Frame, convert_frame, parse_frame
+
+async def send_frame(websocket, cmd, headers):
+    &quot;&quot;&quot; Helper function for sending a frame &quot;&quot;&quot;
+    frame = Frame(cmd, headers=headers)
+    await websocket.send(b''.join(convert_frame(frame)))
+
+async def receive_message(websocket):
+    &quot;&quot;&quot; Helper function to receive a message and parse it &quot;&quot;&quot;
+    message = await websocket.recv()
+    return parse_frame(message)
+
+async def connect_stomp(websocket, domain, login, passcode):
+    &quot;&quot;&quot; Connect to the STOMP server &quot;&quot;&quot;
+    await send_frame(websocket, 'CONNECT', {'domain': domain, 'login': login, 'passcode': passcode})
+    frame = await receive_message(websocket)
+    if frame.cmd != 'CONNECTED':
+        raise ConnectionRefusedError(f&quot;STOMP authentication failed; {frame.headers.get('message', 'No error message')}&quot;)
+    return json.loads(frame.body.decode('utf8').strip('\0'))
+
+async def subscribe_to_topic(websocket, destination, selector):
+    &quot;&quot;&quot; Subscribe to a topic on the STOMP server &quot;&quot;&quot;
+    subscribe_header = {
+        'id': str(uuid.uuid4()),
+        'destination': destination,
+        'selector': selector,
+    }
+    await send_frame(websocket, 'SUBSCRIBE', subscribe_header)
+
+async def main(url):
+    async with connect(url, subprotocols=['STOMP']) as websocket:
+        try:
+            # Credentials
+            domain = 'passport'
+            login = 'login'
+            passcode = 'password'
+
+            # Connect to STOMP with authentication
+            metadata = await connect_stomp(websocket, domain, login, passcode)
+            print(&quot;Connected with metadata:&quot;, metadata)
+
+            # Subscribe to the desired topic
+            await subscribe_to_topic(websocket, 'MXSE.orderbooks', 'TICKER=&quot;MXSE.TQBR.SBER&quot;')
+            print(&quot;Subscription successful&quot;)
+
+            # Main message processing loop
+            while True:
+                frame = await receive_message(websocket)
+                if frame.cmd == 'MESSAGE':
+                    body = json.loads(frame.body.decode('utf8').strip('\0'))
+                    print(body)
+
+        except ConnectionClosed:
+            print(&quot;Connection closed unexpectedly!&quot;)
+            return  # Exit the main function if connection is closed
+        except Exception as e:
+            print(f&quot;An error occurred: {e}&quot;)
+            return  # Handle other exceptions gracefully
+
+if __name__ == '__main__':
+    url = 'ws://iss.moex.com/infocx/v3/websocket'
+    asyncio.run(main(url))
+
+</code></pre>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1338,6 +1875,10 @@ facerent tenui narrare pectus penetratque.</p>
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
       
     
   </body>

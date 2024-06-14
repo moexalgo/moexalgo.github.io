@@ -32,6 +32,14 @@
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
+  
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');}</style>
+
 
 
     
@@ -49,6 +57,8 @@
     
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -211,16 +221,17 @@
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../api/" class="md-tabs__link">
-        
-  
     
+    
+      <li class="md-tabs__item">
+        <a href="../../api/rest/" class="md-tabs__link">
+          
   
   API
 
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -236,7 +247,7 @@
         <a href="../realtime/" class="md-tabs__link">
           
   
-  Разделы ALGOPACK
+  Датасеты
 
         </a>
       </li>
@@ -402,16 +413,83 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../api/" class="md-nav__link">
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     API
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST API
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/websocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WEBSOCKET
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -445,7 +523,7 @@
             
   
   <span class="md-ellipsis">
-    Разделы ALGOPACK
+    Датасеты
   </span>
   
 
@@ -455,7 +533,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Разделы ALGOPACK
+            Датасеты
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1408,10 +1486,10 @@ HI2 определяется как сумма квадратов рыночны
 <p>В экономике HI2 используется для анализа конкурентной среды на рынках, 
 выявления доминирующих участников и оценки возможных рисков, связанных с монополизацией.</p>
 <h3 id="_2">Формула</h3>
-<div class="arithmatex">\[
+<p>$$
 HI2 = \sum_{i=1}^{N} (s_i)^2
-\]</div>
-<p>где <span class="arithmatex">\( s_i \)</span> — это рыночная доля i-го участника, выраженная в процентах</p>
+$$</p>
+<p>где $ s_i $ — это рыночная доля i-го участника, выраженная в процентах</p>
 <h3 id="_3">Пример расчета</h3>
 <p>Рассмотрим более детально пример с тремя компаниями:</p>
 <ol>
@@ -1420,7 +1498,9 @@ HI2 = \sum_{i=1}^{N} (s_i)^2
 <li>Компания C имеет рыночную долю 20%.</li>
 </ol>
 <p>Рассчитаем HI2:</p>
-<div class="arithmatex">\[ HI2 = 50^2 + 30^2 + 20^2 = 2500 + 900 + 400 = 3800 \]</div>
+<p>$$
+HI2 = 50^2 + 30^2 + 20^2 = 2500 + 900 + 400 = 3800
+$$</p>
 <p>Пример применительно к трейдингу:</p>
 <p><img alt="image" src="../../img/hi2_sample.png" /></p>
 <h3 id="hi2_1">Что означает высокий и низкий HI2?</h3>
@@ -1430,6 +1510,9 @@ HI2 = \sum_{i=1}^{N} (s_i)^2
 <li><strong>Средний HI2</strong> (1500 - 2500): Указывает на умеренную концентрацию. Несколько участников могут иметь более значительные доли рынка.</li>
 <li><strong>Высокий HI2</strong> (&gt; 2500): Указывает на высокую концентрацию рынка. Несколько участников доминируют на рынке.</li>
 </ul>
+<blockquote>
+<p>Если количество участников в бумаге меньше определенного порога, то за этот день по этой бумаге рассчеты не производятся  </p>
+</blockquote>
 <h3 id="hi2_2">Множество метрик HI2</h3>
 <p>Кроме объема торгов, HI2 рассчитывается в разрезе покупок и продаж, агрессивных и пассивных сделок:</p>
 <p><img alt="image" src="../../img/hi2_tree.png" /></p>
@@ -1480,7 +1563,7 @@ HI2 = \sum_{i=1}^{N} (s_i)^2
 <p><img alt="image" src="../../img/hi2_data.png" /></p>
 <h3 id="_9">Быстрые ссылки</h3>
 <ul>
-<li>Как получать данные -&gt; <a href="../../api">методы API</a></li>
+<li>Как получать данные -&gt; <a href="../../api/rest">методы API</a></li>
 <li><a href="../../des/hi2">Описание данных</a></li>
 <li><a href="https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D0%B4%D0%B5%D0%BA%D1%81_%D0%A5%D0%B5%D1%80%D1%84%D0%B8%D0%BD%D0%B4%D0%B0%D0%BB%D1%8F">wiki</a></li>
 </ul>
@@ -1540,6 +1623,10 @@ HI2 = \sum_{i=1}^{N} (s_i)^2
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
       
     
   </body>

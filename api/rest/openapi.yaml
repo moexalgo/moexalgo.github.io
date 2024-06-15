@@ -84,7 +84,7 @@ paths:
         https://iss.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities.json
         ```
         
-        [описание метрик](../des/realtime#marketstatistics) | [Кастомизация запросов](/api_custom)
+        [Описание метрик](/des/realtime#marketstatistics) | [Кастомизация запросов](/api_custom)
         
         <details><summary>
         пример ответа

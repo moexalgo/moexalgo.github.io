@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://data.moex.com/method/supercandles/">
+        <link rel="canonical" href="https://moexalgo.github.io/method/supercandles/">
       
       
         <link rel="prev" href="../../des/megaalerts/">
@@ -1625,7 +1625,7 @@
 
 <h1 id="super-candles">Super Candles</h1>
 <h2 id="tradestats">TradeStats</h2>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages1.1397ae4537045b734e11.png" /></p>
+<p><img alt="image" src="../../img/trades-1.svg" /></p>
 <h3 id="price">price</h3>
 <table>
 <thead>
@@ -1661,7 +1661,7 @@
 <blockquote>
 <p><em>было совершено 3 сделки:</em></p>
 </blockquote>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages2.61784b90734fe9572c9f.png" /></p>
+<p><img alt="image" src="../../img/trades-2.svg" /></p>
 <h3 id="vwap">vwap</h3>
 <table>
 <thead>
@@ -1705,7 +1705,7 @@
 </table>
 <pre><code>pr_change = 100 * (pr_close - pr_open) / pr_open
 </code></pre>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages3.1114024a8227a9effd21.png" /></p>
+<p><img alt="image" src="../../img/trades-3.svg" /></p>
 <h3 id="trades">trades</h3>
 <table>
 <thead>
@@ -1790,7 +1790,7 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages4.0883bb07011f2a9a9801.png" /></p>
+<p><img alt="image" src="../../img/trades-4.svg" /></p>
 <h3 id="val">val</h3>
 <table>
 <thead>
@@ -1826,7 +1826,7 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages5.4145ff20b6e69a15f369.png" /></p>
+<p><img alt="image" src="../../img/trades-5.svg" /></p>
 <table>
 <thead>
 <tr>
@@ -1855,7 +1855,7 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages6.6c5516a3fdbfea326845.png" /></p>
+<p><img alt="image" src="../../img/trades-6.svg" /></p>
 <h2 id="orderstats">OrderStats</h2>
 <table>
 <thead>
@@ -1926,7 +1926,7 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages7.a35e7cd52b20d7e291bd.png" /></p>
+<p><img alt="image" src="../../img/order-1.svg" /></p>
 <h3 id="val_1">val</h3>
 <table>
 <thead>
@@ -1944,12 +1944,15 @@
 <td><strong>cancel_val</strong></td>
 <td>Объем заявок, снятых в стакан (₽)</td>
 </tr>
+<tr>
+<td><div class="highlight"><pre><span></span><code>put_val = put_val_b + put_val_s
+</code></pre></div></td>
+<td></td>
+</tr>
 </tbody>
 </table>
-<pre><code>put_val = put_val_b + put_val_s
-</code></pre>
-<pre><code>cancel_val = cancel_val_b + cancel_val_s
-</code></pre>
+<div class="highlight"><pre><span></span><code>cancel_val = cancel_val_b + cancel_val_s
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1976,13 +1979,13 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages8.36a645eacc86af187690.png" /></p>
+<p><img alt="image" src="../../img/order-2.svg" /></p>
 <h3 id="vwap_1">vwap</h3>
 <p>Средневзвешенная цена — это средняя цена заявок, весом которых является объем заявок</p>
 <blockquote>
 <p><em>Было выставлено 3 заявки</em></p>
 </blockquote>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages9.759eabb7bbdaf875301e.png" /></p>
+<p><img alt="image" src="../../img/order-3.svg" /></p>
 <table>
 <thead>
 <tr>
@@ -2009,17 +2012,17 @@
 </tr>
 </tbody>
 </table>
-<pre><code>put_vwap_b = put_val_b / put_vol_b
-</code></pre>
+<div class="highlight"><pre><span></span><code>put_vwap_b = put_val_b / put_vol_b
+</code></pre></div>
 <p>Пример:</p>
 <blockquote>
-<p><em>Есть 2 сделки на покупку: 100 акций по 10 рублей и 200 акций по 20 рублей, тогда:</em></p>
+<p><em>Есть 2 сделки на покупку: 100 акций по 10 рублей и 200 акций по 20 рублей, тогда:</em>
+<div class="highlight"><pre><span></span><code>put_vwap_b = (100*10 + 200*20) / (100 + 200) = 16.67 ₽
+</code></pre></div></p>
 </blockquote>
-<pre><code>put_vwap_b = (100*10 + 200*20) / (100 + 200) = 16.67 ₽
-</code></pre>
 <h2 id="obstats">OBStats</h2>
 <h3 id="spread">spread</h3>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages10.04dd95089e95fc2d2306.png" /></p>
+<p><img alt="image" src="../../img/dom-1.svg" /></p>
 <table>
 <thead>
 <tr>
@@ -2046,10 +2049,10 @@
 <blockquote>
 <p><em>Если для покупки активов на сумму 1 млн ₽ средневзвешенная цена равна 100 ₽, а для продажи — 102 ₽, тогда:</em></p>
 </blockquote>
-<pre><code>spread_1mio = (102 – 100)/100 = 2 ₽.
-</code></pre>
+<div class="highlight"><pre><span></span><code>spread_1mio = (102 – 100)/100 = 2 ₽.
+</code></pre></div>
 <h3 id="levels">levels</h3>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages11.e9f8b4a55409aa2c2d53.png" /></p>
+<p><img alt="image" src="../../img/dom-2.svg" /></p>
 <table>
 <thead>
 <tr>
@@ -2072,7 +2075,7 @@
 <p><em>Большое количество уровней обычно означает большую ликвидность и глубину рынка. Просто подсчитывается количество уровней цен в стакане для покупки и продажи. Например, если в стакане 10 различных цен для покупки, то levels_b = 10.</em></p>
 </blockquote>
 <h3 id="vol_2">vol</h3>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages12.616bd0e18349428b1f58.png" /></p>
+<p><img alt="image" src="../../img/dom-3.svg" /></p>
 <table>
 <thead>
 <tr>
@@ -2098,8 +2101,10 @@
 <blockquote>
 <p><em>Есть 3 заявки на покупку объёмами 100, 200 и 300 акций, то</em></p>
 </blockquote>
-<pre><code>Vol_b = 100 + 200 + 300 = 600 акций.
-</code></pre>
+<div class="highlight"><pre><span></span><code>Vol_b = 100 + 200 + 300 = 600 акций.
+</code></pre></div>
+<h3 id="val_2">val</h3>
+<p><img alt="image" src="../../img/dom-4.svg" /></p>
 <table>
 <thead>
 <tr>
@@ -2109,42 +2114,26 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>spread_bbo</strong></td>
-<td>Это дисбаланс объема по лучшим ценам. Метрика показывает разницу между объемом активов, которые трейдеры хотят купить и продать по лучшим ценам. Указывает на отклонение в предложении и спросе. Отрицательное значение свидетельствует о преобладании продавцов.</td>
+<td><strong>val_b</strong></td>
+<td>Это совокупный объем заявок в стакане на всех уровнях для покупки, выраженный в рублях.</td>
+</tr>
+<tr>
+<td><strong>val_s</strong></td>
+<td>Это совокупный объем заявок в стакане на всех уровнях для продажи, выраженный в рублях.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="val_2">val</h3>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages13.c6d1458bc50bf373ae43.png" />
-|         | Описание                                                       |
-|---------|-------------------------------------------------------------------|
-| <strong>val_b</strong>| Это совокупный объем заявок в стакане на всех уровнях для покупки, выраженный в рублях. |
-| <strong>val_s</strong>| Это совокупный объем заявок в стакане на всех уровнях для продажи, выраженный в рублях.|</p>
 <blockquote>
 <p><em>Эта метрика показывает общую стоимость всех активов, которые трейдеры хотят купить/продать</em></p>
 </blockquote>
 <p>Пример:</p>
 <blockquote>
-<p><em>Есть 2 заявки на покупку: 100 акций по 10 ₽ и 200 акций по 20 ₽, то</em></p>
+<p><em>Есть 2 заявки на покупку: 100 акций по 10 ₽ и 200 акций по 20 ₽, то</em>
+<div class="highlight"><pre><span></span><code>val_b = 100*10 + 200*20 = 5000 ₽
+</code></pre></div></p>
 </blockquote>
-<pre><code>val_b = 100*10 + 200*20 = 5000 ₽
-</code></pre>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Описание</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>imbalance_val_bbo</strong></td>
-<td>Это дисбаланс объема в рублях по лучшим ценам. Метрика показывает разницу в стоимости активов, которые трейдеры хотят купить и продать по лучшим ценам. Отрицательное значение свидетельствует о преобладании продавцов.</td>
-</tr>
-</tbody>
-</table>
 <h3 id="imbalance">imbalance</h3>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages14.616bd0e18349428b1f58.png" /></p>
+<p><img alt="image" src="../../img/dom-5.svg" /></p>
 <table>
 <thead>
 <tr>
@@ -2165,27 +2154,41 @@
 <td><strong>imbalance_val</strong></td>
 <td>Это разница между совокупными объемами покупки и продажи на всех уровнях стакана, выраженная в рублях (разница между b_val и s_val). Позволяет оценить разницу между объемами покупки и продажи в денежном эквиваленте на всех уровнях стакана. Отрицательное значение свидетельствует о преобладании продавцов.</td>
 </tr>
+<tr>
+<td><strong>imbalance_val_bbo</strong></td>
+<td>Это дисбаланс объема в рублях по лучшим ценам. Метрика показывает разницу в стоимости активов, которые трейдеры хотят купить и продать по лучшим ценам. Отрицательное значение свидетельствует о преобладании продавцов.</td>
+</tr>
 </tbody>
 </table>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages15.c6d1458bc50bf373ae43.png" />
-|         | Описание                                                       |
-|---------|-------------------------------------------------------------------|
-| <strong>imbalance_val_bbo</strong>| Это дисбаланс объема в рублях по лучшим ценам. Метрика показывает разницу в стоимости активов, которые трейдеры хотят купить и продать по лучшим ценам. Отрицательное значение свидетельствует о преобладании продавцов.|</p>
 <h3 id="vwap_2">vwap</h3>
-<p><img alt="image" src="https://data.moex.com/static/media/countImages16.31fa4eac84b0a4e41ec2.png" />
-|         | Описание                                                       |
-|---------|-------------------------------------------------------------------|
-| <strong>vwap_b</strong>| Это средневзвешенная цена покупки на всем стакане — сумма произведений цен на соответствующие объемы, делённая на общий объём (b_val/ b_vol).|
-| <strong>vwap_s</strong>| Это средневзвешенная цена продажи на всем стакане — сумма произведений цен на соответствующие объемы, делённая на общий объём (s_val/ s_vol).|</p>
+<p><img alt="image" src="../../img/dom-6.svg" /></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>vwap_b</strong></td>
+<td>Это средневзвешенная цена покупки на всем стакане — сумма произведений цен на соответствующие объемы, делённая на общий объём (b_val/ b_vol).</td>
+</tr>
+<tr>
+<td><strong>vwap_s</strong></td>
+<td>Это средневзвешенная цена продажи на всем стакане — сумма произведений цен на соответствующие объемы, делённая на общий объём (s_val/ s_vol).</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p><em>Показывает, какова средняя цена активов, которые трейдеры хотят купить, с учетом объема каждого заявленного уровня цены. Обычно используется для измерения «средней» цены, по которой активы куплены или проданы.</em></p>
 </blockquote>
 <p>Пример:</p>
 <blockquote>
-<p><em>Есть 2 заявки на покупку: 100 акций по 10 ₽ и 200 акций по 20 ₽, тогда</em></p>
+<p><em>Есть 2 заявки на покупку: 100 акций по 10 ₽ и 200 акций по 20 ₽, тогда</em>
+<div class="highlight"><pre><span></span><code>(100*10 + 200*20) / (100 + 200) = 16.67 ₽
+</code></pre></div></p>
 </blockquote>
-<pre><code>(100*10 + 200*20) / (100 + 200) = 16.67 ₽
-</code></pre>
 <table>
 <thead>
 <tr>
@@ -2211,8 +2214,8 @@
 <blockquote>
 <p><em>Есть 4 заявки на покупку: 150 акций по 3000 ₽, 100 акций по 3500 ₽, 50 акций по 4000 ₽ и 25 акций по 4500 ₽. Для расчета необходимо определить, какие заявки понадобятся для набора суммы в 1 млн ₽ ( ∑(vol * price) ), а затем рассчитать средневзвешенную цену для этих заявок, как в примере выше с b_pr_vwap / s_pr_vwap.</em></p>
 </blockquote>
-<pre><code>vwap_b_1mio = (150 * 3000 + 100 * 3500 + 50 * 4000) / (150 + 100 + 50) = 333.33 ₽
-</code></pre>
+<div class="highlight"><pre><span></span><code>vwap_b_1mio = (150 * 3000 + 100 * 3500 + 50 * 4000) / (150 + 100 + 50) = 333.33 ₽
+</code></pre></div>
 
 
 

@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://data.moex.com/orderstats/">
+        <link rel="canonical" href="https://moexalgo.github.io/orderstats/">
       
       
       
@@ -1446,13 +1446,12 @@
 <ul>
 <li>
 <h3 id="put_val-cancel_val">put_val, cancel_val</h3>
-Объем заявок, поставленных/снятых в стакан (₽)</li>
-</ul>
-<pre><code>put_val = put_val_b + put_val_s
-</code></pre>
-<pre><code>cancel_val = cancel_val_b + cancel_val_s
-</code></pre>
-<ul>
+<p>Объем заявок, поставленных/снятых в стакан (₽)
+<div class="highlight"><pre><span></span><code>put_val = put_val_b + put_val_s
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cancel_val = cancel_val_b + cancel_val_s
+</code></pre></div></p>
+</li>
 <li>
 <h3 id="put_val_b-put_val_s">put_val_b, put_val_s</h3>
 <p>Объем заявок на покупку/продажу, поставленных в стакан (₽)</p>
@@ -1472,14 +1471,14 @@
 <ul>
 <li>
 <h3 id="put_vwap_b-put_vwap_s-cancel_vwap_b-cancel_vwap_s">put_vwap_b, put_vwap_s, cancel_vwap_b, cancel_vwap_s</h3>
-<strong>Средневзвешенная цена выставленных/отмененных заявок на покупку и продажу</strong>, соответственно — это средняя цена заявки покупки или продажи, весом которых является объем соответствующих сделок.</li>
+<strong>Средневзвешенная цена выставленных/отмененных заявок на покупку и продажу</strong>, соответственно — это средняя цена заявки покупки или продажи, весом которых является объем соответствующих сделок.
+<div class="highlight"><pre><span></span><code>put_vwap_b = put_val_b / put_vol_b
+</code></pre></div></li>
 </ul>
-<pre><code>put_vwap_b = put_val_b / put_vol_b
-</code></pre>
 <h3 id="_5">Пример:</h3>
-<p>Есть 2 сделки на покупку: 100 акций по 10 рублей и 200 акций по 20 рублей, тогда:</p>
-<pre><code>put_vwap_b = (100*10 + 200*20) / (100 + 200) = 16.67 ₽
-</code></pre>
+<p>Есть 2 сделки на покупку: 100 акций по 10 рублей и 200 акций по 20 рублей, тогда:
+<div class="highlight"><pre><span></span><code>put_vwap_b = (100*10 + 200*20) / (100 + 200) = 16.67 ₽
+</code></pre></div></p>
 
 
 

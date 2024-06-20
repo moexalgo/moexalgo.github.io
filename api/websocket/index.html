@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://data.moex.com/api/websocket/">
+        <link rel="canonical" href="https://moexalgo.github.io/api/websocket/">
       
       
         <link rel="prev" href="../rest/">
@@ -1699,55 +1699,52 @@ selector: pattern=""\n
 </tbody>
 </table>
 <h2 id="python">Пример подключения (Python)</h2>
-<pre><code class="language-python">import asyncio
-import json
-from websockets import connect, WebSocketClientProtocol, ConnectionClosed
-from stomp.utils import Frame, convert_frame, parse_frame
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">websockets</span> <span class="kn">import</span> <span class="n">connect</span><span class="p">,</span> <span class="n">WebSocketClientProtocol</span><span class="p">,</span> <span class="n">ConnectionClosed</span>
+<span class="kn">from</span> <span class="nn">stomp.utils</span> <span class="kn">import</span> <span class="n">Frame</span><span class="p">,</span> <span class="n">convert_frame</span><span class="p">,</span> <span class="n">parse_frame</span>
 
-async def connect_stomp(url, credentials):
-    &quot;&quot;&quot; Create a STOMP WebSocket connection &quot;&quot;&quot;
-    websocket = await connect(url, subprotocols=['STOMP'])
-    login_frame = Frame('CONNECT', headers=credentials)
-    await websocket.send(b''.join(convert_frame(login_frame)))
-    return websocket
+<span class="k">async</span> <span class="k">def</span> <span class="nf">connect_stomp</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a STOMP WebSocket connection &quot;&quot;&quot;</span>
+    <span class="n">websocket</span> <span class="o">=</span> <span class="k">await</span> <span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">subprotocols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;STOMP&#39;</span><span class="p">])</span>
+    <span class="n">login_frame</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span><span class="s1">&#39;CONNECT&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">convert_frame</span><span class="p">(</span><span class="n">login_frame</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">websocket</span>
 
-async def receive_messages(websocket):
-    &quot;&quot;&quot; Receive messages from the WebSocket connection &quot;&quot;&quot;
-    async for message in websocket:
-        frame = parse_frame(message)
-        print('Received frame', frame.cmd, frame.headers)
-        body = json.loads(frame.body.decode('utf8').strip('\0'))
-        return body  # Simplifying to return the first received message
+<span class="k">async</span> <span class="k">def</span> <span class="nf">receive_messages</span><span class="p">(</span><span class="n">websocket</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Receive messages from the WebSocket connection &quot;&quot;&quot;</span>
+    <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">websocket</span><span class="p">:</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="n">parse_frame</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Received frame&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">cmd</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">body</span>  <span class="c1"># Simplifying to return the first received message</span>
 
-async def main(url, credentials):
-    try:
-        websocket = await connect_stomp(url, credentials)
-        try:
-            body = await receive_messages(websocket)
-            print(&quot;Received Data:&quot;, body)
-        finally:
-            await websocket.close()
-    except ConnectionClosed:
-        print(&quot;Connection was closed&quot;)
-    except Exception as e:
-       print(f&quot;An error occurred: {e}&quot;)
-
-
-if __name__ == '__main__':
-    url = 'wss://iss.moex.com/infocx/v3/websocket'
-    credentials = {
-        'domain': 'passport',
-        'login': 'login',
-        'passcode': 'password'
-    }
-
-    asyncio.run(main(url, credentials))
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">websocket</span> <span class="o">=</span> <span class="k">await</span> <span class="n">connect_stomp</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="k">await</span> <span class="n">receive_messages</span><span class="p">(</span><span class="n">websocket</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received Data:&quot;</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">ConnectionClosed</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connection was closed&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+       <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;wss://iss.moex.com/infocx/v3/websocket&#39;</span>
+    <span class="n">credentials</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;domain&#39;</span><span class="p">:</span> <span class="s1">&#39;passport&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;login&#39;</span><span class="p">:</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;passcode&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span>
+    <span class="p">}</span>
+
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">))</span>
+</code></pre></div>
 <h2 id="python_1">Пример подписки на данные (Python)</h2>
-<pre><code>
-import asyncio
+<div class="highlight"><pre><span></span><code>import asyncio
 import json
 import uuid
 
@@ -1757,7 +1754,7 @@ from stomp.utils import Frame, convert_frame, parse_frame
 async def send_frame(websocket, cmd, headers):
     &quot;&quot;&quot; Helper function for sending a frame &quot;&quot;&quot;
     frame = Frame(cmd, headers=headers)
-    await websocket.send(b''.join(convert_frame(frame)))
+    await websocket.send(b&#39;&#39;.join(convert_frame(frame)))
 
 async def receive_message(websocket):
     &quot;&quot;&quot; Helper function to receive a message and parse it &quot;&quot;&quot;
@@ -1766,42 +1763,42 @@ async def receive_message(websocket):
 
 async def connect_stomp(websocket, domain, login, passcode):
     &quot;&quot;&quot; Connect to the STOMP server &quot;&quot;&quot;
-    await send_frame(websocket, 'CONNECT', {'domain': domain, 'login': login, 'passcode': passcode})
+    await send_frame(websocket, &#39;CONNECT&#39;, {&#39;domain&#39;: domain, &#39;login&#39;: login, &#39;passcode&#39;: passcode})
     frame = await receive_message(websocket)
-    if frame.cmd != 'CONNECTED':
-        raise ConnectionRefusedError(f&quot;STOMP authentication failed; {frame.headers.get('message', 'No error message')}&quot;)
-    return json.loads(frame.body.decode('utf8').strip('\0'))
+    if frame.cmd != &#39;CONNECTED&#39;:
+        raise ConnectionRefusedError(f&quot;STOMP authentication failed; {frame.headers.get(&#39;message&#39;, &#39;No error message&#39;)}&quot;)
+    return json.loads(frame.body.decode(&#39;utf8&#39;).strip(&#39;\0&#39;))
 
 async def subscribe_to_topic(websocket, destination, selector):
     &quot;&quot;&quot; Subscribe to a topic on the STOMP server &quot;&quot;&quot;
     subscribe_header = {
-        'id': str(uuid.uuid4()),
-        'destination': destination,
-        'selector': selector,
+        &#39;id&#39;: str(uuid.uuid4()),
+        &#39;destination&#39;: destination,
+        &#39;selector&#39;: selector,
     }
-    await send_frame(websocket, 'SUBSCRIBE', subscribe_header)
+    await send_frame(websocket, &#39;SUBSCRIBE&#39;, subscribe_header)
 
 async def main(url):
-    async with connect(url, subprotocols=['STOMP']) as websocket:
+    async with connect(url, subprotocols=[&#39;STOMP&#39;]) as websocket:
         try:
             # Credentials
-            domain = 'passport'
-            login = 'login'
-            passcode = 'password'
+            domain = &#39;passport&#39;
+            login = &#39;login&#39;
+            passcode = &#39;password&#39;
 
             # Connect to STOMP with authentication
             metadata = await connect_stomp(websocket, domain, login, passcode)
             print(&quot;Connected with metadata:&quot;, metadata)
 
             # Subscribe to the desired topic
-            await subscribe_to_topic(websocket, 'MXSE.orderbooks', 'TICKER=&quot;MXSE.TQBR.SBER&quot;')
+            await subscribe_to_topic(websocket, &#39;MXSE.orderbooks&#39;, &#39;TICKER=&quot;MXSE.TQBR.SBER&quot;&#39;)
             print(&quot;Subscription successful&quot;)
 
             # Main message processing loop
             while True:
                 frame = await receive_message(websocket)
-                if frame.cmd == 'MESSAGE':
-                    body = json.loads(frame.body.decode('utf8').strip('\0'))
+                if frame.cmd == &#39;MESSAGE&#39;:
+                    body = json.loads(frame.body.decode(&#39;utf8&#39;).strip(&#39;\0&#39;))
                     print(body)
 
         except ConnectionClosed:
@@ -1811,11 +1808,10 @@ async def main(url):
             print(f&quot;An error occurred: {e}&quot;)
             return  # Handle other exceptions gracefully
 
-if __name__ == '__main__':
-    url = 'ws://iss.moex.com/infocx/v3/websocket'
+if __name__ == &#39;__main__&#39;:
+    url = &#39;ws://iss.moex.com/infocx/v3/websocket&#39;
     asyncio.run(main(url))
-
-</code></pre>
+</code></pre></div>
 
 
 

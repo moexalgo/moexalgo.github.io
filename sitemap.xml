@@ -1,143 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://data.moex.com/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/contacts/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/contacts/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/orderstats/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/orderstats/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/python/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/python/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/test/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/test/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/api/rest/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/api/rest/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/api/websocket/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/api/websocket/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/blog/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/blog/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/blog/2024/05/21/algopack_subscription/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/blog/2024/05/21/algopack_subscription/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/blog/2024/05/24/algopack_universe/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/blog/2024/05/24/algopack_universe/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/des/futoi/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/des/futoi/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/des/hi2/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/des/hi2/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/des/megaalerts/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/des/megaalerts/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/des/realtime/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/des/realtime/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/des/supercandles/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/des/supercandles/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/method/_supercandles/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/method/_supercandles/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/method/futoi/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/method/futoi/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/method/hi2/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/method/hi2/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/method/megaalerts/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/method/megaalerts/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/method/supercandles/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/method/supercandles/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/modules/futoi/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/modules/futoi/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/modules/hi2/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/modules/hi2/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/modules/megaalerts/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/modules/megaalerts/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/modules/realtime/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/modules/realtime/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/modules/supercandles/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/modules/supercandles/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/blog/archive/2024/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/blog/archive/2024/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/blog/category/%D0%B2%D0%B0%D0%B6%D0%BD%D1%8B%D0%B5-%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/blog/category/%D0%B2%D0%B0%D0%B6%D0%BD%D1%8B%D0%B5-%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://data.moex.com/blog/category/%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%BA%D0%B0/</loc>
-         <lastmod>2024-06-14</lastmod>
+         <loc>https://moexalgo.github.io/blog/category/%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%BA%D0%B0/</loc>
+         <lastmod>2024-06-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

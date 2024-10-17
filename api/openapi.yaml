@@ -4,6 +4,7 @@ openapi: 3.0.3
 #  description: 
 #  version: 1.0.0
 servers:
+  - url: https://apim.moex.com
   - url: https://iss.moex.com
 
 tags:

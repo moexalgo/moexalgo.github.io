@@ -32,14 +32,6 @@
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
-  
-  
-    
-    
-  
-  
-  <style>:root{--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');}</style>
-
 
 
     
@@ -1596,13 +1588,13 @@
 </ul>
 <h3 id="_7">Примеры команд</h3>
 <p><strong>SUBSCRIBE</strong>: подписка на поток данных</p>
-<pre><code>SUBSCRIBE\n
+<div class="language-text highlight"><pre><span></span><code>SUBSCRIBE\n
 id: уникальный_ID\n
 receipt: уникальный_ID\n
 destination: MXSE.securities\n
-selector: TICKER="MXSE.TQBR.SBER" and LANGUAGE="en"\n
+selector: TICKER=&quot;MXSE.TQBR.SBER&quot; and LANGUAGE=&quot;en&quot;\n
 \n^@
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p><strong>Ответы сервера:</strong></p>
 <ul>
@@ -1611,17 +1603,17 @@ selector: TICKER="MXSE.TQBR.SBER" and LANGUAGE="en"\n
 </ul>
 </blockquote>
 <p><strong>UNSUBSCRIBE</strong>: отписаться от потока данных</p>
-<pre><code>UNSUBSCRIBE\n
+<div class="language-text highlight"><pre><span></span><code>UNSUBSCRIBE\n
 id: уникальный_ID\n
 \n^@
-</code></pre>
+</code></pre></div>
 <p><strong>REQUEST</strong>: запрос данных из справочника</p>
-<pre><code>REQUEST\n
+<div class="language-text highlight"><pre><span></span><code>REQUEST\n
 id: уникальный_ID\n
 destination: SEARCH.ticker\n
-selector: pattern=""\n
+selector: pattern=&quot;&quot;\n
 \n^@
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p><strong>Ответы сервера:</strong></p>
 <ul>
@@ -1699,119 +1691,119 @@ selector: pattern=""\n
 </tbody>
 </table>
 <h2 id="python">Пример подключения (Python)</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">websockets</span> <span class="kn">import</span> <span class="n">connect</span><span class="p">,</span> <span class="n">WebSocketClientProtocol</span><span class="p">,</span> <span class="n">ConnectionClosed</span>
-<span class="kn">from</span> <span class="nn">stomp.utils</span> <span class="kn">import</span> <span class="n">Frame</span><span class="p">,</span> <span class="n">convert_frame</span><span class="p">,</span> <span class="n">parse_frame</span>
-
-<span class="k">async</span> <span class="k">def</span> <span class="nf">connect_stomp</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a STOMP WebSocket connection &quot;&quot;&quot;</span>
-    <span class="n">websocket</span> <span class="o">=</span> <span class="k">await</span> <span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">subprotocols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;STOMP&#39;</span><span class="p">])</span>
-    <span class="n">login_frame</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span><span class="s1">&#39;CONNECT&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">convert_frame</span><span class="p">(</span><span class="n">login_frame</span><span class="p">)))</span>
-    <span class="k">return</span> <span class="n">websocket</span>
-
-<span class="k">async</span> <span class="k">def</span> <span class="nf">receive_messages</span><span class="p">(</span><span class="n">websocket</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Receive messages from the WebSocket connection &quot;&quot;&quot;</span>
-    <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">websocket</span><span class="p">:</span>
-        <span class="n">frame</span> <span class="o">=</span> <span class="n">parse_frame</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Received frame&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">cmd</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
-        <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">body</span>  <span class="c1"># Simplifying to return the first received message</span>
-
-<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">websocket</span> <span class="o">=</span> <span class="k">await</span> <span class="n">connect_stomp</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">)</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">body</span> <span class="o">=</span> <span class="k">await</span> <span class="n">receive_messages</span><span class="p">(</span><span class="n">websocket</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received Data:&quot;</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
-        <span class="k">finally</span><span class="p">:</span>
-            <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">except</span> <span class="n">ConnectionClosed</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connection was closed&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-       <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;wss://iss.moex.com/infocx/v3/websocket&#39;</span>
-    <span class="n">credentials</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;domain&#39;</span><span class="p">:</span> <span class="s1">&#39;passport&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;login&#39;</span><span class="p">:</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;passcode&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span>
-    <span class="p">}</span>
-
-    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">))</span>
-</code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">asyncio</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">json</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">websockets</span> <span class="kn">import</span> <span class="n">connect</span><span class="p">,</span> <span class="n">WebSocketClientProtocol</span><span class="p">,</span> <span class="n">ConnectionClosed</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">stomp.utils</span> <span class="kn">import</span> <span class="n">Frame</span><span class="p">,</span> <span class="n">convert_frame</span><span class="p">,</span> <span class="n">parse_frame</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">connect_stomp</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">):</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a STOMP WebSocket connection &quot;&quot;&quot;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">websocket</span> <span class="o">=</span> <span class="k">await</span> <span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">subprotocols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;STOMP&#39;</span><span class="p">])</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">login_frame</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span><span class="s1">&#39;CONNECT&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">convert_frame</span><span class="p">(</span><span class="n">login_frame</span><span class="p">)))</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="k">return</span> <span class="n">websocket</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">receive_messages</span><span class="p">(</span><span class="n">websocket</span><span class="p">):</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot; Receive messages from the WebSocket connection &quot;&quot;&quot;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">websocket</span><span class="p">:</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="n">frame</span> <span class="o">=</span> <span class="n">parse_frame</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Received frame&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">cmd</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">))</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="k">return</span> <span class="n">body</span>  <span class="c1"># Simplifying to return the first received message</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">):</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="n">websocket</span> <span class="o">=</span> <span class="k">await</span> <span class="n">connect_stomp</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">)</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>            <span class="n">body</span> <span class="o">=</span> <span class="k">await</span> <span class="n">receive_messages</span><span class="p">(</span><span class="n">websocket</span><span class="p">)</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received Data:&quot;</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="k">finally</span><span class="p">:</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>            <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="k">except</span> <span class="n">ConnectionClosed</span><span class="p">:</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connection was closed&quot;</span><span class="p">)</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>       <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;wss://iss.moex.com/infocx/v3/websocket&#39;</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="n">credentials</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        <span class="s1">&#39;domain&#39;</span><span class="p">:</span> <span class="s1">&#39;passport&#39;</span><span class="p">,</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>        <span class="s1">&#39;login&#39;</span><span class="p">:</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="s1">&#39;passcode&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>    <span class="p">}</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">credentials</span><span class="p">))</span>
+</span></code></pre></div>
 <h2 id="python_1">Пример подписки на данные (Python)</h2>
-<div class="highlight"><pre><span></span><code>import asyncio
-import json
-import uuid
-
-from websockets import connect, ConnectionClosed
-from stomp.utils import Frame, convert_frame, parse_frame
-
-async def send_frame(websocket, cmd, headers):
-    &quot;&quot;&quot; Helper function for sending a frame &quot;&quot;&quot;
-    frame = Frame(cmd, headers=headers)
-    await websocket.send(b&#39;&#39;.join(convert_frame(frame)))
-
-async def receive_message(websocket):
-    &quot;&quot;&quot; Helper function to receive a message and parse it &quot;&quot;&quot;
-    message = await websocket.recv()
-    return parse_frame(message)
-
-async def connect_stomp(websocket, domain, login, passcode):
-    &quot;&quot;&quot; Connect to the STOMP server &quot;&quot;&quot;
-    await send_frame(websocket, &#39;CONNECT&#39;, {&#39;domain&#39;: domain, &#39;login&#39;: login, &#39;passcode&#39;: passcode})
-    frame = await receive_message(websocket)
-    if frame.cmd != &#39;CONNECTED&#39;:
-        raise ConnectionRefusedError(f&quot;STOMP authentication failed; {frame.headers.get(&#39;message&#39;, &#39;No error message&#39;)}&quot;)
-    return json.loads(frame.body.decode(&#39;utf8&#39;).strip(&#39;\0&#39;))
-
-async def subscribe_to_topic(websocket, destination, selector):
-    &quot;&quot;&quot; Subscribe to a topic on the STOMP server &quot;&quot;&quot;
-    subscribe_header = {
-        &#39;id&#39;: str(uuid.uuid4()),
-        &#39;destination&#39;: destination,
-        &#39;selector&#39;: selector,
-    }
-    await send_frame(websocket, &#39;SUBSCRIBE&#39;, subscribe_header)
-
-async def main(url):
-    async with connect(url, subprotocols=[&#39;STOMP&#39;]) as websocket:
-        try:
-            # Credentials
-            domain = &#39;passport&#39;
-            login = &#39;login&#39;
-            passcode = &#39;password&#39;
-
-            # Connect to STOMP with authentication
-            metadata = await connect_stomp(websocket, domain, login, passcode)
-            print(&quot;Connected with metadata:&quot;, metadata)
-
-            # Subscribe to the desired topic
-            await subscribe_to_topic(websocket, &#39;MXSE.orderbooks&#39;, &#39;TICKER=&quot;MXSE.TQBR.SBER&quot;&#39;)
-            print(&quot;Subscription successful&quot;)
-
-            # Main message processing loop
-            while True:
-                frame = await receive_message(websocket)
-                if frame.cmd == &#39;MESSAGE&#39;:
-                    body = json.loads(frame.body.decode(&#39;utf8&#39;).strip(&#39;\0&#39;))
-                    print(body)
-
-        except ConnectionClosed:
-            print(&quot;Connection closed unexpectedly!&quot;)
-            return  # Exit the main function if connection is closed
-        except Exception as e:
-            print(f&quot;An error occurred: {e}&quot;)
-            return  # Handle other exceptions gracefully
-
-if __name__ == &#39;__main__&#39;:
-    url = &#39;ws://iss.moex.com/infocx/v3/websocket&#39;
-    asyncio.run(main(url))
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>import asyncio
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>import json
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>import uuid
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>from websockets import connect, ConnectionClosed
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>from stomp.utils import Frame, convert_frame, parse_frame
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>async def send_frame(websocket, cmd, headers):
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    &quot;&quot;&quot; Helper function for sending a frame &quot;&quot;&quot;
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    frame = Frame(cmd, headers=headers)
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    await websocket.send(b&#39;&#39;.join(convert_frame(frame)))
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>async def receive_message(websocket):
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    &quot;&quot;&quot; Helper function to receive a message and parse it &quot;&quot;&quot;
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    message = await websocket.recv()
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    return parse_frame(message)
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>async def connect_stomp(websocket, domain, login, passcode):
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    &quot;&quot;&quot; Connect to the STOMP server &quot;&quot;&quot;
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    await send_frame(websocket, &#39;CONNECT&#39;, {&#39;domain&#39;: domain, &#39;login&#39;: login, &#39;passcode&#39;: passcode})
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    frame = await receive_message(websocket)
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    if frame.cmd != &#39;CONNECTED&#39;:
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        raise ConnectionRefusedError(f&quot;STOMP authentication failed; {frame.headers.get(&#39;message&#39;, &#39;No error message&#39;)}&quot;)
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    return json.loads(frame.body.decode(&#39;utf8&#39;).strip(&#39;\0&#39;))
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>async def subscribe_to_topic(websocket, destination, selector):
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>    &quot;&quot;&quot; Subscribe to a topic on the STOMP server &quot;&quot;&quot;
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>    subscribe_header = {
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>        &#39;id&#39;: str(uuid.uuid4()),
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>        &#39;destination&#39;: destination,
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>        &#39;selector&#39;: selector,
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    }
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    await send_frame(websocket, &#39;SUBSCRIBE&#39;, subscribe_header)
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>async def main(url):
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>    async with connect(url, subprotocols=[&#39;STOMP&#39;]) as websocket:
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>        try:
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>            # Credentials
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>            domain = &#39;passport&#39;
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>            login = &#39;login&#39;
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>            passcode = &#39;password&#39;
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>            # Connect to STOMP with authentication
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>            metadata = await connect_stomp(websocket, domain, login, passcode)
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>            print(&quot;Connected with metadata:&quot;, metadata)
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>            # Subscribe to the desired topic
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>            await subscribe_to_topic(websocket, &#39;MXSE.orderbooks&#39;, &#39;TICKER=&quot;MXSE.TQBR.SBER&quot;&#39;)
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>            print(&quot;Subscription successful&quot;)
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>            # Main message processing loop
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>            while True:
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>                frame = await receive_message(websocket)
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>                if frame.cmd == &#39;MESSAGE&#39;:
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>                    body = json.loads(frame.body.decode(&#39;utf8&#39;).strip(&#39;\0&#39;))
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>                    print(body)
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a>        except ConnectionClosed:
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>            print(&quot;Connection closed unexpectedly!&quot;)
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>            return  # Exit the main function if connection is closed
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a>        except Exception as e:
+</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>            print(f&quot;An error occurred: {e}&quot;)
+</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a>            return  # Handle other exceptions gracefully
+</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>
+</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>if __name__ == &#39;__main__&#39;:
+</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>    url = &#39;ws://iss.moex.com/infocx/v3/websocket&#39;
+</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>    asyncio.run(main(url))
+</span></code></pre></div>
 
 
 
@@ -1832,6 +1824,8 @@ if __name__ == &#39;__main__&#39;:
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -1861,7 +1855,7 @@ if __name__ == &#39;__main__&#39;:
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight", "search.share", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>

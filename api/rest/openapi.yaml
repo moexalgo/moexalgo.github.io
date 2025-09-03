@@ -3293,7 +3293,7 @@ paths:
     get:
       tags:
         - MegaAlerts - торговые аномалии
-      summary: Акции и Фьючерсы, один инструмент
+      summary: Акции и Фьючерсы, один инструмент за период
       parameters:
         - name: market
           in: path

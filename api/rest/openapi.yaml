@@ -5,7 +5,7 @@ openapi: 3.0.3
 #  version: 1.0.0
 servers:
   - url: https://apim.moex.com
-  - url: https://iss.moex.com
+  - url: https://apim.moex.com
 
 tags:
   - name: Real-time market data - Акции

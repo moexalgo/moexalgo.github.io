@@ -9,7 +9,7 @@ info:
     email: algopack@moex.com
   version: 1.0.11
 servers:
-  - url: https://iss.moex.com
+  - url: https://apim.moex.com
   - url: https://passport.moex.com
 
 tags:

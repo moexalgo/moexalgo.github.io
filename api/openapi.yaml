@@ -5,7 +5,7 @@ openapi: 3.0.3
 #  version: 1.0.0
 servers:
   - url: https://apim.moex.com
-  - url: https://iss.moex.com
+
 
 tags:
   - name: Real-time market data - Акции
@@ -82,7 +82,7 @@ paths:
           
         ```
         # пример
-        https://iss.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities.json
+        https://apim.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities.json
         ```
         
         [описание метрик](../des/realtime#marketstatistics) | [Кастомизация запросов](/api_custom)
@@ -236,7 +236,7 @@ paths:
         
         ```
         # пример
-        https://iss.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities/sber.json
+        https://apim.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities/sber.json
         ```
         
         [описание метрик](../des/realtime#marketstatistics) | [Кастомизация запросов](/api_custom)
@@ -412,7 +412,7 @@ paths:
         
         ```
         # пример
-        https://iss.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities/sber/candles.json?
+        https://apim.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities/sber/candles.json?
         from=2024-04-15&
         till=2024-04-20&
         interval=60
@@ -471,7 +471,7 @@ paths:
         
         ```
         # пример
-        https://iss.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities/sber/orderbook.json
+        https://apim.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities/sber/orderbook.json
         ```
         
         [описание метрик](../des/realtime#orderbook) | [Кастомизация запросов](/api_custom)
@@ -556,11 +556,11 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities/sber/trades.json?
+        https://apim.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities/sber/trades.json?
         tradeno=10131515201
 
         # если не указывать ticker, сделки пойдут по всем акциям
-        https://iss.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities/trades.json?
+        https://apim.moex.com/iss/engines/stock/markets/shares/boards/tqbr/securities/trades.json?
         tradeno=10131515201
         ```
 
@@ -640,7 +640,7 @@ paths:
         
         ```
         # пример
-        https://iss.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities.json
+        https://apim.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities.json
         ```
         
         [описание метрик](../des/realtime#marketstatistics_1) | [Кастомизация запросов](/api_custom)
@@ -779,7 +779,7 @@ paths:
         
         ```
         # пример
-        https://iss.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/SiH5.json
+        https://apim.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/SiH5.json
         ```
         
         [описание метрик](../des/realtime#marketstatistics_1) | [Кастомизация запросов](/api_custom)
@@ -932,7 +932,7 @@ paths:
         
         ```
         # пример
-        https://iss.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/SiH5/candles.json?
+        https://apim.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/SiH5/candles.json?
         from=2024-04-15&
         till=2024-04-20&
         interval=60
@@ -1013,7 +1013,7 @@ paths:
         
         ```
         # пример
-        https://iss.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/SiH5/orderbook.json
+        https://apim.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/SiH5/orderbook.json
         ```
         
         [описание метрик](../des/realtime#orderbook_1) | [Кастомизация запросов](/api_custom)
@@ -1117,11 +1117,11 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/SiH5/trades.json?
+        https://apim.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/SiH5/trades.json?
         tradeno=1892949429179125797
 
         # если не указывать ticker, сделки пойдут по всем акциям
-        https://iss.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/trades.json?
+        https://apim.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/trades.json?
         tradeno=1892949429179125797
         ```
 
@@ -1212,10 +1212,10 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/eq/tradestats.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/eq/tradestats.json?date=2024-04-17
 
         # получить последнюю пятиминутку
-        https://iss.moex.com/iss/datashop/algopack/eq/tradestats.json?date=2024-04-17&latest=1
+        https://apim.moex.com/iss/datashop/algopack/eq/tradestats.json?date=2024-04-17&latest=1
         ```
 
         [описание метрик](../des/supercandles#tradestats)  |  [методология расчета](../method/supercandles#tradestats) | [Кастомизация запросов](/api_custom)
@@ -1318,7 +1318,7 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/eq/tradestats/ABIO.json?
+        https://apim.moex.com/iss/datashop/algopack/eq/tradestats/ABIO.json?
         from=2024-04-17&
         till=2024-04-19
         ```
@@ -1412,10 +1412,10 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-04-17
 
         # получить последнюю пятиминутку
-        https://iss.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-04-17&latest=1
+        https://apim.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-04-17&latest=1
         ```
 
         [описание метрик](../des/supercandles#obstats)  |  [методология расчета](../method/supercandles#orderbook-stats) | [Кастомизация запросов](/api_custom)
@@ -1516,7 +1516,7 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/eq/obstats/ABIO.json?
+        https://apim.moex.com/iss/datashop/algopack/eq/obstats/ABIO.json?
         from=2024-04-17&
         till=2024-04-19
         ```
@@ -1609,10 +1609,10 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/eq/orderstats.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/eq/orderstats.json?date=2024-04-17
 
         # получить последнюю пятиминутку
-        https://iss.moex.com/iss/datashop/algopack/eq/orderstats.json?date=2024-04-17&latest=1
+        https://apim.moex.com/iss/datashop/algopack/eq/orderstats.json?date=2024-04-17&latest=1
         ```
 
         [описание метрик](../des/supercandles#orderstats)  |  [методология расчета](../method/supercandles#orderstats) | [Кастомизация запросов](/api_custom)
@@ -1718,7 +1718,7 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/eq/orderstats/ABIO.json?
+        https://apim.moex.com/iss/datashop/algopack/eq/orderstats/ABIO.json?
         from=2024-04-17&
         till=2024-04-19
         ```
@@ -1817,10 +1817,10 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/fo/tradestats.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/fo/tradestats.json?date=2024-04-17
 
         # получить последнюю пятиминутку
-        https://iss.moex.com/iss/datashop/algopack/fo/tradestats.json?date=2024-04-17&latest=1
+        https://apim.moex.com/iss/datashop/algopack/fo/tradestats.json?date=2024-04-17&latest=1
         ```
 
         [описание метрик](../des/supercandles#tradestats_1)  |  [методология расчета](../method/supercandles#tradestats) | [Кастомизация запросов](/api_custom)
@@ -1940,7 +1940,7 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/fo/tradestats/RIM4.json?
+        https://apim.moex.com/iss/datashop/algopack/fo/tradestats/RIM4.json?
         from=2024-04-17&
         till=2024-04-19
         ```
@@ -2045,10 +2045,10 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/fo/obstats.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/fo/obstats.json?date=2024-04-17
 
         # получить последнюю пятиминутку
-        https://iss.moex.com/iss/datashop/algopack/fo/obstats.json?date=2024-04-17&latest=1
+        https://apim.moex.com/iss/datashop/algopack/fo/obstats.json?date=2024-04-17&latest=1
         ```
 
         [описание метрик](../des/supercandles#obstats_1)  |  [методология расчета](../method/supercandles#orderbook-stats) | [Кастомизация запросов](/api_custom)
@@ -2167,7 +2167,7 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/fo/obstats/RIM4.json?
+        https://apim.moex.com/iss/datashop/algopack/fo/obstats/RIM4.json?
         from=2024-04-17&
         till=2024-04-19
         ```
@@ -2281,10 +2281,10 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/fx/tradestats.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/fx/tradestats.json?date=2024-04-17
 
         # получить последнюю пятиминутку
-        https://iss.moex.com/iss/datashop/algopack/fx/tradestats.json?date=2024-04-17&latest=1
+        https://apim.moex.com/iss/datashop/algopack/fx/tradestats.json?date=2024-04-17&latest=1
         ```
 
         [описание метрик](../des/supercandles#tradestats_2)  |  [методология расчета](../method/supercandles#tradestats) | [Кастомизация запросов](/api_custom)
@@ -2395,7 +2395,7 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/fx/tradestats/usd000utstom.json?
+        https://apim.moex.com/iss/datashop/algopack/fx/tradestats/usd000utstom.json?
         from=2024-04-17&
         till=2024-04-19
         ```
@@ -2497,10 +2497,10 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/fx/obstats.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/fx/obstats.json?date=2024-04-17
 
         # получить последнюю пятиминутку
-        https://iss.moex.com/iss/datashop/algopack/fx/obstats.json?date=2024-04-17&latest=1
+        https://apim.moex.com/iss/datashop/algopack/fx/obstats.json?date=2024-04-17&latest=1
         ```
 
         [описание метрик](../des/supercandles#obstats_2)  |  [методология расчета](../method/supercandles#orderbook-stats) | [Кастомизация запросов](/api_custom)
@@ -2617,7 +2617,7 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/fx/obstats/usd000utstom.json?
+        https://apim.moex.com/iss/datashop/algopack/fx/obstats/usd000utstom.json?
         from=2024-04-17&
         till=2024-04-19
         ```
@@ -2721,10 +2721,10 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/fx/orderstats.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/fx/orderstats.json?date=2024-04-17
 
         # получить последнюю пятиминутку
-        https://iss.moex.com/iss/datashop/algopack/fx/orderstats.json?date=2024-04-17&latest=1
+        https://apim.moex.com/iss/datashop/algopack/fx/orderstats.json?date=2024-04-17&latest=1
         ```
 
         [описание метрик](../des/supercandles#orderstats_1)  |  [методология расчета](../method/supercandles#orderstats) | [Кастомизация запросов](/api_custom)
@@ -2831,7 +2831,7 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/datashop/algopack/fx/orderstats/usd000utstom.json?
+        https://apim.moex.com/iss/datashop/algopack/fx/orderstats/usd000utstom.json?
         from=2024-04-17&
         till=2024-04-19
         ```
@@ -2929,10 +2929,10 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/analyticalproducts/futoi/securities.json?date=2024-04-17
+        https://apim.moex.com/iss/analyticalproducts/futoi/securities.json?date=2024-04-17
 
         # получить последнюю пятиминутку
-        https://iss.moex.com/iss/analyticalproducts/futoi/securities.json?date=2024-04-17&latest=1
+        https://apim.moex.com/iss/analyticalproducts/futoi/securities.json?date=2024-04-17&latest=1
         ```
 
         [Кастомизация запросов](/api_custom)
@@ -3018,10 +3018,10 @@ paths:
 
         ```
         # пример
-        https://iss.moex.com/iss/analyticalproducts/futoi/securities/si.json?date=2024-04-17
+        https://apim.moex.com/iss/analyticalproducts/futoi/securities/si.json?date=2024-04-17
 
         # получить последнюю пятиминутку
-        https://iss.moex.com/iss/analyticalproducts/futoi/securities/si.json?date=2024-04-17&latest=1
+        https://apim.moex.com/iss/analyticalproducts/futoi/securities/si.json?date=2024-04-17&latest=1
         ```
 
         [Кастомизация запросов](/api_custom)
@@ -3103,13 +3103,13 @@ paths:
         ```
         # пример
         # акции
-        https://iss.moex.com/iss/datashop/algopack/eq/hi2.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/eq/hi2.json?date=2024-04-17
 
         # валюта
-        https://iss.moex.com/iss/datashop/algopack/fx/hi2.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/fx/hi2.json?date=2024-04-17
 
         # фьючерсы
-        https://iss.moex.com/iss/datashop/algopack/fo/hi2.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/fo/hi2.json?date=2024-04-17
         ```
 
         [Кастомизация запросов](/api_custom)
@@ -3220,13 +3220,13 @@ paths:
         ```
         # пример
         # акции
-        https://iss.moex.com/iss/datashop/algopack/eq/hi2.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/eq/hi2.json?date=2024-04-17
 
         # валюта
-        https://iss.moex.com/iss/datashop/algopack/fx/hi2.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/fx/hi2.json?date=2024-04-17
 
         # фьючерсы
-        https://iss.moex.com/iss/datashop/algopack/fo/hi2.json?date=2024-04-17
+        https://apim.moex.com/iss/datashop/algopack/fo/hi2.json?date=2024-04-17
         ```
 
         [Кастомизация запросов](/api_custom)

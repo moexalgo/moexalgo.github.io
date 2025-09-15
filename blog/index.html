@@ -41,118 +41,124 @@
 
   <style>:root{--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');}</style>
 
-  <!-- Custom CSS for tutorial cards -->
+  <!-- Custom CSS for tutorial list -->
   <style>
     .tutorial-section {
-      margin: 2rem 0;
+      margin: 1rem 0;
     }
     
     .tutorial-section h2 {
       color: var(--md-primary-fg-color);
       border-bottom: 2px solid var(--md-primary-fg-color);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
+      padding-bottom: 0.25rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
     }
     
-    .tutorial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+    .tutorial-list {
+      list-style: none;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
     }
     
-    .tutorial-card {
-      background: var(--md-default-bg-color);
-      border: 1px solid var(--md-default-fg-color--lighter);
-      border-radius: 8px;
-      padding: 1.5rem;
+    .tutorial-item {
+      border-bottom: 1px solid var(--md-default-fg-color--lightest);
+      padding: 0.4rem 0;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: relative;
-      overflow: hidden;
+      list-style: none;
     }
     
-    .tutorial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-      border-color: var(--md-primary-fg-color);
+    .tutorial-item:last-child {
+      border-bottom: none;
     }
     
-    .tutorial-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--md-primary-fg-color), var(--md-accent-fg-color));
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-    
-    .tutorial-card:hover::before {
-      transform: scaleX(1);
-    }
-    
-    .tutorial-card h3 {
-      margin: 0 0 1rem 0;
-      color: var(--md-default-fg-color);
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-    
-    .tutorial-card p {
-      margin: 0 0 1rem 0;
-      color: var(--md-default-fg-color--light);
-      font-size: 0.9rem;
-      line-height: 1.5;
+    .tutorial-item:hover {
+      background: var(--md-code-bg-color);
+      border-radius: 3px;
     }
     
     .tutorial-link {
-      display: inline-flex;
-      align-items: center;
-      color: var(--md-primary-fg-color);
+      display: block;
       text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
+      color: inherit;
       transition: color 0.3s ease;
     }
     
     .tutorial-link:hover {
-      color: var(--md-accent-fg-color);
+      color: var(--md-primary-fg-color);
     }
     
-    .tutorial-link::after {
+    .tutorial-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--md-default-fg-color);
+      margin: 0 0 0.15rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    
+    .tutorial-title::after {
       content: '→';
-      margin-left: 0.5rem;
-      transition: transform 0.3s ease;
+      color: var(--md-primary-fg-color);
+      font-size: 0.7rem;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all 0.3s ease;
     }
     
-    .tutorial-link:hover::after {
-      transform: translateX(4px);
+    .tutorial-link:hover .tutorial-title::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .tutorial-subtitle {
+      color: var(--md-default-fg-color--light);
+      font-size: 0.7rem;
+      line-height: 1.2;
+      margin: 0;
     }
     
     .tutorial-meta {
+      margin-top: 0.25rem;
       display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-      font-size: 0.8rem;
-      color: var(--md-default-fg-color--lighter);
+      gap: 0.3rem;
+      flex-wrap: wrap;
     }
     
     .tutorial-tag {
       background: var(--md-code-bg-color);
       color: var(--md-code-fg-color);
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
+      padding: 0.1rem 0.3rem;
+      border-radius: 2px;
+      font-size: 0.6rem;
+      border: 1px solid var(--md-default-fg-color--lightest);
+    }
+    
+    .external-link-icon {
+      color: var(--md-default-fg-color--lighter);
+      font-size: 0.6rem;
+      margin-left: auto;
     }
     
     @media (max-width: 768px) {
-      .tutorial-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+      .tutorial-item:hover {
+        /* No padding/margin changes on mobile */
       }
+    }
+    
+    .md-typeset h3 {
+      margin: 0;
+      font-size: 1em;
+    }
+
+    .md-typeset ul li p {
+        margin: 0;
+    }
+
+    [dir=ltr] .md-typeset ol li, [dir=ltr] .md-typeset ul li {
+        margin-left: 0;
     }
   </style>
 
@@ -466,45 +472,49 @@
 <!-- Getting Started Section -->
 <div class="tutorial-section">
   <h2 id="getting-started">Самое важное об Algopack</h2>
-  <div class="tutorial-grid">
+  <ul class="tutorial-list">
     
-    <div class="tutorial-card">
-      <h3>Что такое Algopack</h3>
-      <p>Для чего он нужен и как его использовать.</p>
-      <a href="#" class="tutorial-link" target="_blank">Читать</a>
-    </div>
+    <li class="tutorial-item">
+      <a href="#" class="tutorial-link" target="_blank">
+        <h3 class="tutorial-title">Что такое Algopack</h3>
+        <p class="tutorial-subtitle">Для чего он нужен и как его использовать.</p>
+      </a>
+    </li>
 
-    <div class="tutorial-card">
-      <h3>Как получить доступ к Algopack</h3>
-      <p>Пошаговая инструкция по подключению Algopack</p>
-      <a href="#" class="tutorial-link" target="_blank">Читать</a>
-    </div>
+    <li class="tutorial-item">
+      <a href="#" class="tutorial-link" target="_blank">
+        <h3 class="tutorial-title">Как получить доступ к Algopack</h3>
+        <p class="tutorial-subtitle">Пошаговая инструкция по подключению Algopack</p>
+      </a>
+    </li>
 
-    <div class="tutorial-card">
-      <h3>Самые важные ссылки</h3>
-      <p></p>
-      <a href="#" class="tutorial-link" target="_blank">Читать</a>
-    </div>
+    <li class="tutorial-item">
+      <a href="#" class="tutorial-link" target="_blank">
+        <h3 class="tutorial-title">Самые важные ссылки</h3>
+        <p class="tutorial-subtitle">Собрали все важные ссылки в одном месте</p>
+      </a>
+    </li>
 
-  </div>
+  </ul>
 </div>
 
 <!-- Data Retrieval Section -->
 <div class="tutorial-section">
   <h2 id="data-retrieval">Получение данных</h2>
-  <div class="tutorial-grid">
+  <ul class="tutorial-list">
     
-    <div class="tutorial-card">
-      <h3>Пример скачивания свечек</h3>
-      <p>Получаем дневные свечи по SBER за 2025 год</p>
-      <div class="tutorial-meta">
-        <span class="tutorial-tag">API</span>
-        <span class="tutorial-tag">Candles</span>
-      </div>
-      <a href="https://gist.github.com/moexalgo/4e398c6e932deffc52a633aa8fdd0909" class="tutorial-link" target="_blank">Читать</a>
-    </div>
+    <li class="tutorial-item">
+      <a href="https://gist.github.com/moexalgo/4e398c6e932deffc52a633aa8fdd0909" class="tutorial-link" target="_blank">
+        <h3 class="tutorial-title">Пример скачивания свечек</h3>
+        <p class="tutorial-subtitle">Получаем дневные свечи по SBER за 2025 год</p>
+        <div class="tutorial-meta">
+          <span class="tutorial-tag">API</span>
+          <span class="tutorial-tag">Candles</span>
+        </div>
+      </a>
+    </li>
 
-  </div>
+  </ul>
 </div>
 
 

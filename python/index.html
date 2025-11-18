@@ -526,39 +526,11 @@
                 
                   
 
-  <h1 id="python-lib">🐍 MOEXAlgo Python Library</h1>
-  <p>Библиотека для получения данных и аналитики по рынку акций, фьючерсов и валют Московской Биржи (MOEX)</p>
-  
-  <div class="installation-info">
-    <h3>📦 Установка</h3>
-    <div class="code-example">
-      <div class="language-bash highlight">
-        <pre><span></span><code>pip install moexalgo</code></pre>
-      </div>
-    </div>
-    
-    <h3>🔐 Авторизация</h3>
-    <div class="code-example">
-      <div class="language-python highlight">
-        <pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">moexalgo</span> <span class="kn">import</span> <span class="n">session</span><span class="p">,</span> <span class="n">Market</span>
-<span class="n">session</span><span class="o">.</span><span class="n">TOKEN</span> <span class="o">=</span><span class="s1">&#39;APIKEY&#39;</span></code></pre>
-      </div>
-    </div>
-  </div>
+  <h1 id="python-lib">MOEXAlgo Python Library</h1>
   
   <!-- Market Object -->
   <div class="tutorial-section">
-    <h2 id="market">Market</h2>
-    <p>Получение данных по рынкам. Доступные алиасы: shares/stocks/eq, currency/fx, futures/forts/fo, index, bonds, options</p>
-    
-    <div class="code-example">
-      <div class="language-python highlight">
-        <pre><span></span><code><span class="kn">import</span> <span class="nn">moexalgo</span>
-<span class="n">eq</span> <span class="o">=</span> <span class="n">moexalgo</span><span class="o">.</span><span class="n">Market</span><span class="p">(</span><span class="s1">&#39;EQ&#39;</span><span class="p">)</span>
-<span class="n">eq</span><span class="o">.</span><span class="n">tickers</span><span class="p">()</span></code></pre>
-      </div>
-    </div>
+    <h2 id="market">Market - все инструменты по рынку (EQ - акции, FO - фьючерсы, FX - валюта)</h2>
     
     <ul class="tutorial-list">
       
@@ -765,16 +737,7 @@
   
   <!-- Ticker Object -->
   <div class="tutorial-section">
-    <h2 id="ticker">Ticker</h2>
-    <p>Получение данных по конкретному инструменту. Методы делятся на: Основные, данные ALGOPACK и данные FUTOI</p>
-    
-    <div class="code-example">
-      <div class="language-python highlight">
-        <pre><span></span><code><span class="kn">import</span> <span class="nn">moexalgo</span>
-<span class="n">sber</span> <span class="o">=</span> <span class="n">moexalgo</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s1">&#39;SBER&#39;</span><span class="p">)</span>
-<span class="n">sber</span><span class="o">.</span><span class="n">candles</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2025-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2025-01-31&#39;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s1">&#39;1h&#39;</span><span class="p">)</span></code></pre>
-      </div>
-    </div>
+    <h2 id="ticker">Ticker - данные по инструменту</h2> 
     
     <ul class="tutorial-list">
       

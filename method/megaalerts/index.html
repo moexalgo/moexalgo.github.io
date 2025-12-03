@@ -17,8 +17,11 @@
         <link rel="next" href="../../python/">
       
       
+        
+      
+      
       <link rel="icon" href="../../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -26,20 +29,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
-  
-  
-    
-    
-  
-  
-  <style>:root{--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');}</style>
-
 
 
     
@@ -60,11 +55,10 @@
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
-    
     
     
   </head>
@@ -84,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mega-alerts" class="md-skip">
+        <a href="#megaalerts" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +99,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -129,31 +123,33 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
       
@@ -161,7 +157,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -172,13 +168,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/moexalgo/moexalgo" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     moexalgo/moexalgo
@@ -204,9 +201,11 @@
   
   
   
+  
     <li class="md-tabs__item">
       <a href="../.." class="md-tabs__link">
         
+  
   
     
   
@@ -221,11 +220,13 @@
   
   
   
+  
     
     
       <li class="md-tabs__item">
         <a href="../../api/rest/" class="md-tabs__link">
           
+  
   
   API
 
@@ -239,11 +240,13 @@
   
   
   
+  
     
     
       <li class="md-tabs__item">
         <a href="../../modules/realtime/" class="md-tabs__link">
           
+  
   
   Датасеты
 
@@ -257,11 +260,13 @@
   
   
   
+  
     
     
       <li class="md-tabs__item">
         <a href="../../des/realtime/" class="md-tabs__link">
           
+  
   
   Описание данных
 
@@ -274,6 +279,7 @@
         
   
   
+  
     
   
   
@@ -282,6 +288,7 @@
       <li class="md-tabs__item md-tabs__item--active">
         <a href="../supercandles/" class="md-tabs__link">
           
+  
   
   Методология
 
@@ -295,9 +302,11 @@
   
   
   
+  
     <li class="md-tabs__item">
       <a href="../../python/" class="md-tabs__link">
         
+  
   
     
   
@@ -312,9 +321,11 @@
   
   
   
+  
     <li class="md-tabs__item">
       <a href="../../contacts/" class="md-tabs__link">
         
+  
   
     
   
@@ -329,11 +340,13 @@
   
   
   
+  
     
     
       <li class="md-tabs__item">
         <a href="../../blog/" class="md-tabs__link">
           
+  
   
   Blog
 
@@ -377,7 +390,7 @@
       <a href="https://github.com/moexalgo/moexalgo" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     moexalgo/moexalgo
@@ -397,9 +410,16 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     О продукте
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -413,6 +433,7 @@
   
   
   
+    
     
     
     
@@ -430,9 +451,16 @@
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     API
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -441,7 +469,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            API
+            
+  
+    API
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -455,9 +487,16 @@
       <a href="../../api/rest/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     REST API
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -476,9 +515,16 @@
       <a href="../../api/websocket/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     WEBSOCKET
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -503,6 +549,7 @@
     
     
     
+    
       
       
     
@@ -517,9 +564,16 @@
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     Датасеты
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -528,7 +582,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Датасеты
+            
+  
+    Датасеты
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -542,9 +600,16 @@
       <a href="../../modules/realtime/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Real-time market data
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -563,9 +628,16 @@
       <a href="../../modules/supercandles/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Super Candles
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -584,9 +656,16 @@
       <a href="../../modules/futoi/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Futures Open Interest (FUTOI)
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -605,9 +684,16 @@
       <a href="../../modules/hi2/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Market Concentration (HI2)
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -626,9 +712,16 @@
       <a href="../../modules/megaalerts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Mega Alerts
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -653,6 +746,7 @@
     
     
     
+    
       
       
     
@@ -667,9 +761,16 @@
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     Описание данных
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -678,7 +779,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Описание данных
+            
+  
+    Описание данных
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -692,9 +797,16 @@
       <a href="../../des/realtime/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Real-time market data
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -713,9 +825,16 @@
       <a href="../../des/supercandles/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Super Candles
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -734,9 +853,16 @@
       <a href="../../des/futoi/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Futures Open Interest (FUTOI)
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -755,9 +881,16 @@
       <a href="../../des/hi2/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Market Concentration (HI2)
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -776,9 +909,16 @@
       <a href="../../des/megaalerts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Mega Alerts
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -802,6 +942,7 @@
   
   
   
+    
     
     
     
@@ -822,9 +963,16 @@
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     Методология
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -833,7 +981,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Методология
+            
+  
+    Методология
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -847,9 +999,16 @@
       <a href="../supercandles/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Super Candles
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -868,9 +1027,16 @@
       <a href="../futoi/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Futures Open Interest (FUTOI)
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -889,9 +1055,16 @@
       <a href="../hi2/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Market Concentration (HI2)
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -916,15 +1089,287 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mega Alerts
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Mega Alerts
+  
+
+    
   </span>
+  
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Описание датасета
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Описание датасета">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Основные характеристики
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Типы отслеживаемых аномалий
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Типы отслеживаемых аномалий">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Аномалии по объемам торгов
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Аномалии по чистому объему (net volume)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Аномалии по изменению цены
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Аномалии по уровням цен
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Методология расчета
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Методология расчета">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1: Расчет пороговых значений (Threshold)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 1: Расчет пороговых значений (Threshold)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#999" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пороги на основе 99,9 перцентиля
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пороги на основе исторических экстремумов
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2: Мониторинг в реальном времени
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3: Расчет статистики после аномалии
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Структура датасета
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример данных
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Пример данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Интерпретация примера
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Применение данных
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Обновление пороговых значений
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -948,9 +1393,16 @@
       <a href="../../python/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Python
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -968,9 +1420,16 @@
       <a href="../../contacts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Обратная связь
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -984,6 +1443,7 @@
   
   
   
+    
     
     
     
@@ -1001,9 +1461,16 @@
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     Blog
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1012,7 +1479,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            Blog
+            
+  
+    Blog
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1028,9 +1499,16 @@
       <a href="../../blog/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Blog
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -1048,6 +1526,7 @@
     
     
     
+    
       
       
     
@@ -1062,9 +1541,16 @@
           <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     Archive
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1073,7 +1559,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_2">
             <span class="md-nav__icon md-icon"></span>
-            Archive
+            
+  
+    Archive
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1089,9 +1579,16 @@
       <a href="../../blog/archive/2024/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     2024
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -1117,6 +1614,7 @@
     
     
     
+    
       
       
     
@@ -1131,9 +1629,16 @@
           <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
+    
+  
     Categories
+  
+
+    
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1142,7 +1647,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
-            Categories
+            
+  
+    Categories
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1158,9 +1667,16 @@
       <a href="../../blog/category/%D0%B2%D0%B0%D0%B6%D0%BD%D1%8B%D0%B5-%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Важные ссылки
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -1181,9 +1697,16 @@
       <a href="../../blog/category/%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Подписка
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -1227,6 +1750,242 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Описание датасета
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Описание датасета">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Основные характеристики
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Типы отслеживаемых аномалий
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Типы отслеживаемых аномалий">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Аномалии по объемам торгов
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Аномалии по чистому объему (net volume)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Аномалии по изменению цены
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Аномалии по уровням цен
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Методология расчета
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Методология расчета">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 1: Расчет пороговых значений (Threshold)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Этап 1: Расчет пороговых значений (Threshold)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#999" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пороги на основе 99,9 перцентиля
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пороги на основе исторических экстремумов
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 2: Мониторинг в реальном времени
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Этап 3: Расчет статистики после аномалии
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Структура датасета
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример данных
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Пример данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Интерпретация примера
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Применение данных
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Обновление пороговых значений
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1235,22 +1994,307 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
 
+
   
   
 
 
-<h1 id="mega-alerts">Mega Alerts</h1>
-<img src="../../img/hi2_method1.png" alt="logo">
-<img src="../../img/hi2_method21.png" alt="logo">
-<img src="../../img/hi2_method22.png" alt="logo">
-<img src="../../img/hi2_method31.png" alt="logo">
-<img src="../../img/hi2_method32.png" alt="logo">
-<img src="../../img/hi2_method4.png" alt="logo">
-<img src="../../img/hi2_method5.png" alt="logo">
+<h1 id="megaalerts">Методология расчета MegaAlerts</h1>
+<h2 id="_1">Описание датасета</h2>
+<p><strong>MegaAlerts</strong> — датасет торговых аномалий по акциям, фьючерсам и валюте на Московской бирже, отслеживаемых в режиме реального времени (online). Система автоматически фиксирует экстремальные значения торговых показателей, которые выходят за установленные пороговые уровни.</p>
+<h3 id="_2">Основные характеристики</h3>
+<ul>
+<li><strong>Режим работы:</strong> Real-time мониторинг в течение торгового дня</li>
+<li><strong>Охват:</strong> Все ликвидные акции на Московской бирже</li>
+<li><strong>Гранулярность данных:</strong> Минутные свечи</li>
+<li><strong>Исторический период для расчета порогов:</strong> 3 месяца (90 дней)</li>
+<li><strong>Статистический метод:</strong> 99,9 перцентиль исторических значений для большинства показателей, абсолютные экстремумы (min/max) для исторических рекордов</li>
+</ul>
+<h2 id="_3">Типы отслеживаемых аномалий</h2>
+<h3 id="_4">Аномалии по объемам торгов</h3>
+<table>
+<thead>
+<tr>
+<th>Код алерта</th>
+<th>Название</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vol_s_99_9_pctl</code></td>
+<td><strong>Крупная продажа</strong></td>
+<td>Объем продаж превысил 99,9 перцентиль</td>
+</tr>
+<tr>
+<td><code>vol_b_99_9_pctl</code></td>
+<td><strong>Крупная покупка</strong></td>
+<td>Объем покупок превысил 99,9 перцентиль</td>
+</tr>
+<tr>
+<td><code>vol_99_9_pctl</code></td>
+<td><strong>Большой объем торгов</strong></td>
+<td>Суммарный объем превысил 99,9 перцентиль</td>
+</tr>
+<tr>
+<td><code>vol_s_max</code></td>
+<td><strong>Макс продажа</strong></td>
+<td>Объем продаж достиг исторического максимума за 90 дней</td>
+</tr>
+<tr>
+<td><code>vol_b_max</code></td>
+<td><strong>Макс покупка</strong></td>
+<td>Объем покупок достиг исторического максимума за 90 дней</td>
+</tr>
+<tr>
+<td><code>vol_max</code></td>
+<td><strong>Макс объем</strong></td>
+<td>Суммарный объем достиг исторического максимума за 90 дней</td>
+</tr>
+</tbody>
+</table>
+<h3 id="net-volume">Аномалии по чистому объему (net volume)</h3>
+<table>
+<thead>
+<tr>
+<th>Код алерта</th>
+<th>Название</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>net_vol_99_9_pctl-</code></td>
+<td><strong>Крупная продажа (net)</strong></td>
+<td>Чистый объем (покупки - продажи) в отрицательную сторону превысил 99,9 перцентиль</td>
+</tr>
+<tr>
+<td><code>net_vol_99_9_pctl+</code></td>
+<td><strong>Крупная покупка (net)</strong></td>
+<td>Чистый объем (покупки - продажи) в положительную сторону превысил 99,9 перцентиль</td>
+</tr>
+<tr>
+<td><code>net_vol_min</code></td>
+<td><strong>Макс продажа (net)</strong></td>
+<td>Чистый объем достиг исторического минимума (максимум продаж) за 90 дней</td>
+</tr>
+<tr>
+<td><code>net_vol_max</code></td>
+<td><strong>Макс покупка (net)</strong></td>
+<td>Чистый объем достиг исторического максимума (максимум покупок) за 90 дней</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">Аномалии по изменению цены</h3>
+<table>
+<thead>
+<tr>
+<th>Код алерта</th>
+<th>Название</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pr_change_99_9_pctl-</code></td>
+<td><strong>Сильное падение цены</strong></td>
+<td>Падение цены превысило 99,9 перцентиль</td>
+</tr>
+<tr>
+<td><code>pr_change_99_9_pctl+</code></td>
+<td><strong>Сильный рост цены</strong></td>
+<td>Рост цены превысил 99,9 перцентиль</td>
+</tr>
+<tr>
+<td><code>pr_change_min</code></td>
+<td><strong>Макс падение цены</strong></td>
+<td>Падение цены достигло исторического максимума за 90 дней</td>
+</tr>
+<tr>
+<td><code>pr_change_max</code></td>
+<td><strong>Макс рост цены</strong></td>
+<td>Рост цены достиг исторического максимума за 90 дней</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">Аномалии по уровням цен</h3>
+<table>
+<thead>
+<tr>
+<th>Код алерта</th>
+<th>Название</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pr_high_max</code></td>
+<td><strong>Макс цена</strong></td>
+<td>Цена достигла исторического максимума за 90 дней</td>
+</tr>
+<tr>
+<td><code>pr_low_min</code></td>
+<td><strong>Мин цена</strong></td>
+<td>Цена достигла исторического минимума за 90 дней</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">Методология расчета</h2>
+<h3 id="1-threshold">Этап 1: Расчет пороговых значений (Threshold)</h3>
+<p>Для каждой акции и каждого типа показателя используются два типа порогов:</p>
+<h4 id="999">Пороги на основе 99,9 перцентиля</h4>
+<p>Применяются для алертов с окончанием <code>_99_9_pctl</code>:</p>
+<ol>
+<li><strong>Сбор исторических данных:</strong> Анализируются минутные свечи за последние <strong>90 дней</strong></li>
+<li><strong>Расчет перцентиля:</strong> Для каждого показателя определяется <strong>99,9 перцентиль</strong> распределения</li>
+<li><strong>Установка порога:</strong> Значение 99,9 перцентиля становится пороговым значением (Threshold)</li>
+</ol>
+<p><strong>Пример:</strong> Если за последние 90 дней по акции SBER объем торгов в минуту составлял от 100 до 50000 лотов, и 99,9 перцентиль = 45000 лотов, то Threshold устанавливается на уровне 45000 лотов.</p>
+<h4 id="_8">Пороги на основе исторических экстремумов</h4>
+<p>Применяются для алертов с окончанием <code>_min</code> или <code>_max</code>:</p>
+<ol>
+<li><strong>Сбор исторических данных:</strong> Анализируются минутные свечи за последние <strong>90 дней</strong></li>
+<li><strong>Определение экстремума:</strong> Находится абсолютный минимум или максимум показателя</li>
+<li><strong>Установка порога:</strong> Минимальное или максимальное значение становится порогом</li>
+</ol>
+<p><strong>Пример:</strong> Если за последние 90 дней максимальная цена акции SBER составляла 280 руб, то при достижении или превышении этого уровня формируется алерт <code>pr_high_max</code>.</p>
+<h3 id="2">Этап 2: Мониторинг в реальном времени</h3>
+<p>В течение торгового дня система:</p>
+<ol>
+<li><strong>Получает данные:</strong> Каждую минуту фиксируются текущие значения всех отслеживаемых показателей</li>
+<li><strong>Сравнивает с порогом:</strong> </li>
+<li>Для алертов <code>_99_9_pctl</code>: если значение <strong>превышает</strong> Threshold, формируется сигнал</li>
+<li>Для алертов <code>_max</code>: если значение <strong>достигает или превышает</strong> исторический максимум, формируется сигнал</li>
+<li>Для алертов <code>_min</code>: если значение <strong>достигает или опускается ниже</strong> исторического минимума, формируется сигнал</li>
+<li><strong>Записывает аномалию:</strong> Сигнал сохраняется с указанием времени, тикера, типа аномалии, текущего значения и порогового значения</li>
+</ol>
+<h3 id="3">Этап 3: Расчет статистики после аномалии</h3>
+<p>Для каждой зафиксированной аномалии система рассчитывает:</p>
+<p><strong>Reference, 15 min stat</strong> — статистика изменения цены через 15 минут после возникновения аномалии (на основе исторических данных за последние 90 дней)</p>
+<p>Формат статистики: <strong>изменение цены ↑количество наблюдений ↓количество наблюдений</strong></p>
+<p>Где:
+- <strong>Изменение цены</strong> — среднее изменение цены в процентах через 15 минут
+- <strong>↑ количество</strong> — сколько раз цена росла после такой аномалии
+- <strong>↓ количество</strong> — сколько раз цена падала после такой аномалии</p>
+<h2 id="_9">Структура датасета</h2>
+<p>Каждая запись содержит следующие поля:</p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Time</strong></td>
+<td>Время возникновения аномалии (чч:мм:сс)</td>
+</tr>
+<tr>
+<td><strong>Ticker</strong></td>
+<td>Тикер акции</td>
+</tr>
+<tr>
+<td><strong>Alert</strong></td>
+<td>Тип аномалии</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>Аномальное значение показателя</td>
+</tr>
+<tr>
+<td><strong>Threshold</strong></td>
+<td>Пороговое значение (99,9 перцентиль или исторический экстремум)</td>
+</tr>
+<tr>
+<td><strong>Reference</strong></td>
+<td>Статистика изменения цены через 5, 15, 30 и 60 минут</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_10">Пример данных</h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Ticker</th>
+<th>Alert</th>
+<th>Value</th>
+<th>Threshold</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12:07:00</td>
+<td>KUBE</td>
+<td>Крупная продажа</td>
+<td>350 лот</td>
+<td>230 лот</td>
+<td>+0.88% ↑6 ↓1</td>
+</tr>
+<tr>
+<td>12:07:00</td>
+<td>KUBE</td>
+<td>Большой объем торгов</td>
+<td>350 лот</td>
+<td>290 лот</td>
+<td>+1.67% ↑8 ↓1</td>
+</tr>
+<tr>
+<td>12:07:00</td>
+<td>KUBE</td>
+<td>Крупная продажа (net)</td>
+<td>-350 лот</td>
+<td>-270 лот</td>
+<td>+1.33% ↑5 ↓0</td>
+</tr>
+<tr>
+<td>12:06:00</td>
+<td>TCSG</td>
+<td>Крупная покупка</td>
+<td>41030 лот</td>
+<td>37611 лот</td>
+<td>-0.04% ↑63 ↓76</td>
+</tr>
+<tr>
+<td>12:06:00</td>
+<td>KUBE</td>
+<td>Макс цена</td>
+<td>285.50 руб</td>
+<td>285.00 руб</td>
+<td>+0.52% ↑12 ↓8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_11">Интерпретация примера</h3>
+<p><strong>Строка 1:</strong> В 12:07:00 по акции KUBE зафиксирована крупная продажа объемом 350 лотов, что превышает пороговое значение 230 лотов (99,9 перцентиль). По историческим данным, после таких аномалий цена в среднем росла на +0.88% в течение 15 минут (в 6 случаях росла, в 1 случае падала).</p>
+<p><strong>Строка 5:</strong> В 12:06:00 по акции KUBE зафиксирован исторический максимум цены 285.50 руб, что превышает предыдущий максимум за 90 дней (285.00 руб). По историческим данным, после достижения максимумов цена в среднем росла на +0.52% в течение 15 минут (в 12 случаях росла, в 8 случаях падала).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Статистика Reference показывает, что происходило с ценой <strong>в прошлом</strong> после подобных аномалий. Это <strong>не прогноз</strong>, а исторические данные для справки.</p>
+</div>
+<h2 id="_12">Применение данных</h2>
+<p>Датасет MegaAlerts позволяет:</p>
+<ul>
+<li>Отслеживать необычную торговую активность в режиме реального времени</li>
+<li>Быстро реагировать на экстремальные движения цены или объемов</li>
+<li>Анализировать исторические паттерны поведения цены после аномалий</li>
+<li>Фильтровать сигналы по типу аномалии, тикеру или частоте возникновения</li>
+<li>Оценивать концентрацию аномалий в определенных бумагах</li>
+<li>Выявлять пробои исторических максимумов и минимумов</li>
+</ul>
+<h2 id="_13">Обновление пороговых значений</h2>
+<p>Пороговые значения (Threshold) пересчитываются:</p>
+<ul>
+<li><strong>Ежедневно</strong> перед началом торгов на основе скользящего окна последних 90 дней</li>
+<li>Это позволяет адаптироваться к изменению волатильности и ликвидности инструментов</li>
+</ul>
 
 
 
@@ -1268,6 +2312,8 @@
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -1297,10 +2343,13 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "search.highlight", "search.share", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../javascripts/katex.js"></script>
       

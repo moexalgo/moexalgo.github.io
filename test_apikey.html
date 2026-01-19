@@ -17,14 +17,14 @@
 		// Load and process initial data
         function loadData() {
 		
-			const candlesUrl = "https://apim.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/svh6/candles.json?from=2026-01-19&till=2026-01-30&iss.json=extended";
+			const candlesUrl = "https://iss.moex.com/iss/engines/futures/markets/forts/boards/rfud/securities/svh6/candles.json?from=2026-01-19&till=2026-01-30&iss.json=extended";
 
 			d3.json(candlesUrl, {
 				method: 'GET',
-				headers: {
+				/*headers: {
 					'Authorization': `Bearer ${apiKey}`, // Add your header here
 					'Content-Type': 'application/json'   // Another example header
-				}
+				}*/
 			}).then(function(data) {
 				data = data[1]['candles'][1];
 				console.log(data);
@@ -36,4 +36,5 @@
 		
     </script>
 </body>
+
 </html>

@@ -115,7 +115,7 @@ const config: Config = {
         },
         {
           type: 'search',
-          position: 'right', // or 'right'
+          position: 'right',
         },
         {
           type: 'custom-github-repo',
@@ -149,6 +149,11 @@ const config: Config = {
         logoClass: "curl",
       },
       {
+        highlight: "csharp",
+        language: "csharp",
+        logoClass: "csharp",
+      },
+      {
         highlight: "javascript",
         language: "nodejs",
         logoClass: "nodejs",
@@ -158,11 +163,6 @@ const config: Config = {
         language: "java",
         logoClass: "java",
         variant: "unirest",
-      },
-      {
-        highlight: "csharp",
-        language: "csharp",
-        logoClass: "csharp",
       },
       {
         highlight: "go",

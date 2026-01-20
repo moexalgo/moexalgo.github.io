@@ -8,10 +8,11 @@ on:
       - 'docs/**'
       - 'src/**'
       - 'examples/**'
+      - 'patches/**'
       - 'static/**'
-      - 'docusaurus.config.js'
+      - 'docusaurus.config.ts'
       - 'package*.json'
-      - 'sidebars.js'
+      - 'sidebars.ts'
       - '.github/workflows/**'
 
 jobs:

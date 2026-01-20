@@ -1,0 +1,173 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #4a778b;
+  --ifm-color-primary-dark: #455a63;
+  --ifm-color-primary-darker: #3e4f56;
+  --ifm-color-primary-darkest: #37454b;
+  --ifm-color-primary-light: #607c8a;
+  --ifm-color-primary-lighter: #6a8796;
+  --ifm-color-primary-lightest: #7b98a5;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #4a92b1;
+  --ifm-color-primary-dark: #455a63;
+  --ifm-color-primary-darker: #3e4f56;
+  --ifm-color-primary-darkest: #37454b;
+  --ifm-color-primary-light: #607c8a;
+  --ifm-color-primary-lighter: #6a8796;
+  --ifm-color-primary-lightest: #7b98a5;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+  background-color: #546d78 !important; 
+}
+
+[data-theme='dark'] .navbar {
+  background-color: #546d78 !important; 
+}
+
+.navbar__items {
+  white-space: nowrap !important;
+  flex-wrap: nowrap !important;
+}
+
+@media (max-width: 996px) { 
+  .navbar__inner {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
+  }
+  
+  .navbar__items {
+    flex-shrink: 0;
+  }
+}
+
+h1 {
+  font-size: 1.9rem !important;
+}
+
+@media (max-width: 996px) {
+  h1 { font-size: 1.5rem !important; }
+}
+
+.api-method>.menu__link {
+  align-items: center;
+  justify-content: start;
+}
+
+.api-method>.menu__link::before {
+  width: 50px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  margin-right: var(--ifm-spacing-horizontal);
+  text-align: center;
+  flex-shrink: 0;
+  border-color: transparent;
+  color: white;
+}
+
+.get>.menu__link::before {
+  content: "get";
+  background-color: var(--ifm-color-primary);
+}
+
+.put>.menu__link::before {
+  content: "put";
+  background-color: var(--openapi-code-blue);
+}
+
+.post>.menu__link::before {
+  content: "post";
+  background-color: var(--openapi-code-green);
+}
+
+.delete>.menu__link::before {
+  content: "del";
+  background-color: var(--openapi-code-red);
+}
+
+.patch>.menu__link::before {
+  content: "patch";
+  background-color: var(--openapi-code-orange);
+}
+
+/* Reduce font size for dataframe tables */
+.dataframe {
+  font-size: 0.85rem;
+  table-layout: auto;  /* Allow columns to auto-fit content */
+  max-width: 100%;
+}
+
+/* Make table more compact */
+.dataframe td, .dataframe th {
+  padding: 0.25rem;
+  white-space: nowrap;
+  width: auto;  /* Let width adjust to content */
+}
+
+.navbarSearchContainer_Bca1 .aa-Input {
+  width: 300px !important;
+  min-height: 40px !important;
+  font-size: 16px !important;
+  padding: 10px 12px !important;
+}
+
+.aa-DetachedSearchButton {
+  padding: 8px 12px !important;
+  font-size: 16px !important;
+  max-height: 35px !important;
+  min-width: 200px !important; 
+  border-radius: 4px !important;
+  background-color: #f8f9fa !important;
+  border: 1px solid #ddd !important;
+  color: #6c757d !important;
+  transition: all 0.2s ease !important;
+}
+
+@media screen and (max-width: 996px) {
+  .aa-DetachedSearchButton {
+    min-width: 150px !important;
+  }
+}
+
+.aa-DetachedSearchButton:hover {
+  background-color: #e9ecef !important;
+  border-color: #adb5bd !important;
+  color: #495057 !important;
+}
+
+.aa-DetachedSearchButtonIcon {
+  width: calc(20px + 16px) !important;
+  height: 100% !important;
+}
+
+.aa-SubmitIcon {
+  color: #366f87;
+}
+
+
+.aa-DetachedFormContainer {
+  max-width: 600px !important;
+}
+
+.aa-DetachedFormContainer .aa-Input {
+  width: 100% !important;
+  font-size: 16px !important;
+  padding: 12px 16px !important;
+  border-radius: 4px !important;
+}

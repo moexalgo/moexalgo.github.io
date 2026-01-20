@@ -1,0 +1,161 @@
+/* MkDocs Material GitHub repo navbar - exact replica */
+:root {
+  --md-github-icon: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>');
+  --md-source-version-icon: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16"><path fillRule="evenodd" d="M7.73 1.73C7.26 1.26 6.62 1 5.96 1H3.5C2.13 1 1 2.13 1 3.5v2.47c0 .66.27 1.3.73 1.77l6.06 6.06c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 000-1.41L7.73 1.73zM2.38 7H3.5c.31 0 .59-.11.82-.3.23-.2.36-.48.35-.77V3.5c0-.28-.12-.53-.35-.71a1.403 1.403 0 00-.82-.29H2.38c-.09 0-.17.03-.24.07-.08.05-.14.13-.16.23-.03.09-.03.2 0 .32v3.09c0.03.09.03.2 0 .32-.02.1-.08.18-.16.23-.07.04-.15.07-.24.07z"/></svg>');
+  --md-source-stars-icon: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16"><path fillRule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"/></svg>');
+  --md-source-forks-icon: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 0 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 1.5 0Z"/></svg>');
+}
+
+.github-repo {
+  display: inline-flex !important;
+  align-items: center;          /* Vertical center whole block */
+  text-decoration: none;
+  color: inherit;
+  font-size: 14px;
+  line-height: 2;
+  white-space: nowrap;
+  padding: 0;
+  gap: 1px;
+  margin-right: 0.8rem;
+}
+
+.md-source__icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 32px;          /* Wider container */
+  height: 48px;         /* Span both lines */
+}
+
+.md-source__icon::before {
+  background-color: currentcolor;
+  content: "";
+  display: block;
+  height: 1.8rem;
+  mask-image: var(--md-github-icon);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  width: 1.8rem;
+}
+
+.md-source__icon svg {
+  display: none; /* Hide inline SVG, using CSS pseudo instead */
+}
+
+.md-source__repository {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+
+.github-repo:hover {
+  text-decoration: none !important;
+  color: inherit !important;
+  opacity: 0.75 !important;     /* Slight fade like MkDocs */
+  background: rgba(0,0,0,0.03); /* Subtle bg glow */
+  border-radius: 4px;
+  transform: none !important;    /* No movement */
+}
+
+.github-repo:hover * {
+  color: inherit !important;
+}
+
+.github-repo:hover svg {
+  opacity: 0.7;
+}
+
+
+
+@keyframes facts {
+  0% {
+    height: 0;
+  }
+  to {
+    height: .65rem;
+  }
+}
+
+@keyframes fact {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.md-source__facts {
+  display: flex;
+  font-size: .75rem;
+  gap: .4rem;
+  list-style-type: none;
+  margin: .1rem 0 0;
+  opacity: .75;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+
+.md-source__repository--active .md-source__facts {
+  animation: facts .25s ease-in;
+}
+
+.md-source__fact {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.md-source__repository--active .md-source__fact {
+  animation: fact .4s ease-out;
+}
+
+.md-source__fact::before {
+  background-color: currentcolor;
+  content: "";
+  display: inline-block;
+  height: 1rem;
+  margin-right: .1rem;
+  mask-image: var(--md-source-forks-icon);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  vertical-align: text-top;
+  width: 1rem;
+}
+
+.md-source__fact--version::before {
+  mask-image: var(--md-source-version-icon);
+}
+
+.md-source__fact--stars::before {
+  mask-image: var(--md-source-stars-icon);
+}
+
+.md-source__fact--forks::before {
+  mask-image: var(--md-source-forks-icon);
+}
+
+@media (max-width: 1200px) {
+  .md-source__facts { 
+    gap: 6px; 
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .github-repo {
+    padding: 2px 4px;
+  }
+  .md-source__facts {
+    display: none !important;
+  }
+}

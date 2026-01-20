@@ -1,0 +1,49 @@
+{
+  "name": "moexalgo-doc",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "gen-api-docs": "docusaurus gen-api-docs",
+    "clean-api-docs": "docusaurus clean-api-docs",
+    "gen-api-docs:version": "docusaurus gen-api-docs:version",
+    "clean-api-docs:version": "docusaurus clean-api-docs:version",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "@cmfcmf/docusaurus-search-local": "^2.0.1",
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
+    "@mdx-js/react": "^3.0.0",
+    "clsx": "^2.0.0",
+    "docusaurus-plugin-openapi-docs": "4.5.1",
+    "docusaurus-theme-openapi-docs": "4.5.1",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "swr": "^2.3.8"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "patch-package": "^8.0.1"
+  }
+}

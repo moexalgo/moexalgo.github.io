@@ -1,0 +1,6 @@
+project:
+  type: docusaurus
+  output-dir: ../docs/examples
+
+format:
+  docusaurus-md: default

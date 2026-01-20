@@ -1,0 +1,4513 @@
+openapi: 3.0.3
+info:
+  title: ALGOPACK API
+  description: ALGOPACK API
+  version: 1.0.0
+servers:
+  - url: https://apim.moex.com
+
+tags:
+  - name: Real-time market data - Акции
+    description: Свечи, стаканы, сделки
+  - name: Real-time market data - Фьючерсы
+    description: Свечи, стаканы, сделки
+  - name: Super Candles - Акции
+    description: фичи на потоке сделок, заявок и стакана котировок
+  - name: Super Candles - Фьючерсы
+    description: фичи на потоке сделок, заявок и стакана котировок
+  - name: Super Candles - Валюта
+    description: фичи на потоке сделок, заявок и стакана котировок
+  - name: Futures Open Interest (FUTOI)
+    description: Открытые позиции физ. и юр. лиц
+  - name: Market Concentration (HI2)
+    description: Индекс рыночной концентрации
+  - name: Mega Alerts
+    description: Торговые аномалии
+
+paths:
+  /iss/engines/stock/markets/shares/boards/tqbr/securities.json:
+    get:
+      tags:
+        - Real-time market data - Акции
+      summary: Торговая статистика за сегодня (по всем акциям)
+      operationId: getAllSharesStatistics
+      parameters:
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Начальный индекс для пагинации.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+            maximum: 1000
+          description: Количество возвращаемых записей.
+      security:
+        - bearerAuth: []
+      description: |
+        Торговая статистика по всем акциям на текущий день.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time торговая статистика      |
+        | NOT AUTHORIZED   | iss    | 15 мин. задержанные данные и ограниченный набор полей |
+
+        Блоки данных:
+          * securities - торговые параметры акций (наименование, шаг цены, лотность, ...)
+          * marketdata - торговая статистика по акциям (цены, объемы, ...)
+                
+        [Описание метрик](/docs/description/realtime#marketstatistics) 
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketStatisticsResponse'
+              example:
+                securities:
+                  metadata:
+                    SECID: { type: string, bytes: 36, max_size: 0 }
+                    BOARDID: { type: string, bytes: 12, max_size: 0 }
+                    SHORTNAME: { type: string, bytes: 30, max_size: 0 }
+                    PREVPRICE: { type: double }
+                    LOTSIZE: { type: int32 }
+                    FACEVALUE: { type: double }
+                    STATUS: { type: string, bytes: 3, max_size: 0 }
+                    BOARDNAME: { type: string, bytes: 381, max_size: 0 }
+                    DECIMALS: { type: int32 }
+                    SECNAME: { type: string, bytes: 90, max_size: 0 }
+                    REMARKS: { type: string, bytes: 24, max_size: 0 }
+                    MARKETCODE: { type: string, bytes: 12, max_size: 0 }
+                    INSTRID: { type: string, bytes: 12, max_size: 0 }
+                    SECTORID: { type: string, bytes: 12, max_size: 0 }
+                    MINSTEP: { type: double }
+                    PREVWAPRICE: { type: double }
+                    FACEUNIT: { type: string, bytes: 12, max_size: 0 }
+                    PREVDATE: { type: date, bytes: 10, max_size: 0 }
+                    ISSUESIZE: { type: int64 }
+                    ISIN: { type: string, bytes: 36, max_size: 0 }
+                    LATNAME: { type: string, bytes: 90, max_size: 0 }
+                    REGNUMBER: { type: string, bytes: 90, max_size: 0 }
+                    PREVLEGALCLOSEPRICE: { type: double }
+                    CURRENCYID: { type: string, bytes: 12, max_size: 0 }
+                    SECTYPE: { type: string, bytes: 3, max_size: 0 }
+                    LISTLEVEL: { type: int32 }
+                    SETTLEDATE: { type: date, bytes: 10, max_size: 0 }
+                  columns:
+                    - SECID
+                    - BOARDID
+                    - SHORTNAME
+                    - PREVPRICE
+                    - LOTSIZE
+                    - FACEVALUE
+                    - STATUS
+                    - BOARDNAME
+                    - DECIMALS
+                    - SECNAME
+                    - REMARKS
+                    - MARKETCODE
+                    - INSTRID
+                    - SECTORID
+                    - MINSTEP
+                    - PREVWAPRICE
+                    - FACEUNIT
+                    - PREVDATE
+                    - ISSUESIZE
+                    - ISIN
+                    - LATNAME
+                    - REGNUMBER
+                    - PREVLEGALCLOSEPRICE
+                    - CURRENCYID
+                    - SECTYPE
+                    - LISTLEVEL
+                    - SETTLEDATE
+                  data:
+                    - ["ABIO", "TQBR", "iАРТГЕН ао", 67.82, 10, 0.1, "A", "Т+: Акции и ДР - безадрес.", 2, "ПАО \"Артген\"", null, "FNDT", "EQIN", null, 0.02, 67.72, "SUR", "2026-01-08", 92645451, "RU000A0JNAB6", "ARTGEN ao", "1-01-08902-A", 67.66, "SUR", "1", 2, "2026-01-12"]
+                    - ["ABRD", "TQBR", "АбрауДюрсо", 159.8, 10, 1, "A", "Т+: Акции и ДР - безадрес.", 1, "Абрау-Дюрсо ПАО ао", null, "FNDT", "EQIN", null, 0.2, 158.8, "SUR", "2026-01-08", 108889117, "RU000A0JS5T7", "Abrau-Durso ao", "1-02-12500-A", 158.8, "SUR", "1", 3, "2026-01-12"]
+                    - ["AFKS", "TQBR", "Система ао", 12.762, 100, 0.09, "A", "Т+: Акции и ДР - безадрес.", 3, "АФК \"Система\" ПАО ао", null, "FNDT", "EQIN", null, 0.001, 12.783, "SUR", "2026-01-08", 9650000000, "RU000A0DQZE3", "AFK Sistema", "1-05-01669-A", 12.768, "SUR", "1", 1, "2026-01-12"]
+                    - ["AFLT", "TQBR", "Аэрофлот", 56.58, 10, 1, "A", "Т+: Акции и ДР - безадрес.", 2, "Аэрофлот-росс.авиалин(ПАО)ао", null, "FNDT", "EQIN", null, 0.01, 56.55, "SUR", "2026-01-08", 3975771215, "RU0009062285", "Aeroflot", "1-01-00010-A", 56.61, "SUR", "1", 1, "2026-01-12"]
+                    - ["AKRN", "TQBR", "Акрон", 18012, 1, 5, "A", "Т+: Акции и ДР - безадрес.", 0, "Акрон ПАО ао", null, "FNDT", "EQIN", null, 2, 18008, "SUR", "2026-01-08", 36757156, "RU0009028674", "Acron", "1-03-00207-A", 18018, "SUR", "1", 2, "2026-01-12"]
+                marketdata:
+                  metadata:
+                    SECID: { type: string, bytes: 36, max_size: 0 }
+                    BOARDID: { type: string, bytes: 12, max_size: 0 }
+                    BID: { type: double }
+                    BIDDEPTH: { type: int64 }
+                    OFFER: { type: double }
+                    OFFERDEPTH: { type: int64 }
+                    SPREAD: { type: double }
+                    BIDDEPTHT: { type: int64 }
+                    OFFERDEPTHT: { type: int64 }
+                    OPEN: { type: double }
+                    LOW: { type: double }
+                    HIGH: { type: double }
+                    LAST: { type: double }
+                    LASTCHANGE: { type: double }
+                    LASTCHANGEPRCNT: { type: double }
+                    QTY: { type: int32 }
+                    VALUE: { type: double }
+                    VALUE_USD: { type: double }
+                    WAPRICE: { type: double }
+                    LASTCNGTOLASTWAPRICE: { type: double }
+                    WAPTOPREVWAPRICEPRCNT: { type: double }
+                    WAPTOPREVWAPRICE: { type: double }
+                    CLOSEPRICE: { type: double }
+                    MARKETPRICETODAY: { type: double }
+                    MARKETPRICE: { type: double }
+                    LASTTOPREVPRICE: { type: double }
+                    NUMTRADES: { type: int32 }
+                    VOLTODAY: { type: int64 }
+                    VALTODAY: { type: int64 }
+                    VALTODAY_USD: { type: int64 }
+                    ETFSETTLEPRICE: { type: double }
+                    TRADINGSTATUS: { type: string, bytes: 3, max_size: 0 }
+                    UPDATETIME: { type: time, bytes: 10, max_size: 0 }
+                    LASTBID: { type: double }
+                    LASTOFFER: { type: double }
+                    LCLOSEPRICE: { type: double }
+                    LCURRENTPRICE: { type: double }
+                    MARKETPRICE2: { type: double }
+                    NUMBIDS: { type: int32 }
+                    NUMOFFERS: { type: int32 }
+                    CHANGE: { type: double }
+                    TIME: { type: time, bytes: 10, max_size: 0 }
+                    HIGHBID: { type: double }
+                    LOWOFFER: { type: double }
+                    PRICEMINUSPREVWAPRICE: { type: double }
+                    OPENPERIODPRICE: { type: double }
+                    SEQNUM: { type: int64 }
+                    SYSTIME: { type: datetime, bytes: 19, max_size: 0 }
+                    CLOSINGAUCTIONPRICE: { type: double }
+                    CLOSINGAUCTIONVOLUME: { type: double }
+                    ISSUECAPITALIZATION: { type: double }
+                    ISSUECAPITALIZATION_UPDATETIME: { type: time, bytes: 10, max_size: 0 }
+                    ETFSETTLECURRENCY: { type: string, bytes: 18, max_size: 0 }
+                    VALTODAY_RUR: { type: int64 }
+                    TRADINGSESSION: { type: string, bytes: 3, max_size: 0 }
+                    TRENDISSUECAPITALIZATION: { type: double }
+                  columns:
+                    - SECID
+                    - BOARDID
+                    - BID
+                    - BIDDEPTH
+                    - OFFER
+                    - OFFERDEPTH
+                    - SPREAD
+                    - BIDDEPTHT
+                    - OFFERDEPTHT
+                    - OPEN
+                    - LOW
+                    - HIGH
+                    - LAST
+                    - LASTCHANGE
+                    - LASTCHANGEPRCNT
+                    - QTY
+                    - VALUE
+                    - VALUE_USD
+                    - WAPRICE
+                    - LASTCNGTOLASTWAPRICE
+                    - WAPTOPREVWAPRICEPRCNT
+                    - WAPTOPREVWAPRICE
+                    - CLOSEPRICE
+                    - MARKETPRICETODAY
+                    - MARKETPRICE
+                    - LASTTOPREVPRICE
+                    - NUMTRADES
+                    - VOLTODAY
+                    - VALTODAY
+                    - VALTODAY_USD
+                    - ETFSETTLEPRICE
+                    - TRADINGSTATUS
+                    - UPDATETIME
+                    - LASTBID
+                    - LASTOFFER
+                    - LCLOSEPRICE
+                    - LCURRENTPRICE
+                    - MARKETPRICE2
+                    - NUMBIDS
+                    - NUMOFFERS
+                    - CHANGE
+                    - TIME
+                    - HIGHBID
+                    - LOWOFFER
+                    - PRICEMINUSPREVWAPRICE
+                    - OPENPERIODPRICE
+                    - SEQNUM
+                    - SYSTIME
+                    - CLOSINGAUCTIONPRICE
+                    - CLOSINGAUCTIONVOLUME
+                    - ISSUECAPITALIZATION
+                    - ISSUECAPITALIZATION_UPDATETIME
+                    - ETFSETTLECURRENCY
+                    - VALTODAY_RUR
+                    - TRADINGSESSION
+                    - TRENDISSUECAPITALIZATION
+                  data:
+                    - ["ABIO", "TQBR", null, 0, null, 0, 0, 0, 0, 67.82, 67.7, 68.46, 67.98, -0.02, -0.03, 1, 679.80, 8.69, 68.14, 0.26, 0.62, 0.42, null, 68.16, 67.74, 0.24, 517, 42310, 2883348, 36859, null, "N", "23:50:18", 67.98, 68, 68.14, 67.98, 68.16, 0, 0, 0.16, "23:48:56", 70.78, 65.48, 0.26, null, 20260109235038, "2026-01-09 23:50:38", 68.14, null, 6298037758.98, "23:48:56", null, 2883348, null, 0]
+                    - ["ABRD", "TQBR", null, 0, null, 0, 0, 0, 0, 159.4, 159, 160.6, 159.6, -0.4, -0.25, 1, 1596.00, 20.4, 160, 0.8, 0.76, 1.2, null, 160, 158.8, -0.13, 259, 22370, 3578870, 45750, null, "N", "23:50:18", 159.6, 159.8, 159.2, 160, 160, 0, 0, -0.2, "23:48:56", 174.2, 158, 0.8, null, 20260109235038, "2026-01-09 23:50:38", 159.2, 10, 17378703073.2, "23:48:56", null, 3578870, null, 0]
+                    - ["AFKS", "TQBR", null, 0, null, 0, 0, 0, 0, 12.766, 12.703, 13.1, 12.943, -0.014, -0.11, 14, 18120.20, 231.64, 12.94, 0.16, 1.23, 0.157, null, 12.961, 12.771, 1.42, 12767, 31782000, 411253856, 5257206, null, "N", "23:50:18", 12.936, 12.943, 12.966, 12.939, 12.961, 0, 0, 0.181, "23:49:57", 13.969, 12, 0.16, 12.766, 20260109235038, "2026-01-09 23:50:38", 12.966, 200, 124899950000, "23:49:57", null, 411253856, null, 0]
+                    - ["AFLT", "TQBR", null, 0, null, 0, 0, 0, 0, 56.58, 56.58, 57.6, 57.25, 0.01, 0.02, 1, 572.50, 7.32, 57.27, 0.7, 1.27, 0.72, null, 57.34, 56.55, 1.18, 21076, 15895340, 910276234, 11636388, null, "N", "23:50:18", 57.21, 57.25, 57.24, 57.22, 57.34, 0, 0, 0.67, "23:49:54", 63.74, 51.9, 0.7, 56.58, 20260109235038, "2026-01-09 23:50:38", 57.24, 7610, 227612902058.75, "23:49:54", null, 910276234, null, 0]
+                    - ["AKRN", "TQBR", null, 0, null, 0, 0, 0, 0, 18034, 17920, 18056, 18056, 10, 0.06, 1, 18056.00, 230.82, 18010, 48, 0.01, 2, null, 18008, 18010, 0.24, 49, 76, 1368780, 17498, null, "N", "23:50:18", 18020, 18054, 18014, 18048, 18008, 0, 0, 44, "23:49:51", 18108, 17914, 48, null, 20260109235038, "2026-01-09 23:50:38", 18014, 9, 663687208736, "23:49:51", null, 1368780, null, 0]
+                dataversion:
+                  metadata:
+                    data_version: { type: int32 }
+                    seqnum: { type: int64 }
+                    trade_date: { type: date, bytes: 10, max_size: 0 }
+                    trade_session_date: { type: date, bytes: 10, max_size: 0 }
+                  columns:
+                    - TRADENO
+                    - BOARDNAME
+                    - SECID
+                    - TRADEDATE
+                    - TRADETIME
+                    - PRICE
+                    - QUANTITY
+                    - SYSTIME
+                    - RECNO
+                    - OPENPOSITION
+                    - OFFMARKETDEAL
+                    - BUYSELL
+                    - TRADE_SESSION_DATE
+                  data:
+                    - [1892951323259699201, "RFUD", "SiH6", "2026-01-09", "19:05:00", 79890, 1, "2026-01-12 08:00:12", 303522640475, 9218192, 0, "S", "2026-01-12"]
+                    - [1892951323259699202, "RFUD", "SiH6", "2026-01-09", "19:05:00", 79924, 1, "2026-01-12 08:00:12", 303522641622, 9218192, 0, "B", "2026-01-12"]
+                    - [1892951323259699203, "RFUD", "SiH6", "2026-01-09", "19:05:00", 79916, 2, "2026-01-12 08:00:12", 303522642308, 9218196, 0, "S", "2026-01-12"]
+                    - [1892951323259699204, "RFUD", "SiH6", "2026-01-09", "19:05:00", 79915, 8, "2026-01-12 08:00:12", 303522642312, 9218212, 0, "S", "2026-01-12"]
+                    - [1892951323259699205, "RFUD", "SiH6", "2026-01-09", "19:05:00", 79915, 2, "2026-01-12 08:00:12", 303522642316, 9218216, 0, "S", "2026-01-12"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/engines/stock/markets/shares/boards/tqbr/securities/{ticker}.json:
+    get:
+      tags:
+        - Real-time market data - Акции
+      summary: Торговая статистика за сегодня (по одной указанной акции)
+      operationId: getShareStatistics
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код ценной бумаги, например 'SBER'
+          default: SBER
+      security:
+        - bearerAuth: []
+      description: |-
+        Торговая статистика по одной указанной акции на текущий день.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time                          |
+        | NOT AUTHORIZED   | iss    | 15 мин. задержанные данные         |
+      
+        [Описание метрик](/docs/description/realtime#marketstatistics) 
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketStatisticsResponse'
+              example:
+                securities:
+                  metadata:
+                    SECID: { type: string, bytes: 36, max_size: 0 }
+                    BOARDID: { type: string, bytes: 12, max_size: 0 }
+                    SHORTNAME: { type: string, bytes: 30, max_size: 0 }
+                    PREVPRICE: { type: double }
+                    LOTSIZE: { type: int32 }
+                    FACEVALUE: { type: double }
+                    STATUS: { type: string, bytes: 3, max_size: 0 }
+                    BOARDNAME: { type: string, bytes: 381, max_size: 0 }
+                    DECIMALS: { type: int32 }
+                    SECNAME: { type: string, bytes: 90, max_size: 0 }
+                    REMARKS: { type: string, bytes: 24, max_size: 0 }
+                    MARKETCODE: { type: string, bytes: 12, max_size: 0 }
+                    INSTRID: { type: string, bytes: 12, max_size: 0 }
+                    SECTORID: { type: string, bytes: 12, max_size: 0 }
+                    MINSTEP: { type: double }
+                    PREVWAPRICE: { type: double }
+                    FACEUNIT: { type: string, bytes: 12, max_size: 0 }
+                    PREVDATE: { type: date, bytes: 10, max_size: 0 }
+                    ISSUESIZE: { type: int64 }
+                    ISIN: { type: string, bytes: 36, max_size: 0 }
+                    LATNAME: { type: string, bytes: 90, max_size: 0 }
+                    REGNUMBER: { type: string, bytes: 90, max_size: 0 }
+                    PREVLEGALCLOSEPRICE: { type: double }
+                    CURRENCYID: { type: string, bytes: 12, max_size: 0 }
+                    SECTYPE: { type: string, bytes: 3, max_size: 0 }
+                    LISTLEVEL: { type: int32 }
+                    SETTLEDATE: { type: date, bytes: 10, max_size: 0 }
+                  columns:
+                    - SECID
+                    - BOARDID
+                    - SHORTNAME
+                    - PREVPRICE
+                    - LOTSIZE
+                    - FACEVALUE
+                    - STATUS
+                    - BOARDNAME
+                    - DECIMALS
+                    - SECNAME
+                    - REMARKS
+                    - MARKETCODE
+                    - INSTRID
+                    - SECTORID
+                    - MINSTEP
+                    - PREVWAPRICE
+                    - FACEUNIT
+                    - PREVDATE
+                    - ISSUESIZE
+                    - ISIN
+                    - LATNAME
+                    - REGNUMBER
+                    - PREVLEGALCLOSEPRICE
+                    - CURRENCYID
+                    - SECTYPE
+                    - LISTLEVEL
+                    - SETTLEDATE
+                  data:
+                    - [SBER, TQBR, Сбербанк, 298, 1, 3, A, Т+: Акции и ДР - безадрес., 2, Сбербанк России ПАО ао, null, FNDT, EQIN, null, 0.01, 297.63, SUR, 2026-01-08, 21586948000, RU0009029540, Sberbank, 10301481B, 298.22, SUR, 1, 1, 2026-01-12]
+                marketdata:
+                  metadata:
+                    SECID: { type: string, bytes: 36, max_size: 0 }
+                    BOARDID: { type: string, bytes: 12, max_size: 0 }
+                    BID: { type: double }
+                    BIDDEPTH: { type: int64 }
+                    OFFER: { type: double }
+                    OFFERDEPTH: { type: int64 }
+                    SPREAD: { type: double }
+                    BIDDEPTHT: { type: int64 }
+                    OFFERDEPTHT: { type: int64 }
+                    OPEN: { type: double }
+                    LOW: { type: double }
+                    HIGH: { type: double }
+                    LAST: { type: double }
+                    LASTCHANGE: { type: double }
+                    LASTCHANGEPRCNT: { type: double }
+                    QTY: { type: int32 }
+                    VALUE: { type: double }
+                    VALUE_USD: { type: double }
+                    WAPRICE: { type: double }
+                    LASTCNGTOLASTWAPRICE: { type: double }
+                    WAPTOPREVWAPRICEPRCNT: { type: double }
+                    WAPTOPREVWAPRICE: { type: double }
+                    CLOSEPRICE: { type: double }
+                    MARKETPRICETODAY: { type: double }
+                    MARKETPRICE: { type: double }
+                    LASTTOPREVPRICE: { type: double }
+                    NUMTRADES: { type: int32 }
+                    VOLTODAY: { type: int64 }
+                    VALTODAY: { type: int64 }
+                    VALTODAY_USD: { type: int64 }
+                    ETFSETTLEPRICE: { type: double }
+                    TRADINGSTATUS: { type: string, bytes: 3, max_size: 0 }
+                    UPDATETIME: { type: time, bytes: 10, max_size: 0 }
+                    LASTBID: { type: double }
+                    LASTOFFER: { type: double }
+                    LCLOSEPRICE: { type: double }
+                    LCURRENTPRICE: { type: double }
+                    MARKETPRICE2: { type: double }
+                    NUMBIDS: { type: int32 }
+                    NUMOFFERS: { type: int32 }
+                    CHANGE: { type: double }
+                    TIME: { type: time, bytes: 10, max_size: 0 }
+                    HIGHBID: { type: double }
+                    LOWOFFER: { type: double }
+                    PRICEMINUSPREVWAPRICE: { type: double }
+                    OPENPERIODPRICE: { type: double }
+                    SEQNUM: { type: int64 }
+                    SYSTIME: { type: datetime, bytes: 19, max_size: 0 }
+                    CLOSINGAUCTIONPRICE: { type: double }
+                    CLOSINGAUCTIONVOLUME: { type: double }
+                    ISSUECAPITALIZATION: { type: double }
+                    ISSUECAPITALIZATION_UPDATETIME: { type: time, bytes: 10, max_size: 0 }
+                    ETFSETTLECURRENCY: { type: string, bytes: 18, max_size: 0 }
+                    VALTODAY_RUR: { type: int64 }
+                    TRADINGSESSION: { type: string, bytes: 3, max_size: 0 }
+                    TRENDISSUECAPITALIZATION: { type: double }
+                  columns:
+                    - SECID
+                    - BOARDID
+                    - BID
+                    - BIDDEPTH
+                    - OFFER
+                    - OFFERDEPTH
+                    - SPREAD
+                    - BIDDEPTHT
+                    - OFFERDEPTHT
+                    - OPEN
+                    - LOW
+                    - HIGH
+                    - LAST
+                    - LASTCHANGE
+                    - LASTCHANGEPRCNT
+                    - QTY
+                    - VALUE
+                    - VALUE_USD
+                    - WAPRICE
+                    - LASTCNGTOLASTWAPRICE
+                    - WAPTOPREVWAPRICEPRCNT
+                    - WAPTOPREVWAPRICE
+                    - CLOSEPRICE
+                    - MARKETPRICETODAY
+                    - MARKETPRICE
+                    - LASTTOPREVPRICE
+                    - NUMTRADES
+                    - VOLTODAY
+                    - VALTODAY
+                    - VALTODAY_USD
+                    - ETFSETTLEPRICE
+                    - TRADINGSTATUS
+                    - UPDATETIME
+                    - LASTBID
+                    - LASTOFFER
+                    - LCLOSEPRICE
+                    - LCURRENTPRICE
+                    - MARKETPRICE2
+                    - NUMBIDS
+                    - NUMOFFERS
+                    - CHANGE
+                    - TIME
+                    - HIGHBID
+                    - LOWOFFER
+                    - PRICEMINUSPREVWAPRICE
+                    - OPENPERIODPRICE
+                    - SEQNUM
+                    - SYSTIME
+                    - CLOSINGAUCTIONPRICE
+                    - CLOSINGAUCTIONVOLUME
+                    - ISSUECAPITALIZATION
+                    - ISSUECAPITALIZATION_UPDATETIME
+                    - ETFSETTLECURRENCY
+                    - VALTODAY_RUR
+                    - TRADINGSESSION
+                    - TRENDISSUECAPITALIZATION
+                  data:
+                    - [SBER, TQBR, null, 0, null, 0, 0, 0, 0, 298.07, 297.82, 299.39, 299.04, 0.01, 0, 20, 5980.80, 76.45, 298.77, 1.41, 0.38, 1.14, null, 298.71, 297.66, 0.35, 48892, 7607473, 2272887302, 29055135, null, N, "23:50:18", 299.02, 299.04, 299.19, 298.95, 298.71, 0, 0, 1.04, "23:49:57", 311.1, 287.04, 1.41, 298.07, 20260109235038, "2026-01-09 23:50:38", 299.19, 4210, 6455360929920, "23:49:57", null, 2272887302, null, 0]
+                dataversion:
+                  metadata:
+                    data_version: { type: int32 }
+                    seqnum: { type: int64 }
+                    trade_date: { type: date, bytes: 10, max_size: 0 }
+                    trade_session_date: { type: date, bytes: 10, max_size: 0 }
+                  columns:
+                    - data_version
+                    - seqnum
+                    - trade_date
+                    - trade_session_date
+                  data:
+                    - [8756, 20260109235039, "2026-01-09", "2026-01-09"]
+                marketdata_yields:
+                  metadata:
+                    boardid: { type: string, bytes: 12, max_size: 0 }
+                    secid: { type: string, bytes: 36, max_size: 0 }
+                  columns:
+                    - boardid
+                    - secid
+                  data: []
+        '401':
+          description: Unauthorized
+        
+
+  /iss/engines/stock/markets/shares/boards/tqbr/securities/{ticker}/orderbook.json:
+    get:
+      tags:
+        - Real-time market data - Акции
+      summary: Стакан котировок по инструменту
+      operationId: getShareOrderbook
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код ценной бумаги, например 'SBER'
+      description: |-
+        Стакан котировок по одному указанному инструменту.
+
+        20 уровней Buy, 20 уровней Sell
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time стакан                   |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/realtime#orderbook)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderbookResponse'
+              example:
+                orderbook:
+                  metadata:
+                    BOARDID:
+                      type: string
+                      bytes: 12
+                      max_size: 0
+                    SECID:
+                      type: string
+                      bytes: 36
+                      max_size: 0
+                    BUYSELL:
+                      type: string
+                      bytes: 3
+                      max_size: 0
+                    PRICE:
+                      type: double
+                    QUANTITY:
+                      type: int64
+                    SEQNUM:
+                      type: int64
+                    UPDATETIME:
+                      type: time
+                      bytes: 10
+                      max_size: 0
+                    DECIMALS:
+                      type: int32
+                  columns:
+                    - BOARDID
+                    - SECID
+                    - BUYSELL
+                    - PRICE
+                    - QUANTITY
+                    - SEQNUM
+                    - UPDATETIME
+                    - DECIMALS
+                  data:
+                    - ["TQBR", "SBER", "B", 298.89, 1510, 20260112092256, "09:22:56", 2]
+                    - ["TQBR", "SBER", "B", 298.9, 2697, 20260112092256, "09:22:56", 2]
+                    - ["TQBR", "SBER", "B", 298.91, 3036, 20260112092256, "09:22:56", 2]
+                    - ["TQBR", "SBER", "B", 298.92, 5793, 20260112092256, "09:22:56", 2]
+                    - ["TQBR", "SBER", "B", 298.93, 2593, 20260112092256, "09:22:56", 2]
+                dataversion:
+                  metadata:
+                    data_version:
+                      type: int32
+                    seqnum:
+                      type: int64
+                    trade_date:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                    trade_session_date:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                  columns:
+                    - data_version
+                    - seqnum
+                    - trade_date
+                    - trade_session_date
+                  data:
+                    - [8757, 20260112092255, "2026-01-12", "2026-01-12"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/engines/stock/markets/shares/boards/tqbr/securities/{ticker}/trades.json:
+    get:
+      tags:
+        - Real-time market data - Акции
+      summary: Все сделки по инструменту
+      operationId: getShareTrades
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код ценной бумаги, например 'SBER'
+        - name: tradeno
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int64
+          description: Получить сделки, которые идут начиная с указанного номера
+      security:
+        - bearerAuth: []
+      description: |-
+        Все сделки по одному выбранному инструменту за текущий торговый день.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time сделки                   |
+        | NOT AUTHORIZED   | iss    | 15 мин. задержанные данные         |
+
+        [Описание метрик](/docs/description/realtime#trades)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TradesResponse'
+              example:
+                trades:
+                  metadata:
+                    TRADENO:
+                      type: int64
+                    TRADETIME:
+                      type: time
+                      bytes: 10
+                      max_size: 0
+                    BOARDID:
+                      type: string
+                      bytes: 12
+                      max_size: 0
+                    SECID:
+                      type: string
+                      bytes: 36
+                      max_size: 0
+                    PRICE:
+                      type: double
+                    QUANTITY:
+                      type: int64
+                    VALUE:
+                      type: double
+                    PERIOD:
+                      type: string
+                      bytes: 3
+                      max_size: 0
+                    TRADETIME_GRP:
+                      type: int32
+                    SYSTIME:
+                      type: datetime
+                      bytes: 19
+                      max_size: 0
+                    BUYSELL:
+                      type: string
+                      bytes: 3
+                      max_size: 0
+                    DECIMALS:
+                      type: int32
+                    TRADINGSESSION:
+                      type: string
+                      bytes: 3
+                      max_size: 0
+                    TRADEDATE:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                    TRADE_SESSION_DATE:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                  columns:
+                    - TRADENO
+                    - TRADETIME
+                    - BOARDID
+                    - SECID
+                    - PRICE
+                    - QUANTITY
+                    - VALUE
+                    - PERIOD
+                    - TRADETIME_GRP
+                    - SYSTIME
+                    - BUYSELL
+                    - DECIMALS
+                    - TRADINGSESSION
+                    - TRADEDATE
+                    - TRADE_SESSION_DATE
+                  data:
+                    - [15195661254, "06:59:41", "TQBR", "SBER", 299.15, 1, 299.15, "S", 659, "2026-01-12 06:59:42", "S", 2, "0", "2026-01-12", "2026-01-12"]
+                    - [15195661255, "06:59:41", "TQBR", "SBER", 299.15, 5, 1495.75, "S", 659, "2026-01-12 06:59:42", "B", 2, "0", "2026-01-12", "2026-01-12"]
+                    - [15195661256, "06:59:41", "TQBR", "SBER", 299.15, 15, 4487.25, "S", 659, "2026-01-12 06:59:42", "B", 2, "0", "2026-01-12", "2026-01-12"]
+                    - [15195661257, "06:59:41", "TQBR", "SBER", 299.15, 2, 598.3, "S", 659, "2026-01-12 06:59:42", "B", 2, "0", "2026-01-12", "2026-01-12"]
+                    - [15195661258, "06:59:41", "TQBR", "SBER", 299.15, 158, 47265.7, "S", 659, "2026-01-12 06:59:42", "S", 2, "0", "2026-01-12", "2026-01-12"]
+                dataversion:
+                  metadata:
+                    data_version:
+                      type: int32
+                    seqnum:
+                      type: int64
+                    trade_date:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                    trade_session_date:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                  columns:
+                    - data_version
+                    - seqnum
+                    - trade_date
+                    - trade_session_date
+                  data:
+                    - [8757, 20260112092341, "2026-01-12", "2026-01-12"]
+                trades_yields:
+                  metadata:
+                    boardid:
+                      type: string
+                      bytes: 12
+                      max_size: 0
+                    secid:
+                      type: string
+                      bytes: 36
+                      max_size: 0
+                  columns:
+                    - boardid
+                    - secid
+                  data: []
+        '401':
+          description: Unauthorized
+        
+
+  /iss/engines/futures/markets/forts/boards/rfud/securities.json:
+    get:
+      tags:
+        - Real-time market data - Фьючерсы
+      summary: Торговая статистика по фьючерсам за сегодня
+      operationId: getAllFuturesStatistics
+      parameters:
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+            maximum: 1000
+          description: Number of records to return.
+      security:
+        - bearerAuth: []
+      description: |-
+        Торговая статистика по всем фьючерсам на текущий день.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time торговая статистика      |
+        | NOT AUTHORIZED   | iss    | 15 мин. задержанные данные и ограниченный набор полей |
+
+        Блоки данных:
+          * securities - торговые параметры фьючерсов (наименование, шаг цены, лотность, ...)
+          * marketdata - торговая статистика по фьючерсам (цены, объемы, ...)
+                
+        [Описание метрик](/docs/description/realtime#marketstatistics-1) 
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FuturesMarketStatisticsResponse'
+              example:
+                securities:
+                  metadata:
+                    SECID: { type: string, bytes: 36, max_size: 0 }
+                    BOARDID: { type: string, bytes: 12, max_size: 0 }
+                    SHORTNAME: { type: string, bytes: 75, max_size: 0 }
+                    SECNAME: { type: string, bytes: 225, max_size: 0 }
+                    PREVSETTLEPRICE: { type: double }
+                    DECIMALS: { type: int32 }
+                    MINSTEP: { type: double }
+                    LASTTRADEDATE: { type: date, bytes: 10, max_size: 0 }
+                    LASTDELDATE: { type: date, bytes: 10, max_size: 0 }
+                    SECTYPE: { type: string, bytes: 6, max_size: 0 }
+                    LATNAME: { type: string, bytes: 90, max_size: 0 }
+                    ASSETCODE: { type: string, bytes: 75, max_size: 0 }
+                    PREVOPENPOSITION: { type: int64 }
+                    LOTVOLUME: { type: int32 }
+                    INITIALMARGIN: { type: double }
+                    HIGHLIMIT: { type: double }
+                    LOWLIMIT: { type: double }
+                    STEPPRICE: { type: double }
+                    LASTSETTLEPRICE: { type: double }
+                    PREVPRICE: { type: double }
+                    IMTIME: { type: datetime, bytes: 19, max_size: 0 }
+                    BUYSELLFEE: { type: double }
+                    SCALPERFEE: { type: double }
+                    NEGOTIATEDFEE: { type: double }
+                    EXERCISEFEE: { type: double }
+                  columns:
+                    - SECID
+                    - BOARDID
+                    - SHORTNAME
+                    - SECNAME
+                    - PREVSETTLEPRICE
+                    - DECIMALS
+                    - MINSTEP
+                    - LASTTRADEDATE
+                    - LASTDELDATE
+                    - SECTYPE
+                    - LATNAME
+                    - ASSETCODE
+                    - PREVOPENPOSITION
+                    - LOTVOLUME
+                    - INITIALMARGIN
+                    - HIGHLIMIT
+                    - LOWLIMIT
+                    - STEPPRICE
+                    - LASTSETTLEPRICE
+                    - PREVPRICE
+                    - IMTIME
+                    - BUYSELLFEE
+                    - SCALPERFEE
+                    - NEGOTIATEDFEE
+                    - EXERCISEFEE
+                  data:
+                    - ["AAH6", "RFUD", "AFRICA-3.26", "Фьючерсный контракт AFRICA-3.26", 71.26, 2, 0.01000, "2026-03-20", "2026-03-20", "AA", "AFRICA-3.26", "AFRICA", 526, 1, 774.74, 75.52000, 67.00000, 0.78227, 71.26, 71.26, "2026-01-09 18:59:33", 1.10, 0.55, 0.37, 0.37]
+                    - ["AAM6", "RFUD", "AFRICA-6.26", "Фьючерсный контракт AFRICA-6.26", 71.79, 2, 0.01000, "2026-06-19", "2026-06-19", "AA", "AFRICA-6.26", "AFRICA", 18, 1, 733.83, 75.85000, 67.73000, 0.78227, 71.79, 0, "2026-01-09 18:59:33", 1.11, 0.56, 0.37, 0.37]
+                    - ["AEH6", "RFUD", "AED-3.26", "Фьючерсный контракт AED-3.26", 21.783, 3, 0.00100, "2026-03-19", "2026-03-19", "AE", "AED-3.26", "AED", 418, 1000, 3513.26, 23.69700, 19.86900, 1.00000, 21.783, 21.83, "2026-01-09 18:59:33", 1.01, 0.51, 0.33, 0.34]
+                    - ["AEM6", "RFUD", "AED-6.26", "Фьючерсный контракт AED-6.26", 22.639, 3, 0.00100, "2026-06-18", "2026-06-18", "AE", "AED-6.26", "AED", 74, 1000, 3561.94, 24.57600, 20.70200, 1.00000, 22.639, 0, "2026-01-09 18:59:33", 1.04, 0.52, 0.35, 0.35]
+                    - ["AFH6", "RFUD", "AFLT-3.26", "Фьючерсный контракт AFLT-3.26", 5897, 0, 1.00000, "2026-03-19", "2026-03-20", "AF", "AFLT-3.26", "AFLT", 87194, 100, 1555.40, 6662.00000, 5132.00000, 1.00000, 5897, 5908, "2026-01-09 18:59:33", 1.17, 0.59, 0.39, 0.00]
+                dataversion:
+                  metadata:
+                    data_version: { type: int32 }
+                    seqnum: { type: int64 }
+                    trade_date: { type: date, bytes: 10, max_size: 0 }
+                    trade_session_date: { type: date, bytes: 10, max_size: 0 }
+                  columns:
+                    - data_version
+                    - seqnum
+                    - trade_date
+                    - trade_session_date
+                  data:
+                    - [12666, 20260110004627, "2026-01-12", "2026-01-12"]
+                marketdata_yields:
+                  metadata:
+                    boardid: { type: string, bytes: 12, max_size: 0 }
+                    secid: { type: string, bytes: 36, max_size: 0 }
+                  columns:
+                    - boardid
+                    - secid
+                  data: []
+        '401':
+          description: Unauthorized
+        
+
+  /iss/engines/futures/markets/forts/boards/rfud/securities/{ticker}.json:
+    get:
+      tags:
+        - Real-time market data - Фьючерсы
+      summary: Торговая статистика за сегодня (один инструмент)
+      operationId: getFuturesStatistics
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Короткий код фьючерса, например 'SiH5'
+      security:
+        - bearerAuth: []
+      description: |-
+        Торговая статистика по одному выбранному фьючерсному контракту на текущий день.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time торговая статистика      |
+        | NOT AUTHORIZED   | iss    | 15 мин. задержанные данные и ограниченный набор полей |
+
+        Блоки данных:
+          * securities - торговые параметры фьючерсов (наименование, шаг цены, лотность, ...)
+          * marketdata - торговая статистика по фьючерсам (цены, объемы, ...)
+
+        [Описание метрик](/docs/description/realtime#marketstatistics-1)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FuturesMarketStatisticsResponse'
+              example:
+                securities:
+                  metadata:
+                    SECID:
+                      type: string
+                      bytes: 36
+                      max_size: 0
+                    BOARDID:
+                      type: string
+                      bytes: 12
+                      max_size: 0
+                    SHORTNAME:
+                      type: string
+                      bytes: 75
+                      max_size: 0
+                    SECNAME:
+                      type: string
+                      bytes: 225
+                      max_size: 0
+                    PREVSETTLEPRICE:
+                      type: double
+                    DECIMALS:
+                      type: int32
+                    MINSTEP:
+                      type: double
+                    LASTTRADEDATE:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                    LASTDELDATE:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                    SECTYPE:
+                      type: string
+                      bytes: 6
+                      max_size: 0
+                    LATNAME:
+                      type: string
+                      bytes: 90
+                      max_size: 0
+                    ASSETCODE:
+                      type: string
+                      bytes: 75
+                      max_size: 0
+                    PREVOPENPOSITION:
+                      type: int64
+                    LOTVOLUME:
+                      type: int32
+                    INITIALMARGIN:
+                      type: double
+                    HIGHLIMIT:
+                      type: double
+                    LOWLIMIT:
+                      type: double
+                    STEPPRICE:
+                      type: double
+                    LASTSETTLEPRICE:
+                      type: double
+                    PREVPRICE:
+                      type: double
+                    IMTIME:
+                      type: datetime
+                      bytes: 19
+                      max_size: 0
+                    BUYSELLFEE:
+                      type: double
+                    SCALPERFEE:
+                      type: double
+                    NEGOTIATEDFEE:
+                      type: double
+                    EXERCISEFEE:
+                      type: double
+                  columns:
+                    - SECID
+                    - BOARDID
+                    - SHORTNAME
+                    - SECNAME
+                    - PREVSETTLEPRICE
+                    - DECIMALS
+                    - MINSTEP
+                    - LASTTRADEDATE
+                    - LASTDELDATE
+                    - SECTYPE
+                    - LATNAME
+                    - ASSETCODE
+                    - PREVOPENPOSITION
+                    - LOTVOLUME
+                    - INITIALMARGIN
+                    - HIGHLIMIT
+                    - LOWLIMIT
+                    - STEPPRICE
+                    - LASTSETTLEPRICE
+                    - PREVPRICE
+                    - IMTIME
+                    - BUYSELLFEE
+                    - SCALPERFEE
+                    - NEGOTIATEDFEE
+                    - EXERCISEFEE
+                  data:
+                    [
+                      "ZCM6",
+                      "RFUD",
+                      "ZINC-6.26",
+                      "Фьючерсный контракт ZINC-6.26",
+                      3301.5,
+                      1,
+                      0.50000,
+                      "2026-06-16",
+                      "2026-06-16",
+                      "ZC",
+                      "ZINC-6.26",
+                      "ZINC",
+                      88,
+                      100,
+                      3476.17,
+                      3491.00000,
+                      3112.00000,
+                      3.91134,
+                      3301.5,
+                      3301.5,
+                      "2026-01-09 18:59:33",
+                      3.41,
+                      1.71,
+                      1.13,
+                      1.14
+                    ]
+                marketdata:
+                  metadata:
+                    SECID:
+                      type: string
+                      bytes: 36
+                      max_size: 0
+                    BOARDID:
+                      type: string
+                      bytes: 12
+                      max_size: 0
+                    BID:
+                      type: double
+                    OFFER:
+                      type: double
+                    SPREAD:
+                      type: double
+                    OPEN:
+                      type: double
+                    HIGH:
+                      type: double
+                    LOW:
+                      type: double
+                    LAST:
+                      type: double
+                    QUANTITY:
+                      type: int32
+                    LASTCHANGE:
+                      type: double
+                    SETTLEPRICE:
+                      type: double
+                    SETTLETOPREVSETTLE:
+                      type: double
+                    OPENPOSITION:
+                      type: double
+                    NUMTRADES:
+                      type: int32
+                    VOLTODAY:
+                      type: int64
+                    VALTODAY:
+                      type: int64
+                    VALTODAY_USD:
+                      type: int64
+                    UPDATETIME:
+                      type: time
+                      bytes: 10
+                      max_size: 0
+                    LASTCHANGEPRCNT:
+                      type: double
+                    BIDDEPTH:
+                      type: int64
+                    BIDDEPTHT:
+                      type: int64
+                    NUMBIDS:
+                      type: int32
+                    OFFERDEPTH:
+                      type: int64
+                    OFFERDEPTHT:
+                      type: int64
+                    NUMOFFERS:
+                      type: int32
+                    TIME:
+                      type: time
+                      bytes: 10
+                      max_size: 0
+                    SETTLETOPREVSETTLEPRC:
+                      type: double
+                    SEQNUM:
+                      type: int64
+                    SYSTIME:
+                      type: datetime
+                      bytes: 19
+                      max_size: 0
+                    TRADEDATE:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                    LASTTOPREVPRICE:
+                      type: double
+                    OICHANGE:
+                      type: int64
+                    OPENPERIODPRICE:
+                      type: double
+                    SWAPRATE:
+                      type: double
+                    TRADE_SESSION_DATE:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                  columns:
+                    - SECID
+                    - BOARDID
+                    - BID
+                    - OFFER
+                    - SPREAD
+                    - OPEN
+                    - HIGH
+                    - LOW
+                    - LAST
+                    - QUANTITY
+                    - LASTCHANGE
+                    - SETTLEPRICE
+                    - SETTLETOPREVSETTLE
+                    - OPENPOSITION
+                    - NUMTRADES
+                    - VOLTODAY
+                    - VALTODAY
+                    - VALTODAY_USD
+                    - UPDATETIME
+                    - LASTCHANGEPRCNT
+                    - BIDDEPTH
+                    - BIDDEPTHT
+                    - NUMBIDS
+                    - OFFERDEPTH
+                    - OFFERDEPTHT
+                    - NUMOFFERS
+                    - TIME
+                    - SETTLETOPREVSETTLEPRC
+                    - SEQNUM
+                    - SYSTIME
+                    - TRADEDATE
+                    - LASTTOPREVPRICE
+                    - OICHANGE
+                    - OPENPERIODPRICE
+                    - SWAPRATE
+                    - TRADE_SESSION_DATE
+                  data:
+                    [
+                      "ZCM6",
+                      "RFUD",
+                      3253.5,
+                      3405,
+                      151.5,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      3253.5,
+                      -48,
+                      88,
+                      0,
+                      0,
+                      0,
+                      0,
+                      "00:45:41",
+                      0,
+                      2,
+                      29,
+                      10,
+                      1,
+                      46,
+                      6,
+                      "00:45:41",
+                      -1.48,
+                      20260110004627,
+                      "2026-01-10 00:46:27",
+                      null,
+                      null,
+                      0,
+                      0.00000,
+                      0.00000,
+                      "2026-01-12"
+                    ]
+                dataversion:
+                  metadata:
+                    data_version:
+                      type: int32
+                    seqnum:
+                      type: int64
+                    trade_date:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                    trade_session_date:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                  columns:
+                    - data_version
+                    - seqnum
+                    - trade_date
+                    - trade_session_date
+                  data:
+                    [
+                      [
+                        12666,
+                        20260110004627,
+                        "2026-01-12",
+                        "2026-01-12"
+                      ]
+                    ]
+                marketdata_yields:
+                  metadata:
+                    boardid:
+                      type: string
+                      bytes: 12
+                      max_size: 0
+                    secid:
+                      type: string
+                      bytes: 36
+                      max_size: 0
+                  columns:
+                    - boardid
+                    - secid
+                  data: []
+        '401':
+          description: Unauthorized
+        
+
+  /iss/engines/futures/markets/forts/boards/rfud/securities/{ticker}/candles.json:
+    get:
+      tags:
+        - Real-time market data - Фьючерсы
+      summary: Свечи по инструменту
+      operationId: getFuturesCandles
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Короткий код фьючерса, например 'SiH5'
+        - name: from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          description: Начало периода (ISO 8601)
+        - name: till
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          description: Окончание периода (ISO 8601)
+        - name: interval
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [1, 10, 60, 24, 7, 31, 4]
+          description: Интервал свечи (1-мин, 10-мин, 60-мин, 24-день, 7-неделя, 31-месяц, 4-квартал)
+      security:
+        - bearerAuth: []
+      description: |-
+        Свечи OHLCV по одному выбранному фьючерсному контракту.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time свечи                    |
+        | NOT AUTHORIZED   | iss    | 15 мин. задержанные данные         |
+
+        [Описание метрик](/docs/description/realtime#candles-1)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandlesResponse'
+              example:
+                candles:
+                  metadata:
+                    open: { type: "double" }
+                    close: { type: "double" }
+                    high: { type: "double" }
+                    low: { type: "double" }
+                    value: { type: "int64" }
+                    volume: { type: "double" }
+                    begin: { type: "datetime", bytes: 19, max_size: 0 }
+                    end: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - "open"
+                    - "close"
+                    - "high"
+                    - "low"
+                    - "value"
+                    - "volume"
+                    - "begin"
+                    - "end"
+                  data:
+                    - [3141.5, 3141.5, 3141.5, 3141.5, 0, 1, "2025-12-22 12:40:00", "2025-12-22 12:42:01"]
+                    - [3176, 3176, 3176, 3176, 0, 1, "2025-12-23 13:50:00", "2025-12-23 13:56:21"]
+                    - [3159, 3159, 3159, 3159, 0, 1, "2025-12-24 11:40:00", "2025-12-24 11:44:01"]
+                    - [3181.5, 3271.5, 3271.5, 3181.5, 0, 12, "2025-12-26 09:30:00", "2025-12-26 09:39:59"]
+                    - [3197, 3197, 3197, 3197, 0, 2, "2025-12-26 09:40:00", "2025-12-26 09:45:21"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/engines/futures/markets/forts/boards/rfud/securities/{ticker}/orderbook.json:
+    get:
+      tags:
+        - Real-time market data - Фьючерсы
+      summary: Стакан котировок по инструменту
+      operationId: getFuturesOrderbook
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Короткий код фьючерса, например 'SiH5'
+      description: |-
+        Стакан котировок по одному указанному фьючерсному контракту.
+
+        20 уровней Buy, 20 уровней Sell
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time стакан                   |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+       
+        [Описание метрик](/docs/description/realtime#orderbook-1)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderbookResponse'
+              example:
+                orderbook:
+                  metadata:
+                    BOARDID:
+                      type: string
+                      bytes: 12
+                      max_size: 0
+                    SECID:
+                      type: string
+                      bytes: 12
+                      max_size: 0
+                    BUYSELL:
+                      type: string
+                      bytes: 3
+                      max_size: 0
+                    PRICE:
+                      type: int64
+                    QUANTITY:
+                      type: int64
+                    SEQNUM:
+                      type: int64
+                    UPDATETIME:
+                      type: time
+                      bytes: 10
+                      max_size: 0
+                    DECIMALS:
+                      type: int64
+                  columns:
+                    - BOARDID
+                    - SECID
+                    - BUYSELL
+                    - PRICE
+                    - QUANTITY
+                    - SEQNUM
+                    - UPDATETIME
+                    - DECIMALS
+                  data:
+                    - ["RFUD", "SiH6", "B", 79623, 13, 20260112092649, "09:26:48", 0]
+                    - ["RFUD", "SiH6", "B", 79624, 12, 20260112092649, "09:26:48", 0]
+                    - ["RFUD", "SiH6", "B", 79625, 31, 20260112092649, "09:26:48", 0]
+                    - ["RFUD", "SiH6", "B", 79626, 4, 20260112092649, "09:26:48", 0]
+                    - ["RFUD", "SiH6", "B", 79627, 4, 20260112092649, "09:26:48", 0]
+                dataversion:
+                  metadata:
+                    data_version:
+                      type: int32
+                    seqnum:
+                      type: int64
+                    trade_date:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                    trade_session_date:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                  columns:
+                    - data_version
+                    - seqnum
+                    - trade_date
+                    - trade_session_date
+                  data:
+                    - [12668, 20260112092655, "2026-01-12", "2026-01-12"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/engines/futures/markets/forts/boards/rfud/securities/{ticker}/trades.json:
+    get:
+      tags:
+        - Real-time market data - Фьючерсы
+      summary: Все сделки по инструменту
+      operationId: getFuturesTrades
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Короткий код фьючерса, например 'SiH5'
+        - name: tradeno
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int64
+          description: Получить сделки, которые идут начиная с указанного номера
+      security:
+        - bearerAuth: []
+      description: |-
+        Все сделки по одному выбранному фьючерсному контракту за текущий торговый день.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time сделки                   |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/realtime#trades-1)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FuturesTradesResponse'
+        '401':
+          description: Unauthorized
+        
+
+  # Super Candles - Акции
+  /iss/datashop/algopack/eq/tradestats.json:
+    get:
+      tags:
+        - Super Candles - Акции
+      summary: Акции, tradestats
+      operationId: getEqTradestats
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата торгов (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 1000
+            maximum: 1000
+          description: Number of records to return.
+      description: |-
+        Метрики рассчитанные на основе потока сделок (tradestats).
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#tradestats) | [Методология расчета](/docs/method/supercandles#tradestats) 
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 36, max_size: 0 }
+                    pr_open: { type: "double" }
+                    pr_high: { type: "double" }
+                    pr_low: { type: "double" }
+                    pr_close: { type: "double" }
+                    pr_std: { type: "double" }
+                    vol: { type: "int32" }
+                    val: { type: "double" }
+                    trades: { type: "int32" }
+                    pr_vwap: { type: "double" }
+                    pr_change: { type: "double" }
+                    trades_b: { type: "int32" }
+                    trades_s: { type: "int32" }
+                    val_b: { type: "double" }
+                    val_s: { type: "double" }
+                    vol_b: { type: "int64" }
+                    vol_s: { type: "int64" }
+                    disb: { type: "double" }
+                    pr_vwap_b: { type: "double" }
+                    pr_vwap_s: { type: "double" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                    sec_pr_open: { type: "int32" }
+                    sec_pr_high: { type: "int32" }
+                    sec_pr_low: { type: "int32" }
+                    sec_pr_close: { type: "int32" }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - pr_open
+                    - pr_high
+                    - pr_low
+                    - pr_close
+                    - pr_std
+                    - vol
+                    - val
+                    - trades
+                    - pr_vwap
+                    - pr_change
+                    - trades_b
+                    - trades_s
+                    - val_b
+                    - val_s
+                    - vol_b
+                    - vol_s
+                    - disb
+                    - pr_vwap_b
+                    - pr_vwap_s
+                    - SYSTIME
+                    - sec_pr_open
+                    - sec_pr_high
+                    - sec_pr_low
+                    - sec_pr_close
+                  data:
+                    - ["2026-01-09", "07:00:00", "AFKS", 12.766, 12.766, 12.766, 12.766, 0, 25, 31915, 4, 12.766, 0, 0, 4, 0, 31915, 0, 25, -1, null, 12.766, "2026-01-09 07:00:10", 285, 285, 285, 285]
+                    - ["2026-01-09", "07:00:00", "AFLT", 56.58, 56.58, 56.58, 56.58, 0, 165, 93357, 12, 56.58, 0, 2, 10, 69593, 23764, 123, 42, 0.49, 56.58, 56.58, "2026-01-09 07:00:10", 288, 288, 288, 288]
+                    - ["2026-01-09", "07:00:00", "ALRS", 40.71, 40.71, 40.71, 40.71, 0, 6, 2443, 4, 40.71, 0, 0, 4, 0, 2443, 0, 6, -1, null, 40.71, "2026-01-09 07:00:10", 273, 273, 273, 273]
+                    - ["2026-01-09", "07:00:00", "AQUA", 492.1, 492.1, 492.1, 492.1, 0, 5, 2460, 2, 492.1, 0, 2, 0, 2460, 0, 5, 0, 1, 492.1, null, "2026-01-09 07:00:10", 277, 277, 277, 277]
+                    - ["2026-01-09", "07:00:00", "ASTR", 245.45, 245.45, 245.45, 245.45, 0, 7, 1718, 4, 245.45, 0, 4, 0, 1718, 0, 7, 0, 1, 245.45, null, "2026-01-09 07:00:10", 297, 297, 297, 297]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 28840, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/eq/tradestats/{ticker}.json:
+    get:
+      tags:
+        - Super Candles - Акции
+      summary: Акции, tradestats (один инструмент)
+      operationId: getEqTradestatsForTicker
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код ценной бумаги
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата начала периода (YYYY-MM-DD)
+        - name: till
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата окончания периода (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе потока сделок (tradestats) по одному инструменту.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#tradestats) | [Методология расчета](/docs/method/supercandles#tradestats) 
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate:
+                      type: date
+                      bytes: 10
+                      max_size: 0
+                    tradetime:
+                      type: time
+                      bytes: 10
+                      max_size: 0
+                    secid:
+                      type: string
+                      bytes: 36
+                      max_size: 0
+                    pr_open:
+                      type: double
+                    pr_high:
+                      type: double
+                    pr_low:
+                      type: double
+                    pr_close:
+                      type: double
+                    pr_std:
+                      type: double
+                    vol:
+                      type: int32
+                    val:
+                      type: double
+                    trades:
+                      type: int32
+                    pr_vwap:
+                      type: double
+                    pr_change:
+                      type: double
+                    trades_b:
+                      type: int32
+                    trades_s:
+                      type: int32
+                    val_b:
+                      type: double
+                    val_s:
+                      type: double
+                    vol_b:
+                      type: int64
+                    vol_s:
+                      type: int64
+                    disb:
+                      type: double
+                    pr_vwap_b:
+                      type: double
+                    pr_vwap_s:
+                      type: double
+                    SYSTIME:
+                      type: datetime
+                      bytes: 19
+                      max_size: 0
+                    sec_pr_open:
+                      type: int32
+                    sec_pr_high:
+                      type: int32
+                    sec_pr_low:
+                      type: int32
+                    sec_pr_close:
+                      type: int32
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - pr_open
+                    - pr_high
+                    - pr_low
+                    - pr_close
+                    - pr_std
+                    - vol
+                    - val
+                    - trades
+                    - pr_vwap
+                    - pr_change
+                    - trades_b
+                    - trades_s
+                    - val_b
+                    - val_s
+                    - vol_b
+                    - vol_s
+                    - disb
+                    - pr_vwap_b
+                    - pr_vwap_s
+                    - SYSTIME
+                    - sec_pr_open
+                    - sec_pr_high
+                    - sec_pr_low
+                    - sec_pr_close
+                  data:
+                    - ["2026-01-09", "07:00:00", "SBER", 298.07, 298.07, 298.07, 298.07, 0, 3319, 989294, 35, 298.07, 0, 28, 7, 960680, 28615, 3223, 96, 0.94, 298.07, 298.07, "2026-01-09 07:00:10", 282, 282, 282, 282]
+                    - ["2026-01-09", "07:05:00", "SBER", 298.07, 298.35, 298, 298.04, 0.0001, 79046, 23561913, 416, 298.08, -0.0101, 243, 173, 13518525, 10043388, 45347, 33699, 0.15, 298.11, 298.03, "2026-01-09 07:05:10", 1, 244, 1, 300]
+                    - ["2026-01-09", "07:10:00", "SBER", 298.02, 298.42, 297.98, 298.41, 0.0001, 9991, 2979321, 132, 298.2, 0.1309, 78, 54, 1173980, 1805341, 3936, 6055, -0.21, 298.27, 298.16, "2026-01-09 07:10:10", 2, 295, 4, 300]
+                    - ["2026-01-09", "07:15:00", "SBER", 298.41, 298.42, 298.22, 298.27, 0.0001, 40236, 12003520, 138, 298.33, -0.0469, 74, 64, 1639471, 10364049, 5496, 34740, -0.73, 298.3, 298.33, "2026-01-09 07:15:10", 1, 6, 38, 300]
+                    - ["2026-01-09", "07:20:00", "SBER", 298.27, 298.27, 298.18, 298.21, 0, 14094, 4203141, 111, 298.22, -0.0201, 52, 59, 651674, 3551468, 2185, 11909, -0.69, 298.25, 298.22, "2026-01-09 07:20:10", 1, 1, 288, 300]
+                data.cursor:
+                  metadata:
+                    INDEX:
+                      type: int64
+                    TOTAL:
+                      type: int64
+                    PAGESIZE:
+                      type: int64
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 199, 1000]
+                data.dates:
+                  metadata:
+                    from:
+                      type: date
+                      bytes: 30
+                      max_size: 0
+                    till:
+                      type: date
+                      bytes: 30
+                      max_size: 0
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/eq/obstats.json:
+    get:
+      tags:
+        - Super Candles - Акции
+      summary: Акции, obstats
+      operationId: getEqObstats
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата торгов (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе стакана котировок (obstats).
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#obstats) | [Методология расчета](/docs/method/supercandles#obstats) 
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 36, max_size: 0 }
+                    spread_bbo: { type: "double" }
+                    spread_lv10: { type: "double" }
+                    spread_1mio: { type: "double" }
+                    levels_b: { type: "int32" }
+                    levels_s: { type: "int32" }
+                    vol_b: { type: "int64" }
+                    vol_s: { type: "int64" }
+                    val_b: { type: "int64" }
+                    val_s: { type: "int64" }
+                    imbalance_vol_bbo: { type: "double" }
+                    imbalance_val_bbo: { type: "double" }
+                    imbalance_vol: { type: "double" }
+                    imbalance_val: { type: "double" }
+                    vwap_b: { type: "double" }
+                    vwap_s: { type: "double" }
+                    vwap_b_1mio: { type: "double" }
+                    vwap_s_1mio: { type: "double" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - spread_bbo
+                    - spread_lv10
+                    - spread_1mio
+                    - levels_b
+                    - levels_s
+                    - vol_b
+                    - vol_s
+                    - val_b
+                    - val_s
+                    - imbalance_vol_bbo
+                    - imbalance_val_bbo
+                    - imbalance_vol
+                    - imbalance_val
+                    - vwap_b
+                    - vwap_s
+                    - vwap_b_1mio
+                    - vwap_s_1mio
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "07:05:00", "ABIO", 14.8, 71.1, 180.5, 92, 132, 4450, 7981, 2931985, 5649679, 0.72, 0.72, -0.3, -0.33, 65.87, 70.82, 67.11, 68.32, "2026-01-09 07:05:12"]
+                    - ["2026-01-09", "07:05:00", "ABRD", 44.5, 307.1, 212.2, 47, 46, 2250, 3067, 3486318, 5073082, -0.38, -0.38, -0.16, -0.19, 154.7, 165.5, 157.6, 160.9, "2026-01-09 07:05:12"]
+                    - ["2026-01-09", "07:05:00", "AFKS", 5.6, 43.6, 25.2, 260, 163, 31457, 34099, 39165974, 45254203, -0.47, -0.47, -0.04, -0.07, 12.449, 13.274, 12.745, 12.777, "2026-01-09 07:05:12"]
+                    - ["2026-01-09", "07:05:00", "AFLT", 4.5, 43.9, 13.3, 251, 301, 210715, 167850, 115218046, 98786044, 0.3, 0.3, 0.11, 0.08, 54.68, 58.86, 56.68, 56.75, "2026-01-09 07:05:12"]
+                    - ["2026-01-09", "07:05:00", "AKRN", 67.5, 244.4, 163.3, 34, 43, 233, 236, 4105073, 4358505, 0.74, 0.74, -0, -0.03, 17544, 18470, 17847, 18139, "2026-01-09 07:05:12"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 49661, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/eq/obstats/{ticker}.json:
+    get:
+      tags:
+        - Super Candles - Акции
+      summary: Акции, obstats (один инструмент)
+      operationId: getEqObstatsForTicker
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код ценной бумаги
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата начала периода (YYYY-MM-DD)
+        - name: till
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата окончания периода (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе стакана котировок (obstats) по одному инструменту.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#obstats) | [Методология расчета](/docs/method/supercandles#obstats) 
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 36, max_size: 0 }
+                    spread_bbo: { type: "double" }
+                    spread_lv10: { type: "double" }
+                    spread_1mio: { type: "double" }
+                    levels_b: { type: "int32" }
+                    levels_s: { type: "int32" }
+                    vol_b: { type: "int64" }
+                    vol_s: { type: "int64" }
+                    val_b: { type: "int64" }
+                    val_s: { type: "int64" }
+                    imbalance_vol_bbo: { type: "double" }
+                    imbalance_val_bbo: { type: "double" }
+                    imbalance_vol: { type: "double" }
+                    imbalance_val: { type: "double" }
+                    vwap_b: { type: "double" }
+                    vwap_s: { type: "double" }
+                    vwap_b_1mio: { type: "double" }
+                    vwap_s_1mio: { type: "double" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - spread_bbo
+                    - spread_lv10
+                    - spread_1mio
+                    - levels_b
+                    - levels_s
+                    - vol_b
+                    - vol_s
+                    - val_b
+                    - val_s
+                    - imbalance_vol_bbo
+                    - imbalance_val_bbo
+                    - imbalance_vol
+                    - imbalance_val
+                    - vwap_b
+                    - vwap_s
+                    - vwap_b_1mio
+                    - vwap_s_1mio
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "07:05:00", "SBER", 1.2, 14.7, 2.8, 794, 1133, 1009308, 2763144, 293637577, 852747627, 0.05, 0.05, -0.46, -0.49, 290.93, 308.62, 298.06, 298.15, "2026-01-09 07:05:12"]
+                    - ["2026-01-09", "07:10:00", "SBER", 0.5, 12.1, 3.6, 807, 1217, 1073773, 2885654, 312667002, 889565439, 0.74, 0.74, -0.46, -0.48, 291.18, 308.27, 298.22, 298.33, "2026-01-09 07:10:12"]
+                    - ["2026-01-09", "07:15:00", "SBER", 1.3, 11, 2.6, 827, 1234, 1122889, 2991946, 327147834, 921662169, 0.02, 0.02, -0.45, -0.48, 291.34, 308.05, 298.27, 298.34, "2026-01-09 07:15:12"]
+                    - ["2026-01-09", "07:20:00", "SBER", 0.4, 10, 1, 838, 1254, 1135800, 3046346, 330979373, 938095966, -0.49, -0.49, -0.46, -0.48, 291.41, 307.94, 298.22, 298.25, "2026-01-09 07:20:12"]
+                    - ["2026-01-09", "07:25:00", "SBER", 0.7, 8.9, 1.8, 839, 1278, 1131364, 3055541, 329653266, 940884646, -0.65, -0.65, -0.46, -0.48, 291.38, 307.93, 298.16, 298.21, "2026-01-09 07:25:12"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 197, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/eq/orderstats.json:
+    get:
+      tags:
+        - Super Candles - Акции
+      summary: Акции, orderstats
+      operationId: getEqOrderstats
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата торгов (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе потока заявок (orderstats).
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#orderstats) | [Методология расчета](/docs/method/supercandles#orderstats) 
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 36, max_size: 0 }
+                    put_orders_b: { type: "int32" }
+                    put_orders_s: { type: "int32" }
+                    put_val_b: { type: "double" }
+                    put_val_s: { type: "double" }
+                    put_vol_b: { type: "int32" }
+                    put_vol_s: { type: "int32" }
+                    put_vwap_b: { type: "double" }
+                    put_vwap_s: { type: "double" }
+                    put_vol: { type: "int32" }
+                    put_val: { type: "double" }
+                    put_orders: { type: "int32" }
+                    cancel_orders_b: { type: "int32" }
+                    cancel_orders_s: { type: "int32" }
+                    cancel_val_b: { type: "double" }
+                    cancel_val_s: { type: "double" }
+                    cancel_vol_b: { type: "int32" }
+                    cancel_vol_s: { type: "int64" }
+                    cancel_vwap_b: { type: "double" }
+                    cancel_vwap_s: { type: "double" }
+                    cancel_vol: { type: "int64" }
+                    cancel_val: { type: "double" }
+                    cancel_orders: { type: "int64" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - put_orders_b
+                    - put_orders_s
+                    - put_val_b
+                    - put_val_s
+                    - put_vol_b
+                    - put_vol_s
+                    - put_vwap_b
+                    - put_vwap_s
+                    - put_vol
+                    - put_val
+                    - put_orders
+                    - cancel_orders_b
+                    - cancel_orders_s
+                    - cancel_val_b
+                    - cancel_val_s
+                    - cancel_vol_b
+                    - cancel_vol_s
+                    - cancel_vwap_b
+                    - cancel_vwap_s
+                    - cancel_vol
+                    - cancel_val
+                    - cancel_orders
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "06:55:00", "ABIO", 128, 217, 1145123, 3528281, 1743, 4919, 65.7, 71.73, 6662, 4673404, 345, 1, 2, 4063, 19087, 6, 27, 67.72, 70.69, 33, 23150, 3, "2026-01-09 06:55:11"]
+                    - ["2026-01-09", "06:55:00", "ABRD", 125, 66, 1157190, 2923650, 755, 1748, 153.3, 167.3, 2503, 4080840, 191, 0, 2, 0, 36256, 0, 22, null, 164.8, 22, 36256, 2, "2026-01-09 06:55:11"]
+                    - ["2026-01-09", "06:55:00", "AFKS", 452, 226, 19498532, 16956557, 15824, 12532, 12.322, 13.531, 28356, 36455089, 678, 18, 13, 1029901, 848473, 827, 646, 12.453, 13.134, 1473, 1878374, 31, "2026-01-09 06:55:11"]
+                    - ["2026-01-09", "06:55:00", "AFLT", 598, 710, 74091292, 73351452, 135613, 124531, 54.63, 58.9, 260144, 147442744, 1308, 7, 7, 140941, 2031527, 251, 3571, 56.15, 56.89, 3822, 2172468, 14, "2026-01-09 06:55:11"]
+                    - ["2026-01-09", "06:55:00", "AKRN", 32, 46, 1314018, 1433062, 75, 77, 17520, 18611, 152, 2747080, 78, 2, 2, 35560, 73360, 2, 4, 17780, 18340, 6, 108920, 4, "2026-01-09 06:55:11"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 48132, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/eq/orderstats/{ticker}.json:
+    get:
+      tags:
+        - Super Candles - Акции
+      summary: Акции, orderstats (один инструмент)
+      operationId: getEqOrderstatsForTicker
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код ценной бумаги
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата начала периода (YYYY-MM-DD)
+        - name: till
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата окончания периода (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе потока заявок (orderstats) по одному инструменту.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#orderstats) | [Методология расчета](/docs/method/supercandles#orderstats) 
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 36, max_size: 0 }
+                    put_orders_b: { type: "int32" }
+                    put_orders_s: { type: "int32" }
+                    put_val_b: { type: "double" }
+                    put_val_s: { type: "double" }
+                    put_vol_b: { type: "int32" }
+                    put_vol_s: { type: "int32" }
+                    put_vwap_b: { type: "double" }
+                    put_vwap_s: { type: "double" }
+                    put_vol: { type: "int32" }
+                    put_val: { type: "double" }
+                    put_orders: { type: "int32" }
+                    cancel_orders_b: { type: "int32" }
+                    cancel_orders_s: { type: "int32" }
+                    cancel_val_b: { type: "double" }
+                    cancel_val_s: { type: "double" }
+                    cancel_vol_b: { type: "int32" }
+                    cancel_vol_s: { type: "int64" }
+                    cancel_vwap_b: { type: "double" }
+                    cancel_vwap_s: { type: "double" }
+                    cancel_vol: { type: "int64" }
+                    cancel_val: { type: "double" }
+                    cancel_orders: { type: "int64" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - put_orders_b
+                    - put_orders_s
+                    - put_val_b
+                    - put_val_s
+                    - put_vol_b
+                    - put_vol_s
+                    - put_vwap_b
+                    - put_vwap_s
+                    - put_vol
+                    - put_val
+                    - put_orders
+                    - cancel_orders_b
+                    - cancel_orders_s
+                    - cancel_val_b
+                    - cancel_val_s
+                    - cancel_vol_b
+                    - cancel_vol_s
+                    - cancel_vwap_b
+                    - cancel_vwap_s
+                    - cancel_vol
+                    - cancel_val
+                    - cancel_orders
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "06:55:00", "SBER", 3377, 3769, 224248683, 782948071, 773271, 2533935, 290, 308.99, 3307206, 1007196754, 7146, 21, 9, 1049245, 823425, 3637, 2707, 288.49, 304.18, 6344, 1872670, 30, "2026-01-09 06:55:11"]
+                    - ["2026-01-09", "07:00:00", "SBER", 138, 91, 61137603, 34468747, 211637, 113390, 288.88, 303.98, 325027, 95606350, 229, 58, 10, 809600, 365903, 2753, 1203, 294.08, 304.16, 3956, 1175504, 68, "2026-01-09 07:00:11"]
+                    - ["2026-01-09", "07:05:00", "SBER", 5979, 1338, 2734769639, 317898430, 9197380, 1066207, 297.34, 298.16, 10263587, 3052668070, 7317, 5499, 691, 2697059899, 251460800, 9063288, 842422, 297.58, 298.5, 9905710, 2948520699, 6190, "2026-01-09 07:05:11"]
+                    - ["2026-01-09", "07:10:00", "SBER", 898, 576, 366464419, 303964825, 1232293, 1017239, 297.38, 298.81, 2249532, 670429244, 1474, 784, 429, 346815903, 255054369, 1164563, 853883, 297.81, 298.7, 2018446, 601870273, 1213, "2026-01-09 07:10:11"]
+                    - ["2026-01-09", "07:15:00", "SBER", 745, 914, 434234056, 392967981, 1459001, 1329536, 297.62, 295.57, 2788537, 827202038, 1659, 620, 739, 418629327, 378558331, 1404750, 1267727, 298.01, 298.61, 2672477, 797187658, 1359, "2026-01-09 07:15:11"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 204, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  # Super Candles - Фьючерсы
+  /iss/datashop/algopack/fo/tradestats.json:
+    get:
+      tags:
+        - Super Candles - Фьючерсы
+      summary: Фьючерсы, tradestats
+      operationId: getFoTradestats
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата торгов (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе потока сделок (tradestats) по фьючерсам.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#tradestats-1) | [Методология расчета](/docs/method/supercandles#tradestats)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    asset_code: { type: "string", bytes: 36, max_size: 0 }
+                    pr_open: { type: "double" }
+                    pr_high: { type: "double" }
+                    pr_low: { type: "double" }
+                    pr_close: { type: "double" }
+                    pr_std: { type: "double" }
+                    vol: { type: "int64" }
+                    val: { type: "int64" }
+                    trades: { type: "int32" }
+                    pr_vwap: { type: "double" }
+                    pr_change: { type: "double" }
+                    trades_b: { type: "int32" }
+                    trades_s: { type: "int32" }
+                    val_b: { type: "double" }
+                    val_s: { type: "double" }
+                    vol_b: { type: "int64" }
+                    vol_s: { type: "int64" }
+                    disb: { type: "double" }
+                    pr_vwap_b: { type: "double" }
+                    pr_vwap_s: { type: "double" }
+                    im: { type: "double" }
+                    oi_open: { type: "int64" }
+                    oi_high: { type: "int64" }
+                    oi_low: { type: "int64" }
+                    oi_close: { type: "int64" }
+                    sec_pr_open: { type: "int32" }
+                    sec_pr_high: { type: "int32" }
+                    sec_pr_low: { type: "int32" }
+                    sec_pr_close: { type: "int32" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - asset_code
+                    - pr_open
+                    - pr_high
+                    - pr_low
+                    - pr_close
+                    - pr_std
+                    - vol
+                    - val
+                    - trades
+                    - pr_vwap
+                    - pr_change
+                    - trades_b
+                    - trades_s
+                    - val_b
+                    - val_s
+                    - vol_b
+                    - vol_s
+                    - disb
+                    - pr_vwap_b
+                    - pr_vwap_s
+                    - im
+                    - oi_open
+                    - oi_high
+                    - oi_low
+                    - oi_close
+                    - sec_pr_open
+                    - sec_pr_high
+                    - sec_pr_low
+                    - sec_pr_close
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "09:00:00", "ALH6", "ALRS", 4215, 4215, 4215, 4215, null, 1, 4215, 1, 4215, 0, 1, 0, 4215, 0, 1, 0, 1, 4215, null, 1108, 118478, 118478, 118478, 118478, 288, 288, 288, 288, "2026-01-09 09:00:07"]
+                    - ["2026-01-09", "09:00:00", "ANH6", "ALUM", 3140, 3140, 3140, 3140, 0, 17, 417575, 14, 3140, 0, 13, 1, 393011.4, 24563.2, 16, 1, 0.88, 3140, 3140, 3137.6, 17372, 17374, 17372, 17374, 288, 288, 288, 288, "2026-01-09 09:00:07"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 18150, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/fo/tradestats/{ticker}.json:
+    get:
+      tags:
+        - Super Candles - Фьючерсы
+      summary: Фьючерсы, tradestats (один инструмент)
+      operationId: getFoTradestatsForTicker
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код фьючерса
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата начала периода (YYYY-MM-DD)
+        - name: till
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата окончания периода (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе потока сделок (tradestats) по одному фьючерсу.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#tradestats-1) | [Методология расчета](/docs/method/supercandles#tradestats)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    asset_code: { type: "string", bytes: 36, max_size: 0 }
+                    pr_open: { type: "double" }
+                    pr_high: { type: "double" }
+                    pr_low: { type: "double" }
+                    pr_close: { type: "double" }
+                    pr_std: { type: "double" }
+                    vol: { type: "int64" }
+                    val: { type: "int64" }
+                    trades: { type: "int32" }
+                    pr_vwap: { type: "double" }
+                    pr_change: { type: "double" }
+                    trades_b: { type: "int32" }
+                    trades_s: { type: "int32" }
+                    val_b: { type: "double" }
+                    val_s: { type: "double" }
+                    vol_b: { type: "int64" }
+                    vol_s: { type: "int64" }
+                    disb: { type: "double" }
+                    pr_vwap_b: { type: "double" }
+                    pr_vwap_s: { type: "double" }
+                    im: { type: "double" }
+                    oi_open: { type: "int64" }
+                    oi_high: { type: "int64" }
+                    oi_low: { type: "int64" }
+                    oi_close: { type: "int64" }
+                    sec_pr_open: { type: "int32" }
+                    sec_pr_high: { type: "int32" }
+                    sec_pr_low: { type: "int32" }
+                    sec_pr_close: { type: "int32" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - asset_code
+                    - pr_open
+                    - pr_high
+                    - pr_low
+                    - pr_close
+                    - pr_std
+                    - vol
+                    - val
+                    - trades
+                    - pr_vwap
+                    - pr_change
+                    - trades_b
+                    - trades_s
+                    - val_b
+                    - val_s
+                    - vol_b
+                    - vol_s
+                    - disb
+                    - pr_vwap_b
+                    - pr_vwap_s
+                    - im
+                    - oi_open
+                    - oi_high
+                    - oi_low
+                    - oi_close
+                    - sec_pr_open
+                    - sec_pr_high
+                    - sec_pr_low
+                    - sec_pr_close
+                    - SYSTIME
+                  data:
+                    - ["2024-06-19", "10:00:00", "RIM4", "RTS", 114470, 114470, 114470, 114470, 0, 12, 2446887, 5, 114470, 0, 4, 1, 2242980, 203907, 11, 1, 0.83, 114470, 114470, null, 40216, 40230, 40216, 40230, 278, 278, 278, 278, "2025-06-17 07:07:02"]
+                    - ["2024-06-19", "10:05:00", "RIM4", "RTS", 114370, 114870, 114290, 114790, 150.3764, 1665, 339943014, 756, 114617, 0.3672, 424, 332, 189466577, 150476438, 928, 737, 0.11, 114616, 114620, 34796, 40232, 40244, 39518, 39538, 1, 234, 3, 297, "2025-06-17 07:07:03"]
+                    - ["2024-06-19", "10:10:00", "RIM4", "RTS", 114790, 114810, 114310, 114670, 106.5676, 954, 194664706, 581, 114551, -0.1045, 280, 301, 86733113, 107931593, 425, 529, -0.11, 114566, 114539, 34796, 39538, 39652, 39366, 39644, 1, 6, 251, 300, "2025-06-17 07:07:04"]
+                    - ["2024-06-19", "10:15:00", "RIM4", "RTS", 114670, 114820, 114280, 114590, 149.092, 1413, 288380650, 671, 114573, -0.0698, 326, 345, 168638130, 119742520, 826, 587, 0.17, 114613, 114517, 34796, 39646, 40308, 39646, 40308, 2, 62, 165, 298, "2025-06-17 07:07:05"]
+                    - ["2024-06-19", "10:20:00", "RIM4", "RTS", 114590, 115040, 114590, 114840, 99.1863, 1628, 333244144, 875, 114912, 0.2182, 513, 362, 208608189, 124635955, 1019, 609, 0.25, 114925, 114891, 34796, 40308, 40744, 40308, 40744, 6, 117, 6, 292, "2025-06-17 07:07:06"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 163, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2023-12-07", "2024-06-19"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/fo/obstats.json:
+    get:
+      tags:
+        - Super Candles - Фьючерсы
+      summary: Фьючерсы, obstats
+      operationId: getFoObstats
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата торгов (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе стакана котировок (obstats) по фьючерсам.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#obstats-1) | [Методология расчета](/docs/method/supercandles#obstats)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    asset_code: { type: "string", bytes: 36, max_size: 0 }
+                    mid_price: { type: "double" }
+                    micro_price: { type: "double" }
+                    spread_l1: { type: "double" }
+                    spread_l2: { type: "double" }
+                    spread_l3: { type: "double" }
+                    spread_l5: { type: "double" }
+                    spread_l10: { type: "double" }
+                    spread_l20: { type: "double" }
+                    levels_b: { type: "int32" }
+                    levels_s: { type: "int32" }
+                    vol_b_l1: { type: "int64" }
+                    vol_b_l2: { type: "int64" }
+                    vol_b_l3: { type: "int64" }
+                    vol_b_l5: { type: "int64" }
+                    vol_b_l10: { type: "int64" }
+                    vol_b_l20: { type: "int64" }
+                    vol_s_l1: { type: "int64" }
+                    vol_s_l2: { type: "int64" }
+                    vol_s_l3: { type: "int64" }
+                    vol_s_l5: { type: "int64" }
+                    vol_s_l10: { type: "int64" }
+                    vol_s_l20: { type: "int64" }
+                    vwap_b_l3: { type: "double" }
+                    vwap_b_l5: { type: "double" }
+                    vwap_b_l10: { type: "double" }
+                    vwap_b_l20: { type: "double" }
+                    vwap_s_l3: { type: "double" }
+                    vwap_s_l5: { type: "double" }
+                    vwap_s_l10: { type: "double" }
+                    vwap_s_l20: { type: "double" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - asset_code
+                    - mid_price
+                    - micro_price
+                    - spread_l1
+                    - spread_l2
+                    - spread_l3
+                    - spread_l5
+                    - spread_l10
+                    - spread_l20
+                    - levels_b
+                    - levels_s
+                    - vol_b_l1
+                    - vol_b_l2
+                    - vol_b_l3
+                    - vol_b_l5
+                    - vol_b_l10
+                    - vol_b_l20
+                    - vol_s_l1
+                    - vol_s_l2
+                    - vol_s_l3
+                    - vol_s_l5
+                    - vol_s_l10
+                    - vol_s_l20
+                    - vwap_b_l3
+                    - vwap_b_l5
+                    - vwap_b_l10
+                    - vwap_b_l20
+                    - vwap_s_l3
+                    - vwap_s_l5
+                    - vwap_s_l10
+                    - vwap_s_l20
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "08:55:00", "AAH6", "AFRICA", 71.28, 71.28, 467.1, 731, 793.6, 1158.5, null, null, 7, 7, 1, 1, 1, 15, 0, 0, 1, 1, 1, 1, 0, 0, 69.35, 67.61, null, null, 73.95, 74.31, null, null, "2026-01-09 08:55:08"]
+                    - ["2026-01-09", "08:55:00", "AAM6", "AFRICA", 70.32, 72.11, 792.4, 806.2, 880.8, 1008.2, null, null, 8, 8, 5, 1, 1, 21, 0, 0, 1, 1, 1, 1, 0, 0, 67.62, 67.49, null, null, 73.18, 73.6, null, null, "2026-01-09 08:55:08"]
+                    - ["2026-01-09", "08:55:00", "AEH6", "AED", 21.123, 21.737, 911.8, 1924.8, null, null, null, null, 2, 2, 5, 317, 0, 0, 0, 0, 1, 27, 0, 0, 0, 0, null, null, null, null, null, null, null, null, "2026-01-09 08:55:08"]
+                    - ["2026-01-09", "08:55:00", "AEM6", "AED", 22.274, 22.274, 861.7, 1787.2, null, null, null, null, 3, 2, 1, 6, 89, 0, 0, 0, 1, 20, 0, 0, 0, 0, 20.584, null, null, null, null, null, null, null, "2026-01-09 08:55:08"]
+                    - ["2026-01-09", "08:55:00", "AFH6", "AFLT", 5875, 5882, 17.8, 159, 190.2, 281.8, 525, 916.6, 20, 20, 3, 30, 19, 13, 22, 7, 1, 2, 6, 1, 22, 27, 5808, 5795, 5746, 5701, 5899, 5903, 5972, 6005, "2026-01-09 08:55:08"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 67549, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/fo/obstats/{ticker}.json:
+    get:
+      tags:
+        - Super Candles - Фьючерсы
+      summary: Фьючерсы, obstats (один инструмент)
+      operationId: getFoObstatsForTicker
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код фьючерса
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата начала периода (YYYY-MM-DD)
+        - name: till
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата окончания периода (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе стакана котировок (obstats) по одному фьючерсу.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#obstats-1) | [Методология расчета](/docs/method/supercandles#obstats)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    asset_code: { type: "string", bytes: 36, max_size: 0 }
+                    mid_price: { type: "double" }
+                    micro_price: { type: "double" }
+                    spread_l1: { type: "double" }
+                    spread_l2: { type: "double" }
+                    spread_l3: { type: "double" }
+                    spread_l5: { type: "double" }
+                    spread_l10: { type: "double" }
+                    spread_l20: { type: "double" }
+                    levels_b: { type: "int32" }
+                    levels_s: { type: "int32" }
+                    vol_b_l1: { type: "int64" }
+                    vol_b_l2: { type: "int64" }
+                    vol_b_l3: { type: "int64" }
+                    vol_b_l5: { type: "int64" }
+                    vol_b_l10: { type: "int64" }
+                    vol_b_l20: { type: "int64" }
+                    vol_s_l1: { type: "int64" }
+                    vol_s_l2: { type: "int64" }
+                    vol_s_l3: { type: "int64" }
+                    vol_s_l5: { type: "int64" }
+                    vol_s_l10: { type: "int64" }
+                    vol_s_l20: { type: "int64" }
+                    vwap_b_l3: { type: "double" }
+                    vwap_b_l5: { type: "double" }
+                    vwap_b_l10: { type: "double" }
+                    vwap_b_l20: { type: "double" }
+                    vwap_s_l3: { type: "double" }
+                    vwap_s_l5: { type: "double" }
+                    vwap_s_l10: { type: "double" }
+                    vwap_s_l20: { type: "double" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - asset_code
+                    - mid_price
+                    - micro_price
+                    - spread_l1
+                    - spread_l2
+                    - spread_l3
+                    - spread_l5
+                    - spread_l10
+                    - spread_l20
+                    - levels_b
+                    - levels_s
+                    - vol_b_l1
+                    - vol_b_l2
+                    - vol_b_l3
+                    - vol_b_l5
+                    - vol_b_l10
+                    - vol_b_l20
+                    - vol_s_l1
+                    - vol_s_l2
+                    - vol_s_l3
+                    - vol_s_l5
+                    - vol_s_l10
+                    - vol_s_l20
+                    - vwap_b_l3
+                    - vwap_b_l5
+                    - vwap_b_l10
+                    - vwap_b_l20
+                    - vwap_s_l3
+                    - vwap_s_l5
+                    - vwap_s_l10
+                    - vwap_s_l20
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "08:55:00", "AEM6", "AED", 22.274, 22.274, 861.7, 1787.2, null, null, null, null, 3, 2, 1, 6, 89, 0, 0, 0, 1, 20, 0, 0, 0, 0, 20.584, null, null, null, null, null, null, null, "2026-01-09 08:55:08"]
+                    - ["2026-01-09", "09:00:00", "AEM6", "AED", 22.268, 22.328, 856.2, 1478.7, 1662.1, 1821.4, null, null, 4, 2, 3, 4, 63, 23, 0, 0, 2, 14, 5, 1, 0, 0, 20.733, 20.716, 20.643, null, 23.92, 24.235, null, null, "2026-01-09 09:00:08"]
+                    - ["2026-01-09", "09:05:00", "AEM6", "AED", 22.641, 22.681, 345.7, 352.2, 505.8, 1237.6, null, null, 8, 5, 7, 2, 9, 5, 0, 0, 6, 1, 1, 19, 0, 0, 22.199, 22.097, 20.662, null, 23.087, 24.057, null, null, "2026-01-09 09:05:09"]
+                    - ["2026-01-09", "09:10:00", "AEM6", "AED", 22.743, 22.76, 229.7, 230.6, 241.9, 1040.2, null, null, 9, 6, 8, 1, 1, 10, 71, 0, 7, 1, 1, 20, 0, 0, 22.483, 22.366, 21.054, null, 23.002, 23.991, null, null, "2026-01-09 09:10:09"]
+                    - ["2026-01-09", "09:15:00", "AEM6", "AED", 22.74, 22.775, 223.1, 224.2, 246.5, 1029.4, null, null, 10, 6, 8, 1, 1, 12, 89, 0, 6, 1, 1, 18, 0, 0, 22.486, 22.354, 21.054, null, 22.998, 23.979, null, null, "2026-01-09 09:15:09"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 176, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2025-06-05", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  # Super Candles - Валюта
+  /iss/datashop/algopack/fx/tradestats.json:
+    get:
+      tags:
+        - Super Candles - Валюта
+      summary: Валюта, tradestats
+      operationId: getFxTradestats
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата торгов (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе потока сделок (tradestats) по валюте.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#tradestats-2) | [Методология расчета](/docs/method/supercandles#tradestats)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    pr_open: { type: "double" }
+                    pr_high: { type: "double" }
+                    pr_low: { type: "double" }
+                    pr_close: { type: "double" }
+                    pr_std: { type: "double" }
+                    vol: { type: "int64" }
+                    val: { type: "int64" }
+                    trades: { type: "int32" }
+                    pr_vwap: { type: "double" }
+                    pr_change: { type: "double" }
+                    trades_b: { type: "int32" }
+                    trades_s: { type: "int32" }
+                    val_b: { type: "double" }
+                    val_s: { type: "double" }
+                    vol_b: { type: "int64" }
+                    vol_s: { type: "int64" }
+                    disb: { type: "double" }
+                    pr_vwap_b: { type: "double" }
+                    pr_vwap_s: { type: "double" }
+                    sec_pr_open: { type: "int32" }
+                    sec_pr_high: { type: "int32" }
+                    sec_pr_low: { type: "int32" }
+                    sec_pr_close: { type: "int32" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - pr_open
+                    - pr_high
+                    - pr_low
+                    - pr_close
+                    - pr_std
+                    - vol
+                    - val
+                    - trades
+                    - pr_vwap
+                    - pr_change
+                    - trades_b
+                    - trades_s
+                    - val_b
+                    - val_s
+                    - vol_b
+                    - vol_s
+                    - disb
+                    - pr_vwap_b
+                    - pr_vwap_s
+                    - sec_pr_open
+                    - sec_pr_high
+                    - sec_pr_low
+                    - sec_pr_close
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "10:05:00", "BYNRUB_TMS", 25.2475, 25.2475, 25.07, 25.2475, 0.0035, 80000, 20078, 2, 0.251, 0, 0, 2, 0, 20078, 0, 80000, -1, null, 0.251, 170, 170, 170, 170, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "BYNRUB_TOM", 27.19, 27.19, 27.085, 27.19, 0.0032, 11, 298460, 3, 27.1327, 0, 2, 1, 135950, 162510, 5, 6, -0.09, 27.19, 27.085, 65, 65, 205, 250, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "CNYRUB_TMS", 11.4, 11.4, 10.843, 10.9102, 0.0362, 2800, 306, 5, 0.109425, -4.2965, 3, 2, 34, 273, 300, 2500, -0.79, 0.112133, 0.1091, 30, 30, 36, 106, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "CNYRUB_TOM", 11.3145, 11.327, 11.306, 11.316, 0.0002, 18711, 211767418, 205, 11.3178, 0.0133, 112, 93, 112008897, 99758520, 9897, 8814, 0.06, 11.31746, 11.31819, 1, 61, 1, 298, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "GLDRUB_TOM", 11340, 11350, 11323.1, 11326.4, 0.0004, 743, 8423118, 89, 11336.6324, -0.1199, 47, 42, 3164553, 5258564, 279, 464, -0.25, 11342.4853, 11333.1131, 1, 1, 112, 285, "2026-01-09 10:05:10"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 685, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/fx/tradestats/{ticker}.json:
+    get:
+      tags:
+        - Super Candles - Валюта
+      summary: Валюта, tradestats (один инструмент)
+      operationId: getFxTradestatsForTicker
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код валютной пары
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата начала периода (YYYY-MM-DD)
+        - name: till
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата окончания периода (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе потока сделок (tradestats) по одной валютной паре.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#tradestats-2) | [Методология расчета](/docs/method/supercandles#tradestats)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    pr_open: { type: "double" }
+                    pr_high: { type: "double" }
+                    pr_low: { type: "double" }
+                    pr_close: { type: "double" }
+                    pr_std: { type: "double" }
+                    vol: { type: "int64" }
+                    val: { type: "int64" }
+                    trades: { type: "int32" }
+                    pr_vwap: { type: "double" }
+                    pr_change: { type: "double" }
+                    trades_b: { type: "int32" }
+                    trades_s: { type: "int32" }
+                    val_b: { type: "double" }
+                    val_s: { type: "double" }
+                    vol_b: { type: "int64" }
+                    vol_s: { type: "int64" }
+                    disb: { type: "double" }
+                    pr_vwap_b: { type: "double" }
+                    pr_vwap_s: { type: "double" }
+                    sec_pr_open: { type: "int32" }
+                    sec_pr_high: { type: "int32" }
+                    sec_pr_low: { type: "int32" }
+                    sec_pr_close: { type: "int32" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - pr_open
+                    - pr_high
+                    - pr_low
+                    - pr_close
+                    - pr_std
+                    - vol
+                    - val
+                    - trades
+                    - pr_vwap
+                    - pr_change
+                    - trades_b
+                    - trades_s
+                    - val_b
+                    - val_s
+                    - vol_b
+                    - vol_s
+                    - disb
+                    - pr_vwap_b
+                    - pr_vwap_s
+                    - sec_pr_open
+                    - sec_pr_high
+                    - sec_pr_low
+                    - sec_pr_close
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "10:05:00", "CNYRUB_TOM", 11.3145, 11.327, 11.306, 11.316, 0.0002, 18711, 211767418, 205, 11.3178, 0.0133, 112, 93, 112008897, 99758520, 9897, 8814, 0.06, 11.31746, 11.31819, 1, 61, 1, 298, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:10:00", "CNYRUB_TOM", 11.316, 11.3255, 11.3045, 11.3055, 0.0001, 14708, 166445722, 131, 11.31668, -0.0928, 70, 61, 101485308, 64960414, 8967, 5741, 0.22, 11.31764, 11.31517, 5, 89, 293, 295, "2026-01-09 10:10:10"]
+                    - ["2026-01-09", "10:15:00", "CNYRUB_TOM", 11.301, 11.3175, 11.274, 11.28, 0.0001, 42012, 474396295, 413, 11.29192, -0.1858, 196, 217, 244043398, 230352897, 21612, 20400, 0.03, 11.29203, 11.29181, 5, 106, 284, 300, "2026-01-09 10:15:10"]
+                    - ["2026-01-09", "10:20:00", "CNYRUB_TOM", 11.279, 11.279, 11.2505, 11.271, 0.0001, 102674, 1156543486, 992, 11.26423, -0.0709, 636, 356, 801086536, 355456951, 71118, 31556, 0.39, 11.26419, 11.26432, 1, 1, 61, 297, "2026-01-09 10:20:10"]
+                    - ["2026-01-09", "10:25:00", "CNYRUB_TOM", 11.2705, 11.272, 11.2585, 11.266, 0.0001, 37489, 422314684, 387, 11.26503, -0.0399, 143, 244, 139250082, 283064602, 12361, 25128, -0.34, 11.26528, 11.26491, 3, 194, 25, 300, "2026-01-09 10:25:10"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 107, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-03-26", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/fx/obstats.json:
+    get:
+      tags:
+        - Super Candles - Валюта
+      summary: Валюта, obstats
+      operationId: getFxObstats
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата торгов (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе стакана котировок (obstats) по валюте.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#obstats-2) | [Методология расчета](/docs/method/supercandles#obstats)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    mid_price: { type: "double" }
+                    micro_price: { type: "double" }
+                    spread_l1: { type: "double" }
+                    spread_l2: { type: "double" }
+                    spread_l3: { type: "double" }
+                    spread_l5: { type: "double" }
+                    spread_l10: { type: "double" }
+                    levels_b: { type: "int32" }
+                    levels_s: { type: "int32" }
+                    vol_b_l1: { type: "int64" }
+                    vol_b_l2: { type: "int64" }
+                    vol_b_l3: { type: "int64" }
+                    vol_b_l5: { type: "int64" }
+                    vol_b_l10: { type: "int64" }
+                    vol_s_l1: { type: "int64" }
+                    vol_s_l2: { type: "int64" }
+                    vol_s_l3: { type: "int64" }
+                    vol_s_l5: { type: "int64" }
+                    vol_s_l10: { type: "int64" }
+                    vol_s_l20: { type: "int64" }
+                    vwap_b_l3: { type: "double" }
+                    vwap_b_l5: { type: "double" }
+                    vwap_b_l10: { type: "double" }
+                    vwap_s_l3: { type: "double" }
+                    vwap_s_l5: { type: "double" }
+                    vwap_s_l10: { type: "double" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - mid_price
+                    - micro_price
+                    - spread_l1
+                    - spread_l2
+                    - spread_l3
+                    - spread_l5
+                    - spread_l10
+                    - levels_b
+                    - levels_s
+                    - vol_b_l1
+                    - vol_b_l2
+                    - vol_b_l3
+                    - vol_b_l5
+                    - vol_b_l10
+                    - vol_s_l1
+                    - vol_s_l2
+                    - vol_s_l3
+                    - vol_s_l5
+                    - vol_s_l10
+                    - vol_s_l20
+                    - vwap_b_l3
+                    - vwap_b_l5
+                    - vwap_b_l10
+                    - vwap_s_l3
+                    - vwap_s_l5
+                    - vwap_s_l10
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "10:05:00", "AMDRUB_TOM", 20.8412, 20.8183, 247.7, 266.6, 284.9, 310.5, 1385.6, 14, 10, 100, 232, 433, 805, 1505, 25, 170, 326, 423, 582, null, 20.5744, 20.5688, 20.4596, 21.152, 21.1611, 21.344, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "BYNRUB_TMS", 26.6184, 26.7119, 986.1, 1395.5, 833.1, 1685.6, null, 3, 2, 42327, 58686, 61365, 55596, null, 43706, 55941, 18689, 17827, null, null, 26.4681, 25.3045, null, 27.684, 27.6135, null, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "BYNRUB_TOM", 27.1364, 27.1358, 39.4, 113.2, 138.6, 184, 607.3, 20, 17, 998, 1003, 1007, 1018, 1118, 1037, 1120, 1125, 1132, 1174, null, 27.0813, 27.0792, 27.0527, 27.1904, 27.1911, 27.2275, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "CNYRUB_TMS", 11.238506, 11.158076, 294, 379.9, 435.5, 496.9, 587, 7, 8, 50339, 114144, 160694, 228136, 169183, 43645, 53942, 56999, 65595, 61110, null, 10.99624, 10.958523, 10.95921, 11.404521, 11.412163, 11.411871, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "CNYRUB_TOM", 11.3176, 11.31804, 1.4, 3.5, 5.3, 8, 15.9, 195, 196, 181, 297, 622, 1517, 4501, 838, 1422, 1902, 4161, 7675, null, 11.31549, 11.31422, 11.31219, 11.31915, 11.32044, 11.32186, "2026-01-09 10:05:10"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 1296, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/fx/obstats/{ticker}.json:
+    get:
+      tags:
+        - Super Candles - Валюта
+      summary: Валюта, obstats (один инструмент)
+      operationId: getFxObstatsForTicker
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код валютной пары
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата начала периода (YYYY-MM-DD)
+        - name: till
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата окончания периода (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе стакана котировок (obstats) по одной валютной паре.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#obstats-2) | [Методология расчета](/docs/method/supercandles#obstats)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    mid_price: { type: "double" }
+                    micro_price: { type: "double" }
+                    spread_l1: { type: "double" }
+                    spread_l2: { type: "double" }
+                    spread_l3: { type: "double" }
+                    spread_l5: { type: "double" }
+                    spread_l10: { type: "double" }
+                    levels_b: { type: "int32" }
+                    levels_s: { type: "int32" }
+                    vol_b_l1: { type: "int64" }
+                    vol_b_l2: { type: "int64" }
+                    vol_b_l3: { type: "int64" }
+                    vol_b_l5: { type: "int64" }
+                    vol_b_l10: { type: "int64" }
+                    vol_s_l1: { type: "int64" }
+                    vol_s_l2: { type: "int64" }
+                    vol_s_l3: { type: "int64" }
+                    vol_s_l5: { type: "int64" }
+                    vol_s_l10: { type: "int64" }
+                    vol_s_l20: { type: "int64" }
+                    vwap_b_l3: { type: "double" }
+                    vwap_b_l5: { type: "double" }
+                    vwap_b_l10: { type: "double" }
+                    vwap_s_l3: { type: "double" }
+                    vwap_s_l5: { type: "double" }
+                    vwap_s_l10: { type: "double" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - mid_price
+                    - micro_price
+                    - spread_l1
+                    - spread_l2
+                    - spread_l3
+                    - spread_l5
+                    - spread_l10
+                    - levels_b
+                    - levels_s
+                    - vol_b_l1
+                    - vol_b_l2
+                    - vol_b_l3
+                    - vol_b_l5
+                    - vol_b_l10
+                    - vol_s_l1
+                    - vol_s_l2
+                    - vol_s_l3
+                    - vol_s_l5
+                    - vol_s_l10
+                    - vol_s_l20
+                    - vwap_b_l3
+                    - vwap_b_l5
+                    - vwap_b_l10
+                    - vwap_s_l3
+                    - vwap_s_l5
+                    - vwap_s_l10
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "10:05:00", "CNYRUB_TOM", 11.3176, 11.31804, 1.4, 3.5, 5.3, 8, 15.9, 195, 196, 181, 297, 622, 1517, 4501, 838, 1422, 1902, 4161, 7675, null, 11.31549, 11.31422, 11.31219, 11.31915, 11.32044, 11.32186, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:10:00", "CNYRUB_TOM", 11.32179, 11.32203, 0.9, 2.5, 3.6, 5.6, 11.1, 205, 195, 124, 217, 323, 1181, 4243, 429, 895, 1244, 3106, 7442, null, 11.32037, 11.31919, 11.31754, 11.32286, 11.32364, 11.32509, "2026-01-09 10:10:10"]
+                    - ["2026-01-09", "10:15:00", "CNYRUB_TOM", 11.30576, 11.30613, 1.5, 2.8, 3.7, 5.7, 10.6, 200, 200, 140, 391, 825, 1774, 5353, 433, 772, 1134, 3014, 8358, null, 11.30411, 11.30345, 11.30174, 11.30722, 11.30809, 11.30966, "2026-01-09 10:15:10"]
+                    - ["2026-01-09", "10:20:00", "CNYRUB_TOM", 11.26478, 11.2649, 1.2, 2.6, 3.7, 5.5, 10.3, 200, 212, 188, 389, 726, 1836, 14305, 338, 860, 1326, 3397, 17176, null, 11.26328, 11.26256, 11.26054, 11.26617, 11.26693, 11.26897, "2026-01-09 10:20:10"]
+                    - ["2026-01-09", "10:25:00", "CNYRUB_TOM", 11.26536, 11.26542, 1.1, 2.2, 3.4, 5.3, 10.3, 209, 217, 241, 775, 1005, 1924, 15195, 266, 509, 874, 3013, 18023, null, 11.26417, 11.26347, 11.26124, 11.26667, 11.26773, 11.26961, "2026-01-09 10:25:10"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 108, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/fx/orderstats.json:
+    get:
+      tags:
+        - Super Candles - Валюта
+      summary: Валюта, orderstats
+      operationId: getFxOrderstats
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата торгов (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе потока заявок (orderstats) по валюте.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#orderstats-1) | [Методология расчета](/docs/method/supercandles#orderstats)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    put_orders_b: { type: "int64" }
+                    put_orders_s: { type: "int64" }
+                    put_val_b: { type: "int64" }
+                    put_val_s: { type: "int64" }
+                    put_vol_b: { type: "int64" }
+                    put_vol_s: { type: "int64" }
+                    put_vwap_b: { type: "double" }
+                    put_vwap_s: { type: "double" }
+                    cancel_orders_b: { type: "int64" }
+                    cancel_orders_s: { type: "int64" }
+                    cancel_val_b: { type: "int64" }
+                    cancel_val_s: { type: "int64" }
+                    cancel_vol_b: { type: "int64" }
+                    cancel_vol_s: { type: "int64" }
+                    cancel_vwap_b: { type: "double" }
+                    cancel_vwap_s: { type: "double" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - put_orders_b
+                    - put_orders_s
+                    - put_val_b
+                    - put_val_s
+                    - put_vol_b
+                    - put_vol_s
+                    - put_vwap_b
+                    - put_vwap_s
+                    - cancel_orders_b
+                    - cancel_orders_s
+                    - cancel_val_b
+                    - cancel_val_s
+                    - cancel_vol_b
+                    - cancel_vol_s
+                    - cancel_vwap_b
+                    - cancel_vwap_s
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "10:05:00", "AMDRUB_TOM", 6, 4, 185807599, 137116450, 903, 644, 20.5767, 21.2914, 3, 1, 123670775, 63285000, 601, 300, 20.5775, 21.095, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "BYNRUB_TMS", 12, 6, 10705445, 9141339, 424200, 338502, 25.2368, 27.0053, 6, 0, 6612930, 0, 262300, 0, 25.2113, null, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "BYNRUB_TOM", 9, 6, 112148760, 32042812, 4155, 1171, 26.9913, 27.3636, 4, 1, 82470000, 1485000, 3050, 50, 27.0393, 29.7, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "CNYRUB_TMS", 28, 21, 6655414, 4479061, 605617, 391990, 10.989477, 11.42647, 10, 2, 40885, 574560, 3700, 50400, 11.050119, 11.4, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:05:00", "CNYRUB_TOM", 44087, 8942, 110369359850, 27608380637, 9766757, 2436079, 11.30051, 11.33312, 43908, 8801, 109313159151, 26848604679, 9671100, 2369298, 11.30307, 11.33188, "2026-01-09 10:05:10"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 1039, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/fx/orderstats/{ticker}.json:
+    get:
+      tags:
+        - Super Candles - Валюта
+      summary: Валюта, orderstats (один инструмент)
+      operationId: getFxOrderstatsForTicker
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код валютной пары
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата начала периода (YYYY-MM-DD)
+        - name: till
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата окончания периода (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Метрики рассчитанные на основе потока заявок (orderstats) по одной валютной паре.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/supercandles#orderstats-1) | [Методология расчета](/docs/method/supercandles#orderstats)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuperCandlesResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    put_orders_b: { type: "int64" }
+                    put_orders_s: { type: "int64" }
+                    put_val_b: { type: "int64" }
+                    put_val_s: { type: "int64" }
+                    put_vol_b: { type: "int64" }
+                    put_vol_s: { type: "int64" }
+                    put_vwap_b: { type: "double" }
+                    put_vwap_s: { type: "double" }
+                    cancel_orders_b: { type: "int64" }
+                    cancel_orders_s: { type: "int64" }
+                    cancel_val_b: { type: "int64" }
+                    cancel_val_s: { type: "int64" }
+                    cancel_vol_b: { type: "int64" }
+                    cancel_vol_s: { type: "int64" }
+                    cancel_vwap_b: { type: "double" }
+                    cancel_vwap_s: { type: "double" }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - put_orders_b
+                    - put_orders_s
+                    - put_val_b
+                    - put_val_s
+                    - put_vol_b
+                    - put_vol_s
+                    - put_vwap_b
+                    - put_vwap_s
+                    - cancel_orders_b
+                    - cancel_orders_s
+                    - cancel_val_b
+                    - cancel_val_s
+                    - cancel_vol_b
+                    - cancel_vol_s
+                    - cancel_vwap_b
+                    - cancel_vwap_s
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "10:05:00", "CNYRUB_TOM", 44087, 8942, 110369359850, 27608380637, 9766757, 2436079, 11.30051, 11.33312, 43908, 8801, 109313159151, 26848604679, 9671100, 2369298, 11.30307, 11.33188, "2026-01-09 10:05:10"]
+                    - ["2026-01-09", "10:10:00", "CNYRUB_TOM", 3833, 1746, 30539943053, 27940235279, 2715141, 2453855, 11.24801, 11.38626, 3726, 1664, 29228243493, 26625960030, 2597549, 2338456, 11.25224, 11.38613, "2026-01-09 10:10:10"]
+                    - ["2026-01-09", "10:15:00", "CNYRUB_TOM", 10317, 8096, 86448896787, 89136214389, 7695832, 7846835, 11.23321, 11.35951, 10119, 7830, 86210541361, 88702097842, 7672802, 7808072, 11.23586, 11.36031, "2026-01-09 10:15:10"]
+                    - ["2026-01-09", "10:20:00", "CNYRUB_TOM", 16207, 15879, 215085895596, 230516805858, 19175208, 20383328, 11.21687, 11.30909, 15555, 15401, 213757937432, 229509456352, 19055931, 20293783, 11.2174, 11.30935, "2026-01-09 10:20:10"]
+                    - ["2026-01-09", "10:25:00", "CNYRUB_TOM", 10104, 9213, 122754001895, 123527784011, 10937693, 10923636, 11.22302, 11.3083, 9857, 9019, 122376704157, 123144923864, 10903478, 10889496, 11.22364, 11.3086, "2026-01-09 10:25:10"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 108, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  # Futures Open Interest (FUTOI)
+  /iss/analyticalproducts/futoi/securities.json:
+    get:
+      tags:
+        - Futures Open Interest (FUTOI)
+      summary: По всем инструментам
+      operationId: getAllFutoi
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата торгов (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Открытые позиции по срочным контрактам в разрезе физ. и юр. лиц.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Данные задержаны на 15 дней |
+
+        [Описание метрик](/docs/description/futoi) | [Методология расчета](/docs/method/futoi)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FutoiResponse'
+              example:
+                futoi:
+                  metadata:
+                    sess_id: { type: int32 }
+                    seqnum: { type: int32 }
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    tradetime: { type: time, bytes: 10, max_size: 0 }
+                    ticker: { type: string, bytes: 36, max_size: 0 }
+                    clgroup: { type: string, bytes: 9, max_size: 0 }
+                    pos: { type: int64 }
+                    pos_long: { type: int64 }
+                    pos_short: { type: int64 }
+                    pos_long_num: { type: int64 }
+                    pos_short_num: { type: int64 }
+                    systime: { type: datetime, bytes: 19, max_size: 0 }
+                    trade_session_date: { type: date, bytes: 10, max_size: 0 }
+                  columns:
+                    - sess_id
+                    - seqnum
+                    - tradedate
+                    - tradetime
+                    - ticker
+                    - clgroup
+                    - pos
+                    - pos_long
+                    - pos_short
+                    - pos_long_num
+                    - pos_short_num
+                    - systime
+                    - trade_session_date
+                  data:
+                    - [7475, 58, "2026-01-09", "23:50:00", "YD", "YUR", -102402, 1387, -103789, 5, 23, "2026-01-09 23:50:09", "2026-01-12"]
+                    - [7475, 58, "2026-01-09", "23:50:00", "YD", "FIZ", 102402, 126650, -24248, 942, 274, "2026-01-09 23:50:09", "2026-01-12"]
+                    - [7475, 58, "2026-01-09", "23:50:00", "X5", "YUR", -3243, 265505, -268748, 4, 18, "2026-01-09 23:50:09", "2026-01-12"]
+                    - [7475, 58, "2026-01-09", "23:50:00", "X5", "FIZ", 3243, 62394, -59151, 805, 311, "2026-01-09 23:50:09", "2026-01-12"]
+                    - [7475, 58, "2026-01-09", "23:50:00", "W4", "YUR", 670, 822, -152, 3, 2, "2026-01-09 23:50:09", "2026-01-12"]
+                futoi.dates:
+                  metadata:
+                    from: { type: date, bytes: 30, max_size: 0 }
+                    till: { type: date, bytes: 30, max_size: 0 }
+                    prev: { type: date, bytes: 10, max_size: 0 }
+                    next: { type: date, bytes: 10, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                    - prev
+                    - next
+                  data:
+                    - ["2020-05-08", "2024-04-17", "2024-04-16", null]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/analyticalproducts/futoi/securities/{ticker}.json:
+    get:
+      tags:
+        - Futures Open Interest (FUTOI)
+      summary: По одному инструменту
+      operationId: getFutoiForTicker
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Краткий код базового актива (Si, RI, GD, ...)
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата начала периода (YYYY-MM-DD)
+        - name: till
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата окончания периода (YYYY-MM-DD)
+        - name: latest
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Открытые позиции по срочным контрактам в разрезе физ. и юр. лиц по одному инструменту.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
+        | NOT AUTHORIZED   | iss    | Данные задержаны на 15 дней |
+
+        [Описание метрик](/docs/description/futoi) | [Методология расчета](/docs/method/futoi)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FutoiResponse'
+              example:
+                futoi:
+                  metadata:
+                    sess_id: { type: int32 }
+                    seqnum: { type: int32 }
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    tradetime: { type: time, bytes: 10, max_size: 0 }
+                    ticker: { type: string, bytes: 36, max_size: 0 }
+                    clgroup: { type: string, bytes: 9, max_size: 0 }
+                    pos: { type: int64 }
+                    pos_long: { type: int64 }
+                    pos_short: { type: int64 }
+                    pos_long_num: { type: int64 }
+                    pos_short_num: { type: int64 }
+                    systime: { type: datetime, bytes: 19, max_size: 0 }
+                    trade_session_date: { type: date, bytes: 10, max_size: 0 }
+                  columns:
+                    - sess_id
+                    - seqnum
+                    - tradedate
+                    - tradetime
+                    - ticker
+                    - clgroup
+                    - pos
+                    - pos_long
+                    - pos_short
+                    - pos_long_num
+                    - pos_short_num
+                    - systime
+                    - trade_session_date
+                  data:
+                    - [7475, 58, "2026-01-09", "23:50:00", "Si", "YUR", -1301278, 3282087, -4583365, 395, 108, "2026-01-09 23:50:09", "2026-01-12"]
+                    - [7475, 58, "2026-01-09", "23:50:00", "Si", "FIZ", 1301278, 1403249, -101971, 14517, 2426, "2026-01-09 23:50:09", "2026-01-12"]
+                    - [7475, 57, "2026-01-09", "23:45:00", "Si", "YUR", -1301472, 3281945, -4583417, 396, 107, "2026-01-09 23:45:08", "2026-01-12"]
+                    - [7475, 57, "2026-01-09", "23:45:00", "Si", "FIZ", 1301472, 1403842, -102370, 14525, 2438, "2026-01-09 23:45:08", "2026-01-12"]
+                    - [7475, 56, "2026-01-09", "23:40:00", "Si", "YUR", -1301426, 3282085, -4583511, 398, 106, "2026-01-09 23:40:08", "2026-01-12"]
+                futoi.dates:
+                  metadata:
+                    from: { type: date, bytes: 30, max_size: 0 }
+                    till: { type: date, bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  # Market Concentration (HI2)
+  /iss/datashop/algopack/{market}/hi2.json:
+    get:
+      tags:
+        - Market Concentration (HI2)
+      summary: Индекс рыночной концентрации (все инструменты)
+      operationId: getHi2
+      parameters:
+        - name: market
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [eq, fx, fo]
+          description: |-
+            Рынок:
+              * eq - акции
+              * fx - валюта
+              * fo - фьючерсы
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата торгов (YYYY-MM-DD)
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Индекс рыночной концентрации по всем инструментам.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление ежедневное) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        Примеры:
+        * Акции: https://iss.moex.com/iss/datashop/algopack/eq/hi2.json?date=2024-04-17
+        * Валюта: https://iss.moex.com/iss/datashop/algopack/fx/hi2.json?date=2024-04-17
+        * Фьючерсы: https://iss.moex.com/iss/datashop/algopack/fo/hi2.json?date=2024-04-17
+
+        [Описание метрик](/docs/description/hi2) | [Методология расчета](/docs/method/hi2)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hi2Response'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    tradetime: { type: time, bytes: 10, max_size: 0 }
+                    secid: { type: string, bytes: 51, max_size: 0 }
+                    metric: { type: string, bytes: 96, max_size: 0 }
+                    value: { type: double }
+                    reference: { type: string, bytes: 765, max_size: 0 }
+                    SYSTIME: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - metric
+                    - value
+                    - reference
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "18:40:00", "ABIO", "hhi_agressive", 2417, "", "2026-01-09 18:45:05"]
+                    - ["2026-01-09", "18:40:00", "ABIO", "hhi_agressive_buy", 3380, "", "2026-01-09 18:45:05"]
+                    - ["2026-01-09", "18:40:00", "ABIO", "hhi_agressive_sell", 912, "", "2026-01-09 18:45:05"]
+                    - ["2026-01-09", "18:40:00", "ABIO", "hhi_buy", 2457, "", "2026-01-09 18:45:05"]
+                    - ["2026-01-09", "18:40:00", "ABIO", "hhi_netflow_buy", 3553, "", "2026-01-09 18:45:05"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: int64 }
+                    TOTAL: { type: int64 }
+                    PAGESIZE: { type: int64 }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 1023, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: date, bytes: 30, max_size: 0 }
+                    till: { type: date, bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2024-01-03", "2024-04-16"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/{market}/hi2/{ticker}.json:
+    get:
+      tags:
+        - Market Concentration (HI2)
+      summary: Индекс рыночной концентрации (один инструмент)
+      operationId: getHi2ForTicker
+      parameters:
+        - name: market
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [eq, fx, fo]
+          description: |-
+            Рынок:
+              * eq - акции
+              * fx - валюта
+              * fo - фьючерсы
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код инструмента, например 'SBER'
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата начала периода (YYYY-MM-DD)
+        - name: till
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата окончания периода (YYYY-MM-DD)
+        - name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Starting index for pagination.
+      description: |-
+        Индекс рыночной концентрации по одному инструменту.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time стакан                   |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        [Описание метрик](/docs/description/hi2) | [Методология расчета](/docs/method/hi2)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hi2Response'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    metric: { type: "string", bytes: 96, max_size: 0 }
+                    value: { type: "double" }
+                    reference: { type: "string", bytes: 765, max_size: 0 }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - metric
+                    - value
+                    - reference
+                    - SYSTIME
+                  data:
+                    - ["2025-11-01", "18:40:00", "SBER", "hhi_agressive", 102, "", "2025-11-01 18:45:18"]
+                    - ["2025-11-01", "18:40:00", "SBER", "hhi_agressive_buy", 133, "", "2025-11-01 18:45:18"]
+                    - ["2025-11-01", "18:40:00", "SBER", "hhi_agressive_sell", 125, "", "2025-11-01 18:45:18"]
+                    - ["2025-11-01", "18:40:00", "SBER", "hhi_buy", 184, "", "2025-11-01 18:45:18"]
+                    - ["2025-11-01", "18:40:00", "SBER", "hhi_netflow_buy", 172, "", "2025-11-01 18:45:18"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 11, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2020-01-03", "2025-11-01"]
+        '401':
+          description: Unauthorized
+        
+
+  # MegaAlerts
+  /iss/datashop/algopack/{market}/alerts.json:
+    get:
+      tags:
+        - Mega Alerts
+      summary: Торговые аномалии (все инструменты)
+      operationId: getAlerts
+      parameters:
+        - name: market
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [eq, fo]
+          description: |-
+            Рынок:
+              * eq - акции
+              * fo - фьючерсы
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата 1 день, все инструменты, например '2024-05-01'
+      description: |-
+        Торговые аномалии по всем инструментам за 1 день.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление ежедневное) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        Примеры:
+        * Акции: https://iss.moex.com/iss/datashop/algopack/eq/alerts.json?date=2024-05-01
+        * Фьючерсы: https://iss.moex.com/iss/datashop/algopack/fo/alerts.json?date=2024-05-01
+
+        [Описание метрик](/docs/description/megaalerts) | [Методология расчета](/docs/method/megaalerts)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MegaAlertsResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    alert_type: { type: "string", bytes: 96, max_size: 0 }
+                    threshold: { type: "double" }
+                    value: { type: "double" }
+                    reference: { type: "string", bytes: 765, max_size: 0 }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - alert_type
+                    - threshold
+                    - value
+                    - reference
+                    - SYSTIME
+                  data:
+                    - ["2026-01-09", "07:00:00", "GLRX", "pr_change_99_9_pctl-", -1.1236, -1.4131, "[{\"m_5\":[\"0.829\",\"-0.516\",\"22\",\"5\",\"0.58\"],\"m_15\":[\"1.074\",\"-0.717\",\"21\",\"6\",\"0.676\"],\"m_30\":[\"1.15\",\"-1.635\",\"25\",\"2\",\"0.944\"],\"h_1\":[\"1.07\",\"-0.863\",\"21\",\"6\",\"0.64\"],\"vol_b\":22,\"vol_s\":1211}]", "2026-01-09 07:01:04"]
+                    - ["2026-01-09", "07:00:00", "MGKL", "pr_change_99_9_pctl-", -0.8516, -1.268, "[{\"m_5\":[\"0.513\",\"-0.578\",\"19\",\"7\",\"0.219\"],\"m_15\":[\"1.312\",\"-0.535\",\"19\",\"6\",\"0.835\"],\"m_30\":[\"1.415\",\"-0.954\",\"21\",\"4\",\"0.996\"],\"h_1\":[\"1.61\",\"-0.89\",\"20\",\"5\",\"1.067\"],\"vol_b\":0,\"vol_s\":8}]", "2026-01-09 07:01:04"]
+                    - ["2026-01-09", "07:00:00", "MGNT", "pr_change_99_9_pctl+", 0.6084, 0.6129, "[{\"m_5\":[\"0.257\",\"-0.293\",\"14\",\"20\",\"-0.065\"],\"m_15\":[\"0.483\",\"-0.728\",\"17\",\"17\",\"-0.119\"],\"m_30\":[\"0.406\",\"-0.758\",\"16\",\"19\",\"-0.226\"],\"h_1\":[\"0.697\",\"-0.966\",\"12\",\"22\",\"-0.368\"],\"vol_b\":165,\"vol_s\":296}]", "2026-01-09 07:01:04"]
+                    - ["2026-01-09", "07:00:00", "MRKP", "pr_change_99_9_pctl-", -0.9111, -1.2517, "[{\"m_5\":[\"0.61\",\"-1.247\",\"34\",\"17\",\"-0.009\"],\"m_15\":[\"0.986\",\"-1\",\"34\",\"17\",\"0.324\"],\"m_30\":[\"1.56\",\"-1.18\",\"31\",\"19\",\"0.509\"],\"h_1\":[\"2.269\",\"-1.188\",\"33\",\"18\",\"1.049\"],\"vol_b\":0,\"vol_s\":0}]", "2026-01-09 07:01:04"]
+                    - ["2026-01-09", "07:00:00", "MSNG", "pr_change_99_9_pctl-", -0.5238, -0.7073, "[{\"m_5\":[\"0.344\",\"-0.311\",\"18\",\"4\",\"0.19\"],\"m_15\":[\"0.452\",\"-0.304\",\"15\",\"10\",\"0.144\"],\"m_30\":[\"0.479\",\"-0.406\",\"16\",\"10\",\"0.139\"],\"h_1\":[\"0.622\",\"-0.463\",\"16\",\"10\",\"0.205\"],\"vol_b\":0,\"vol_s\":0}]", "2026-01-09 07:01:04"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 184, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2024-01-03", "2026-01-09"]
+        '401':
+          description: Unauthorized
+        
+
+  /iss/datashop/algopack/{market}/alerts/{ticker}.json:
+    get:
+      tags:
+        - Mega Alerts
+      summary: Торговые аномалии (один инструмент)
+      operationId: getAlertsForTicker
+      parameters:
+        - name: market
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [eq, fo]
+          description: |-
+            Рынок:
+              * eq - акции
+              * fo - фьючерсы
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код инструмента, например 'SBER'
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата начала периода, например '2024-03-01'
+        - name: till
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Дата окончания периода, например '2024-05-01'
+      description: |-
+        Торговые аномалии по одному инструменту за период.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time данные (обновление ежедневное) |
+        | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
+
+        Примеры:
+        * Акции: https://iss.moex.com/iss/datashop/algopack/eq/alerts/SBER.json?from=2024-03-01&till=2024-05-01
+        * Фьючерсы: https://iss.moex.com/iss/datashop/algopack/fo/alerts/SRH5.json?from=2024-03-01&till=2024-05-01
+
+        [Описание метрик](/docs/description/megaalerts) | [Методология расчета](/docs/method/megaalerts)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MegaAlertsResponse'
+              example:
+                data:
+                  metadata:
+                    tradedate: { type: "date", bytes: 10, max_size: 0 }
+                    tradetime: { type: "time", bytes: 10, max_size: 0 }
+                    secid: { type: "string", bytes: 51, max_size: 0 }
+                    alert_type: { type: "string", bytes: 96, max_size: 0 }
+                    threshold: { type: "double" }
+                    value: { type: "double" }
+                    reference: { type: "string", bytes: 765, max_size: 0 }
+                    SYSTIME: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradetime
+                    - secid
+                    - alert_type
+                    - threshold
+                    - value
+                    - reference
+                    - SYSTIME
+                  data:
+                    - ["2025-12-29", "11:46:00", "SBER", "net_vol_99_9_pctl+", 467505, 879196, "[{\"m_5\":[\"0.268\",\"-0.152\",\"28\",\"37\",\"0.028\"],\"m_15\":[\"0.433\",\"-0.244\",\"34\",\"32\",\"0.105\"],\"m_30\":[\"0.382\",\"-0.365\",\"34\",\"30\",\"0.031\"],\"h_1\":[\"0.741\",\"-0.433\",\"33\",\"33\",\"0.154\"],\"vol_b\":974413,\"vol_s\":95217}]", "2025-12-29 11:47:05"]
+                    - ["2025-12-29", "11:46:00", "SBER", "vol_99_9_pctl", 737624, 1069630, "[{\"m_5\":[\"0.294\",\"-0.213\",\"66\",\"60\",\"0.052\"],\"m_15\":[\"0.399\",\"-0.385\",\"78\",\"48\",\"0.1\"],\"m_30\":[\"0.476\",\"-0.584\",\"73\",\"53\",\"0.03\"],\"h_1\":[\"0.717\",\"-0.609\",\"73\",\"54\",\"0.153\"],\"vol_b\":974413,\"vol_s\":95217}]", "2025-12-29 11:47:05"]
+                    - ["2025-12-29", "11:46:00", "SBER", "vol_b_99_9_pctl", 468463, 974413, "[{\"m_5\":[\"0.266\",\"-0.169\",\"62\",\"72\",\"0.032\"],\"m_15\":[\"0.398\",\"-0.256\",\"72\",\"64\",\"0.09\"],\"m_30\":[\"0.457\",\"-0.434\",\"71\",\"63\",\"0.038\"],\"h_1\":[\"0.707\",\"-0.445\",\"68\",\"68\",\"0.131\"],\"vol_b\":974413,\"vol_s\":95217}]", "2025-12-29 11:47:05"]
+                    - ["2025-12-29", "11:58:00", "SBER", "vol_b_99_9_pctl", 469528, 527913, "[{\"m_5\":[\"0.267\",\"-0.169\",\"63\",\"72\",\"0.034\"],\"m_15\":[\"0.398\",\"-0.256\",\"72\",\"64\",\"0.09\"],\"m_30\":[\"0.457\",\"-0.434\",\"71\",\"63\",\"0.037\"],\"h_1\":[\"0.707\",\"-0.445\",\"68\",\"68\",\"0.13\"],\"vol_b\":527913,\"vol_s\":67495}]", "2025-12-29 11:59:05"]
+                    - ["2025-12-29", "12:00:00", "SBER", "net_vol_99_9_pctl+", 467620, 488140, "[{\"m_5\":[\"0.27\",\"-0.152\",\"29\",\"37\",\"0.033\"],\"m_15\":[\"0.433\",\"-0.244\",\"34\",\"32\",\"0.103\"],\"m_30\":[\"0.382\",\"-0.365\",\"34\",\"30\",\"0.03\"],\"h_1\":[\"0.741\",\"-0.433\",\"33\",\"33\",\"0.152\"],\"vol_b\":697038,\"vol_s\":208898}]", "2025-12-29 12:01:07"]
+                data.cursor:
+                  metadata:
+                    INDEX: { type: "int64" }
+                    TOTAL: { type: "int64" }
+                    PAGESIZE: { type: "int64" }
+                  columns:
+                    - INDEX
+                    - TOTAL
+                    - PAGESIZE
+                  data:
+                    - [0, 21, 1000]
+                data.dates:
+                  metadata:
+                    from: { type: "date", bytes: 30, max_size: 0 }
+                    till: { type: "date", bytes: 30, max_size: 0 }
+                  columns:
+                    - from
+                    - till
+                  data:
+                    - ["2024-01-03", "2025-12-29"]
+        '401':
+          description: Unauthorized
+        
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+  schemas:
+    DataBlock:
+      type: object
+      properties:
+        metadata:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              type:
+                type: string
+              bytes:
+                type: integer
+              max_size:
+                type: integer
+        columns:
+          type: array
+          items:
+            type: string
+        data:
+          type: array
+          items:
+            type: array
+            items: {}
+
+    MarketStatisticsResponse:
+      type: object
+      properties:
+        securities:
+          $ref: '#/components/schemas/DataBlock'
+        marketdata:
+          $ref: '#/components/schemas/DataBlock'
+        dataversion:
+          $ref: '#/components/schemas/DataBlock'
+        marketdata_yields:
+          $ref: '#/components/schemas/DataBlock'
+
+    FuturesMarketStatisticsResponse:
+      type: object
+      properties:
+        securities:
+          $ref: '#/components/schemas/DataBlock'
+        marketdata:
+          $ref: '#/components/schemas/DataBlock'
+        dataversion:
+          $ref: '#/components/schemas/DataBlock'
+        marketdata_yields:
+          $ref: '#/components/schemas/DataBlock'
+
+    OrderbookResponse:
+      type: object
+      properties:
+        orderbook:
+          $ref: '#/components/schemas/DataBlock'
+        dataversion:
+          $ref: '#/components/schemas/DataBlock'
+
+    TradesResponse:
+      type: object
+      properties:
+        trades:
+          $ref: '#/components/schemas/DataBlock'
+        dataversion:
+          $ref: '#/components/schemas/DataBlock'
+        trades_yields:
+          $ref: '#/components/schemas/DataBlock'
+
+    FuturesTradesResponse:
+      type: object
+      properties:
+        trades:
+          $ref: '#/components/schemas/DataBlock'
+        dataversion:
+          $ref: '#/components/schemas/DataBlock'
+        trades_yields:
+          $ref: '#/components/schemas/DataBlock'
+
+    CandlesResponse:
+      type: object
+      properties:
+        candles:
+          $ref: '#/components/schemas/DataBlock'
+
+    SuperCandlesResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataBlock'
+        data.cursor:
+          $ref: '#/components/schemas/DataBlock'
+        data.dates:
+          $ref: '#/components/schemas/DataBlock'
+
+    FutoiResponse:
+      type: object
+      properties:
+        futoi:
+          $ref: '#/components/schemas/DataBlock'
+        futoi.dates:
+          $ref: '#/components/schemas/DataBlock'
+
+    Hi2Response:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataBlock'
+        data.cursor:
+          $ref: '#/components/schemas/DataBlock'
+        data.dates:
+          $ref: '#/components/schemas/DataBlock'
+
+    MegaAlertsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataBlock'
+        data.cursor:
+          $ref: '#/components/schemas/DataBlock'
+        data.dates:
+          $ref: '#/components/schemas/DataBlock'

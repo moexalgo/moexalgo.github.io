@@ -1,0 +1,102 @@
+---
+custom_edit_url: null
+---
+import TabItem from "@theme/TabItem";
+import Tabs from '@theme/Tabs';
+
+# Welcome to ALGOPACK
+Самый богатый набор исторических данных Московской Биржи через API
+
+<Tabs>
+<TabItem value="python" label="Python">
+  ```python
+  import requests
+
+  url = "https://apim.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-10-15"
+
+  headers = {
+    'Authorization': 'Bearer <APIKEY>',
+  }
+
+  response = requests.request("GET", url, headers=headers)
+
+  print(response.text)
+  ```
+</TabItem>
+<TabItem value="moexalgo" label="moexAlgo lib">
+  ```python
+  from moexalgo import session, Market
+  session.TOKEN = '<APIKEY>'
+
+  eq = Market('EQ')
+  eq.obstats(date='2024-10-15')
+  ```
+</TabItem>
+<TabItem value="curl" label="cURL">
+  ```bash
+  curl -L -X GET "https://apim.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-10-15" \
+  -H 'Authorization: Bearer <APIKEY>'
+  ```
+</TabItem>
+<TabItem value="javascript" label="JavaScript">
+  ```javascript
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer <APIKEY>");
+
+  var formdata = new FormData();
+
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    body: formdata,
+    redirect: 'follow'
+  };
+
+  fetch("https://apim.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-10-15", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+  ```
+</TabItem>
+<TabItem value="shell" label="SHELL">
+  ```bash
+  wget --no-check-certificate --quiet \
+    --method GET \
+    --timeout=0 \
+    --header 'Authorization: Bearer <APIKEY>' \
+    'https://apim.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-10-15'
+  ```
+</TabItem>
+</Tabs>
+
+## Состав данных
+
+| Модуль | Инструменты | Обновление | История | Python lib |
+|--------|-------------|------------|---------|------------|
+| **[Real-time market data](docs/modules/realtime)**<br/>Свечи, стаканы и сделки | акции<br/>фьючерсы | 10 сек | - | ✓ |
+| **[Super Candles](docs/modules/supercandles)**<br/>50+ фич на потоке сделок, заявок и стакана котировок | акции<br/>фьючерсы<br/>валюта | 5 мин | c 2020 года | ✓ |
+| **[Futures Open Interest (FUTOI)](docs/modules/futoi)**<br/>Открытые позиции по фьючерсным контрактам в разрезе физ. и юр. лиц | фьючерсы | 5 мин | c 2020 года | ✓ |
+| **[Market Concentration (HI2)](docs/modules/hi2)**<br/>Индекс рыночной концентрации | акции<br/>фьючерсы<br/>валюта | Ежедневно, 19:00 | c 2020 года | ✓ |
+| **[Mega Alerts](docs/modules/megaalerts)**<br/>Сигналы о существенных отклонениях (аномалиях) | акции<br/>фьючерсы<br/>валюта | 1 мин | c 2024 года | - |
+
+
+## С ALGOPACK вы сможете:
+* Загружать исторические данные для тестирования торговых стратегий
+* Получать online данные для алгоритмической торговли
+
+:::note
+Через ALGOPACK нельзя отправлять заявки на биржу. Заявки отправляются через торговый API вашего брокера
+:::
+
+
+## Начать пользоваться
+
+Оформите подписку на сайте data.moex.com
+
+<a class="button button--link button--lg" href="https://data.moex.com/products/algopack">
+  <i class="fas fa-sign-in-alt"></i> Оформить подписку
+</a>
+и ALGOPACK готов к использованию:
+
+* [Начать пользоваться](/docs/api/algopack-api)
+* [Методы API](/docs/api)

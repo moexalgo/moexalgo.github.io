@@ -1,12 +1,24 @@
-.idea/
-venv/
-.env
+# Dependencies
+/node_modules
+yarn.lock
 
-__pycache__/
+# Production
+/build
 
-db.sqlite3
-migrations/
+# Generated files
+.docusaurus
+.cache-loader
 
-static/
-qlogs/
-assets/
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+/.quarto/
+**/*.quarto_ipynb

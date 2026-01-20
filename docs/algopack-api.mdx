@@ -1,0 +1,113 @@
+---
+id: algopack-api
+title: "Аутентификация"
+description: "Как начать пользоваться ALGOPACK"
+sidebar_label: Аутентификация
+sidebar_position: 0
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+import Tabs from '@theme/Tabs';
+
+<span
+  className={"theme-doc-version-badge badge badge--secondary"}
+  children={"Version: 1.0.0"}
+>
+</span>
+
+<Export
+  url={"/openapi/openapi.yaml"}
+  proxy={undefined}>
+</Export>
+
+
+# Аутентификация
+<div>
+  <SchemaTabs
+    className={"openapi-tabs__security-schemes"}
+  >
+    <TabItem
+      label={"HTTP: Bearer Auth"}
+      value={"bearerAuth"}
+    >
+    </TabItem>
+  </SchemaTabs>
+</div>
+
+Как начать пользоваться ALGOPACK
+
+1. Получите токен в [личном кабинете](https://data.moex.com/personal-account)
+
+	![image](/img/apikey.png)
+
+2. Отправляйте запросы к данным:
+
+<Tabs>
+<TabItem value="python" label="Python">
+  ```python
+  import requests
+
+  url = "https://apim.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-10-15"
+
+  headers = {
+    'Authorization': 'Bearer <APIKEY>',
+  }
+
+  response = requests.request("GET", url, headers=headers)
+
+  print(response.text)
+  ```
+</TabItem>
+<TabItem value="moexalgo" label="moexAlgo lib">
+  ```python
+  from moexalgo import session, Market
+  session.TOKEN = '<APIKEY>'
+
+  eq = Market('EQ')
+  eq.obstats(date='2024-10-15')
+  ```
+</TabItem>
+<TabItem value="curl" label="cURL">
+  ```bash
+  curl -L -X GET "https://apim.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-10-15" \
+  -H 'Authorization: Bearer <APIKEY>'
+  ```
+</TabItem>
+<TabItem value="javascript" label="JavaScript">
+  ```javascript
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer <APIKEY>");
+
+  var formdata = new FormData();
+
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    body: formdata,
+    redirect: 'follow'
+  };
+
+  fetch("https://apim.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-10-15", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+  ```
+</TabItem>
+<TabItem value="shell" label="SHELL">
+  ```bash
+  wget --no-check-certificate --quiet \
+    --method GET \
+    --timeout=0 \
+    --header 'Authorization: Bearer <APIKEY>' \
+    'https://apim.moex.com/iss/datashop/algopack/eq/obstats.json?date=2024-10-15'
+  ```
+</TabItem>
+</Tabs>
+
+<br />

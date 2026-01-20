@@ -12,7 +12,7 @@ custom_edit_url: null
 Улучшенная версия визуализации открытых позиций по фьючерсам с дополнительными аналитическими возможностями.
 
 ![image](/img/futoi20.png)
-Визуализация доступна на странице [FUTOI 2.0](https://data.moex.com/products/algopack/visual?tab=futoi_2&code=Si)
+Визуализация доступна на странице [FUTOI 2.0](https://data.moex.com/products/algopack/visual?tab=futoi_2&code=Si&utm_source=algopack_docs&utm_medium=internal_link&utm_campaign=algopack_docs_v2&utm_content=visual_futoi2)
 
 На графике отображаются данные по открытому интересу по фьючерсам в разрезе физических и юридических лиц, шаг обновления - 5 мин. Данные отображаются за последние несколько дней
 

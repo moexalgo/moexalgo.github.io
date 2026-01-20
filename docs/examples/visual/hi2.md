@@ -14,7 +14,7 @@ custom_edit_url: null
 Чем больше значение индекса, тем больше влияние крупных трейдеров на инструмент. [Подробнее](/docs/modules/hi2).
 
 ![image](/img/hi1.png)
-Визуализация доступна на странице [HI2](https://data.moex.com/products/algopack/visual?tab=hi2&ticker=SBER)
+Визуализация доступна на странице [HI2](https://data.moex.com/products/algopack/visual?tab=hi2&ticker=SBER&utm_source=algopack_docs&utm_medium=internal_link&utm_campaign=algopack_docs_v2&utm_content=visual_hi2)
 
 ![image](/img/hi2.png)
 На графике - свечной график и множество индексов HI2. Наиболее высокие значения выделены красным цветом. Можно визуально оценить движение цен после возникновения высоких концентраций

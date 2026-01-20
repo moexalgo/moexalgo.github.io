@@ -10,13 +10,13 @@ import TelegramButton from '@site/src/components/TelegramButton';
 
 Важные новости по продукту AlgoPack можно отслеживать в телеграм канале @moex_algopack_news
 
-<TelegramButton href="https://t.me/moex_algopack_news">Подписаться</TelegramButton>
+<TelegramButton href="https://t.me/+OE7xDRnMpWhiNWEy">Подписаться</TelegramButton>
 
 ## Группа Telegram
 
 В группе можно общаться с сообществом и разработчиками AlgoPack. Присодиняйтесь, мы тут - @moex_algopack
 
-<TelegramButton href="https://t.me/moex_algopack">Присоединиться</TelegramButton>
+<TelegramButton href="https://t.me/+8c1vjDEVY082NTgy">Присоединиться</TelegramButton>
 
 ## Email
 

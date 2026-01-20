@@ -11,7 +11,7 @@ custom_edit_url: null
 
 Визуализация рынка в виде интерактивной тепловой карты для комплексного анализа рыночной ситуации.
 ![image](/img/map1.png)
-Визуализация доступна на странице [MARKET HEATMAP](https://data.moex.com/products/algopack/visual?tab=market_map)
+Визуализация доступна на странице [MARKET HEATMAP](https://data.moex.com/products/algopack/visual?tab=market_map&utm_source=algopack_docs&utm_medium=internal_link&utm_campaign=algopack_docs_v2&utm_content=visual_marketmap)
 
 При клике на индекс, подсвечиваются акции из состава данного индекса
 ![image](/img/map2.png)

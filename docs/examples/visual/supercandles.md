@@ -12,7 +12,7 @@ custom_edit_url: null
 Расширенный свечной график. Позволяет заглянуть внутрь бара и увидеть объемы покупок / продаж, дисбаланс и средневзвешенные цены
 
 ![image](/img/supercandles1.png)
-Визуализация доступна на странице [SUPERCANDLES](https://data.moex.com/products/algopack/visual?tab=super_candles&ticker=SBER)
+Визуализация доступна на странице [SUPERCANDLES](https://data.moex.com/products/algopack/visual?tab=super_candles&ticker=SBER&utm_source=algopack_docs&utm_medium=internal_link&utm_campaign=algopack_docs_v2&utm_content=visual_supercandles)
 
 На графике представлены метрики и индикаторы на основе сделок (trades) с разделением на покупателей и продавцов.
 ![image](/img/supercandles2.png)

@@ -12,7 +12,7 @@ custom_edit_url: null
 Визуализация торговых аномалий и необычных рыночных событий для своевременного обнаружения значимых сигналов.
 
 ![image](/img/megaalerts1.png)
-Визуализация доступна на странице [MegaAlerts](https://data.moex.com/products/algopack/visual?tab=mega_alerts)
+Визуализация доступна на странице [MegaAlerts](https://data.moex.com/products/algopack/visual?tab=mega_alerts&utm_source=algopack_docs&utm_medium=internal_link&utm_campaign=algopack_docs_v2&utm_content=visual_megaalerts)
 
 На радаре можно увидеть все бумаги, которые торгуются сегодня с аномалиями:
 ![image](/img/megaalerts2.png)

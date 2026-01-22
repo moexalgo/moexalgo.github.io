@@ -23,6 +23,23 @@ const sidebars: SidebarsConfig = {
           id: "websocket/websocket",
           label: "Подключение к ISS+ через Websocket",
         },
+        {
+          type: "category",
+          label: "Справочники WebSocket",
+          collapsed: false,
+          items: [
+            {
+              type: "doc",
+              id: "websocket/docs/websocket-ru",
+              label: "Справочник (ru)",
+            },
+            {
+              type: "doc",
+              id: "websocket/docs/websocket-en",
+              label: "Справочник (en)",
+            },
+          ],
+        },
       ],
     },
   ],

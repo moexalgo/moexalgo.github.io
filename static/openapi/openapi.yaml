@@ -1497,7 +1497,7 @@ paths:
       parameters:
         - name: date
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -1825,7 +1825,7 @@ paths:
       parameters:
         - name: date
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -2078,7 +2078,7 @@ paths:
       parameters:
         - name: date
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -2352,7 +2352,7 @@ paths:
       parameters:
         - name: date
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -2650,7 +2650,7 @@ paths:
       parameters:
         - name: date
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -2960,7 +2960,7 @@ paths:
       parameters:
         - name: date
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -3237,7 +3237,7 @@ paths:
       parameters:
         - name: date
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -3526,7 +3526,7 @@ paths:
       parameters:
         - name: date
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -3778,7 +3778,7 @@ paths:
       parameters:
         - name: date
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -3995,7 +3995,7 @@ paths:
               * fo - фьючерсы
         - name: date
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -4203,7 +4203,7 @@ paths:
               * fo - фьючерсы
         - name: date
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date

@@ -254,30 +254,12 @@ paths:
                     - ["AKRN", "TQBR", null, 0, null, 0, 0, 0, 0, 18034, 17920, 18056, 18056, 10, 0.06, 1, 18056.00, 230.82, 18010, 48, 0.01, 2, null, 18008, 18010, 0.24, 49, 76, 1368780, 17498, null, "N", "23:50:18", 18020, 18054, 18014, 18048, 18008, 0, 0, 44, "23:49:51", 18108, 17914, 48, null, 20260109235038, "2026-01-09 23:50:38", 18014, 9, 663687208736, "23:49:51", null, 1368780, null, 0]
                 dataversion:
                   metadata:
-                    data_version: { type: int32 }
-                    seqnum: { type: int64 }
-                    trade_date: { type: date, bytes: 10, max_size: 0 }
-                    trade_session_date: { type: date, bytes: 10, max_size: 0 }
+                    boardid: { type: string, bytes: 12, max_size: 0 }
+                    secid: { type: string, bytes: 36, max_size: 0 }
                   columns:
-                    - TRADENO
-                    - BOARDNAME
-                    - SECID
-                    - TRADEDATE
-                    - TRADETIME
-                    - PRICE
-                    - QUANTITY
-                    - SYSTIME
-                    - RECNO
-                    - OPENPOSITION
-                    - OFFMARKETDEAL
-                    - BUYSELL
-                    - TRADE_SESSION_DATE
-                  data:
-                    - [1892951323259699201, "RFUD", "SiH6", "2026-01-09", "19:05:00", 79890, 1, "2026-01-12 08:00:12", 303522640475, 9218192, 0, "S", "2026-01-12"]
-                    - [1892951323259699202, "RFUD", "SiH6", "2026-01-09", "19:05:00", 79924, 1, "2026-01-12 08:00:12", 303522641622, 9218192, 0, "B", "2026-01-12"]
-                    - [1892951323259699203, "RFUD", "SiH6", "2026-01-09", "19:05:00", 79916, 2, "2026-01-12 08:00:12", 303522642308, 9218196, 0, "S", "2026-01-12"]
-                    - [1892951323259699204, "RFUD", "SiH6", "2026-01-09", "19:05:00", 79915, 8, "2026-01-12 08:00:12", 303522642312, 9218212, 0, "S", "2026-01-12"]
-                    - [1892951323259699205, "RFUD", "SiH6", "2026-01-09", "19:05:00", 79915, 2, "2026-01-12 08:00:12", 303522642316, 9218216, 0, "S", "2026-01-12"]
+                    - boardid
+                    - secid
+                  data: []
         '401':
           description: Unauthorized
         
@@ -514,7 +496,87 @@ paths:
                   data: []
         '401':
           description: Unauthorized
-        
+
+  /iss/engines/stock/markets/shares/boards/tqbr/securities/{ticker}/candles.json:
+    get:
+      tags:
+        - Real-time market data - Акции
+      summary: Свечи по инструменту
+      operationId: getSharesCandles
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Код ценной бумаги, например 'SBER'
+        - name: from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          description: Начало периода (ISO 8601)
+        - name: till
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          description: Окончание периода (ISO 8601)
+        - name: interval
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum: [1, 10, 60, 24, 7, 31, 4]
+          description: Интервал свечи (1-мин, 10-мин, 60-мин, 24-день, 7-неделя, 31-месяц, 4-квартал)
+      security:
+        - bearerAuth: []
+      description: |-
+        Свечи OHLCV по выбранному инструменту.
+
+        | User Status      | Server | Response                           |
+        | ---------------- | ------ | -----------------------------------|
+        | AUTHORIZED       | apim   | Real-time свечи                    |
+        | NOT AUTHORIZED   | iss    | 15 мин. задержанные данные         |
+
+        [Описание метрик](/docs/description/realtime#candles)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandlesResponse'
+              example:
+                candles:
+                  metadata:
+                    open: { type: "double" }
+                    close: { type: "double" }
+                    high: { type: "double" }
+                    low: { type: "double" }
+                    value: { type: "int64" }
+                    volume: { type: "double" }
+                    begin: { type: "datetime", bytes: 19, max_size: 0 }
+                    end: { type: "datetime", bytes: 19, max_size: 0 }
+                  columns:
+                    - "open"
+                    - "close"
+                    - "high"
+                    - "low"
+                    - "value"
+                    - "volume"
+                    - "begin"
+                    - "end"
+                  data:
+                    - [308, 308, 308, 308, 15291892, 49649, "2026-01-30 06:50:00", "2026-01-30 06:59:59"]
+                    - [308, 308.65, 308.65, 307.9, 56807477.99000005, 184188, "2026-01-30 07:00:00", "2026-01-30 07:09:59"]
+                    - [308.65, 308.81, 309.08, 308.41, 105242330.56, 340811, "2026-01-30 07:10:00", "2026-01-30 07:19:59"]
+                    - [308.81, 308, 308.88, 307.85, 98259097.11999999, 318822, "2026-01-30 07:20:00", "2026-01-30 07:29:59"]
+                    - [308, 308.02, 308.39, 307.96, 14454655.06, 46906, "2026-01-30 07:30:00", "2026-01-30 07:39:59"]
+        '401':
+          description: Unauthorized
 
   /iss/engines/stock/markets/shares/boards/tqbr/securities/{ticker}/orderbook.json:
     get:
@@ -4046,11 +4108,6 @@ paths:
         | AUTHORIZED       | apim   | Real-time данные (обновление ежедневное) |
         | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
 
-        Примеры:
-        * Акции: https://iss.moex.com/iss/datashop/algopack/eq/hi2.json?date=2024-04-17
-        * Валюта: https://iss.moex.com/iss/datashop/algopack/fx/hi2.json?date=2024-04-17
-        * Фьючерсы: https://iss.moex.com/iss/datashop/algopack/fo/hi2.json?date=2024-04-17
-
         [Описание метрик](/docs/description/hi2) | [Методология расчета](/docs/method/hi2)
       responses:
         '200':
@@ -4252,10 +4309,6 @@ paths:
         | AUTHORIZED       | apim   | Real-time данные (обновление ежедневное) |
         | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
 
-        Примеры:
-        * Акции: https://iss.moex.com/iss/datashop/algopack/eq/alerts.json?date=2024-05-01
-        * Фьючерсы: https://iss.moex.com/iss/datashop/algopack/fo/alerts.json?date=2024-05-01
-
         [Описание метрик](/docs/description/megaalerts) | [Методология расчета](/docs/method/megaalerts)
       responses:
         '200':
@@ -4360,10 +4413,6 @@ paths:
         | ---------------- | ------ | -----------------------------------|
         | AUTHORIZED       | apim   | Real-time данные (обновление ежедневное) |
         | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
-
-        Примеры:
-        * Акции: https://iss.moex.com/iss/datashop/algopack/eq/alerts/SBER.json?from=2024-03-01&till=2024-05-01
-        * Фьючерсы: https://iss.moex.com/iss/datashop/algopack/fo/alerts/SRH5.json?from=2024-03-01&till=2024-05-01
 
         [Описание метрик](/docs/description/megaalerts) | [Методология расчета](/docs/method/megaalerts)
       responses:

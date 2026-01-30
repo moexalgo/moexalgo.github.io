@@ -7,7 +7,7 @@ custom_edit_url: null
 Открытые позиции по фьючерсныфм контрактам в разрезе физ. и юр. лиц 
 
 ```
-https://iss.moex.com/iss/analyticalproducts/futoi/securities
+https://apim.moex.com/iss/analyticalproducts/futoi/securities
 ```
 
 | Field           | Type         | Description                                      | Example value      |

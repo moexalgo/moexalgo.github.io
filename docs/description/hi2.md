@@ -13,17 +13,17 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="stocks" label="Акции">
 ```
-https://iss.moex.com/iss/datashop/algopack/eq/hi2/
+https://apim.moex.com/iss/datashop/algopack/eq/hi2/
 ```
 </TabItem>
 <TabItem value="futures" label="Фьючерсы">
 ```
-https://iss.moex.com/iss/datashop/algopack/fo/hi2/
+https://apim.moex.com/iss/datashop/algopack/fo/hi2/
 ```
 </TabItem>
 <TabItem value="currency" label="Валюта">
 ```
-https://iss.moex.com/iss/datashop/algopack/fx/hi2/
+https://apim.moex.com/iss/datashop/algopack/fx/hi2/
 ```
 </TabItem>
 </Tabs>

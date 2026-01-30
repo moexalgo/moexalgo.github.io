@@ -10,7 +10,7 @@ custom_edit_url: null
 ### TradeStats
 
 ```
-https://iss.moex.com/iss/datashop/algopack/eq/tradestats/
+https://apim.moex.com/iss/datashop/algopack/eq/tradestats/
 ```
 
 | Field        | Type         | Description                                  | Example values     |
@@ -43,7 +43,7 @@ https://iss.moex.com/iss/datashop/algopack/eq/tradestats/
 ### OrderStats
 
 ```
-https://iss.moex.com/iss/datashop/algopack/eq/orderstats/
+https://apim.moex.com/iss/datashop/algopack/eq/orderstats/
 ```
 
 | Field             | Type         | Description                                  | Example values      |
@@ -80,7 +80,7 @@ https://iss.moex.com/iss/datashop/algopack/eq/orderstats/
 ### OBStats
 
 ```
-https://iss.moex.com/iss/datashop/algopack/eq/obstats/
+https://apim.moex.com/iss/datashop/algopack/eq/obstats/
 ```
 
 | Field            | Type         | Description                                     | Example values   |
@@ -115,7 +115,7 @@ https://iss.moex.com/iss/datashop/algopack/eq/obstats/
 ### TradeStats
 
 ```
-https://iss.moex.com/iss/datashop/algopack/fo/tradestats/
+https://apim.moex.com/iss/datashop/algopack/fo/tradestats/
 ```
 
 | Field        | Type         | Description                                | Example values   |
@@ -158,7 +158,7 @@ https://iss.moex.com/iss/datashop/algopack/fo/tradestats/
 ### OBStats
 
 ```
-https://iss.moex.com/iss/datashop/algopack/fo/obstats/
+https://apim.moex.com/iss/datashop/algopack/fo/obstats/
 ```
 
 | Field        | Type         | Description                                | Example values   |
@@ -205,7 +205,7 @@ https://iss.moex.com/iss/datashop/algopack/fo/obstats/
 ### TradeStats
 
 ```
-https://iss.moex.com/iss/datashop/algopack/fx/tradestats/
+https://apim.moex.com/iss/datashop/algopack/fx/tradestats/
 ```
 
 | Field          | Type          | Description                                      | Example values    |
@@ -242,7 +242,7 @@ https://iss.moex.com/iss/datashop/algopack/fx/tradestats/
 ### OrderStats
 
 ```
-https://iss.moex.com/iss/datashop/algopack/fx/orderstats/
+https://apim.moex.com/iss/datashop/algopack/fx/orderstats/
 ```
 
 | Field             | Type       | Description                                           | Example values   |
@@ -272,7 +272,7 @@ https://iss.moex.com/iss/datashop/algopack/fx/orderstats/
 ### OBStats
 
 ```
-https://iss.moex.com/iss/datashop/algopack/fx/obstats/
+https://apim.moex.com/iss/datashop/algopack/fx/obstats/
 ```
 
 | Field       | Type       | Описание                       | Пример значения  |

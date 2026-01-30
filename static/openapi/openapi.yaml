@@ -522,8 +522,6 @@ paths:
         - Real-time market data - Акции
       summary: Стакан котировок по инструменту
       operationId: getShareOrderbook
-      security:
-        - bearerAuth: []
       parameters:
         - name: ticker
           in: path
@@ -531,6 +529,8 @@ paths:
           schema:
             type: string
           description: Код ценной бумаги, например 'SBER'
+      security:
+        - bearerAuth: []
       description: |-
         Стакан котировок по одному указанному инструменту.
 
@@ -1642,14 +1642,14 @@ paths:
           description: Код ценной бумаги
         - name: from
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата начала периода (YYYY-MM-DD)
         - name: till
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -1668,6 +1668,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе потока сделок (tradestats) по одному инструменту.
 
@@ -1844,6 +1846,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе стакана котировок (obstats).
 
@@ -1951,14 +1955,14 @@ paths:
           description: Код ценной бумаги
         - name: from
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата начала периода (YYYY-MM-DD)
         - name: till
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -1977,6 +1981,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе стакана котировок (obstats) по одному инструменту.
 
@@ -2097,6 +2103,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе потока заявок (orderstats).
 
@@ -2214,14 +2222,14 @@ paths:
           description: Код ценной бумаги
         - name: from
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата начала периода (YYYY-MM-DD)
         - name: till
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -2240,6 +2248,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе потока заявок (orderstats) по одному инструменту.
 
@@ -2371,6 +2381,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе потока сделок (tradestats) по фьючерсам.
 
@@ -2499,14 +2511,14 @@ paths:
           description: Код фьючерса
         - name: from
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата начала периода (YYYY-MM-DD)
         - name: till
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -2525,6 +2537,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе потока сделок (tradestats) по одному фьючерсу.
 
@@ -2669,6 +2683,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе стакана котировок (obstats) по фьючерсам.
 
@@ -2804,14 +2820,14 @@ paths:
           description: Код фьючерса
         - name: from
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата начала периода (YYYY-MM-DD)
         - name: till
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -2830,6 +2846,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе стакана котировок (obstats) по одному фьючерсу.
 
@@ -2979,6 +2997,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе потока сделок (tradestats) по валюте.
 
@@ -3098,14 +3118,14 @@ paths:
           description: Код валютной пары
         - name: from
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата начала периода (YYYY-MM-DD)
         - name: till
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -3124,6 +3144,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе потока сделок (tradestats) по одной валютной паре.
 
@@ -3256,6 +3278,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе стакана котировок (obstats) по валюте.
 
@@ -3381,14 +3405,14 @@ paths:
           description: Код валютной пары
         - name: from
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата начала периода (YYYY-MM-DD)
         - name: till
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -3407,6 +3431,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе стакана котировок (obstats) по одной валютной паре.
 
@@ -3545,6 +3571,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе потока заявок (orderstats) по валюте.
 
@@ -3650,14 +3678,14 @@ paths:
           description: Код валютной пары
         - name: from
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата начала периода (YYYY-MM-DD)
         - name: till
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -3676,6 +3704,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе потока заявок (orderstats) по одной валютной паре.
 
@@ -3773,8 +3803,6 @@ paths:
         - Futures Open Interest (FUTOI)
       summary: По всем инструментам
       operationId: getAllFutoi
-      security:
-        - bearerAuth: []
       parameters:
         - name: date
           in: query
@@ -3797,6 +3825,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Открытые позиции по срочным контрактам в разрезе физ. и юр. лиц.
 
@@ -3872,8 +3902,6 @@ paths:
         - Futures Open Interest (FUTOI)
       summary: По одному инструменту
       operationId: getFutoiForTicker
-      security:
-        - bearerAuth: []
       parameters:
         - name: ticker
           in: path
@@ -3883,14 +3911,14 @@ paths:
           description: Краткий код базового актива (Si, RI, GD, ...)
         - name: from
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата начала периода (YYYY-MM-DD)
         - name: till
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -3909,6 +3937,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Открытые позиции по срочным контрактам в разрезе физ. и юр. лиц по одному инструменту.
 
@@ -4006,6 +4036,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Индекс рыночной концентрации по всем инструментам.
 
@@ -4101,14 +4133,14 @@ paths:
           description: Код инструмента, например 'SBER'
         - name: from
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата начала периода (YYYY-MM-DD)
         - name: till
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -4119,6 +4151,8 @@ paths:
             type: integer
             default: 0
           description: Starting index for pagination.
+      security:
+        - bearerAuth: []
       description: |-
         Индекс рыночной концентрации по одному инструменту.
 
@@ -4208,6 +4242,8 @@ paths:
             type: string
             format: date
           description: Дата 1 день, все инструменты, например '2024-05-01'
+      security:
+        - bearerAuth: []
       description: |-
         Торговые аномалии по всем инструментам за 1 день.
 
@@ -4303,18 +4339,20 @@ paths:
           description: Код инструмента, например 'SBER'
         - name: from
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата начала периода, например '2024-03-01'
         - name: till
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: date
           description: Дата окончания периода, например '2024-05-01'
+      security:
+        - bearerAuth: []
       description: |-
         Торговые аномалии по одному инструменту за период.
 

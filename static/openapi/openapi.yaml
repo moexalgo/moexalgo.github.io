@@ -1422,6 +1422,8 @@ paths:
           schema:
             type: string
           description: Короткий код фьючерса, например 'SiH5'
+      security:
+        - bearerAuth: []
       description: |-
         Стакан котировок по одному указанному фьючерсному контракту.
 

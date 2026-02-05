@@ -32,12 +32,6 @@ paths:
       summary: Торговая статистика за сегодня (по всем акциям)
       operationId: getAllSharesStatistics
       parameters:
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Начальный индекс для пагинации.
         - name: limit
           in: query
           schema:
@@ -835,12 +829,7 @@ paths:
       summary: Торговая статистика по фьючерсам за сегодня
       operationId: getAllFuturesStatistics
       parameters:
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
         - name: limit
           in: query
           schema:
@@ -1574,12 +1563,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
         - name: limit
           in: query
           schema:
@@ -1726,12 +1710,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -1904,12 +1883,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -2039,12 +2013,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -2161,12 +2130,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -2306,12 +2270,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -2439,12 +2398,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -2595,12 +2549,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -2741,12 +2690,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -2904,12 +2848,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -3055,12 +2994,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -3202,12 +3136,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -3336,12 +3265,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -3489,12 +3413,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -3629,12 +3548,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -3762,12 +3676,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -4082,12 +3991,7 @@ paths:
             type: string
             format: date
           description: Дата торгов (YYYY-MM-DD)
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-
@@ -4192,12 +4096,7 @@ paths:
             type: string
             format: date
           description: Дата окончания периода (YYYY-MM-DD)
-        - name: start
-          in: query
-          schema:
-            type: integer
-            default: 0
-          description: Starting index for pagination.
+        
       security:
         - bearerAuth: []
       description: |-

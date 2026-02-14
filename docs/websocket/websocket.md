@@ -11,7 +11,7 @@ import Tabs from '@theme/Tabs';
 
 import TabItem from '@theme/TabItem';
 
-# Подключению к ISS+ через Websockets
+# Подключение к ISS+ через Websockets
 
 ISS+ - система распространения биржевой информации в реальном времени. Подключение осуществляется через Websocket по протоколу STOMP
 

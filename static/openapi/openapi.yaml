@@ -23,14 +23,14 @@ tags:
     description: Индекс рыночной концентрации
   - name: Mega Alerts
     description: Торговые аномалии
-  - name: ISS Calendar — Общий
+  - name: ISS Calendar - Общий
     description: Календарь по всем рынкам (ФР, ВР, СР)
-  - name: ISS Calendar — Валютный рынок
-    description: ВР — неторговые и нерасчётные дни, расписание, инструменты
-  - name: ISS Calendar — Срочный рынок
-    description: СР — неторговые дни, контракты, расписание
-  - name: ISS Calendar — Фондовый рынок
-    description: ФР — неторговые дни, классификаторы, расписание, приостановки
+  - name: ISS Calendar - Валютный рынок
+    description: ВР - неторговые и нерасчётные дни, расписание, инструменты
+  - name: ISS Calendar - Срочный рынок
+    description: СР - неторговые дни, контракты, расписание
+  - name: ISS Calendar - Фондовый рынок
+    description: ФР - неторговые дни, классификаторы, расписание, приостановки
 
 paths:
   /iss/engines/stock/markets/shares/boards/tqbr/securities.json:
@@ -4371,11 +4371,11 @@ paths:
   /iss/calendars.json:
     get:
       tags:
-        - ISS Calendar — Общий
+        - ISS Calendar - Общий
       summary: Календарь неторговых дней по всем рынкам (ФР, ВР, СР)
       operationId: calendarIssCalendarsRoot
       description: |
-        Таблица `off_days` — календарь по валютному, срочному и фондовому рынкам в одной строке на дату
+        Таблица `off_days` - календарь по валютному, срочному и фондовому рынкам в одной строке на дату
         (поля `currency_*`, `futures_*`, `stock_*`).
 
         [Описание полей](/docs/description/calendar-iss#off_days--get-isscalendarsjson)
@@ -4400,7 +4400,7 @@ paths:
             type: integer
             enum: [0, 1]
             default: 0
-          description: "`1` — выдать все календарные даты года в `off_days`."
+          description: "`1` - выдать все календарные даты года в `off_days`."
         - name: iss.only
           in: query
           schema:
@@ -4413,7 +4413,7 @@ paths:
             type: integer
             minimum: 0
             example: 100
-          description: Смещение для пагинации — номер следующей строки.
+          description: Смещение для пагинации - номер следующей строки.
       security:
         - bearerAuth: []
       responses:
@@ -4456,8 +4456,8 @@ paths:
   /iss/calendars/currency.json:
     get:
       tags:
-        - ISS Calendar — Валютный рынок
-      summary: Календарь ВР — неторговые и нерасчётные дни, борды
+        - ISS Calendar - Валютный рынок
+      summary: Календарь ВР - неторговые и нерасчётные дни, борды
       operationId: calendarIssCalendarsCurrency
       description: |
         Блоки: `off_days`, `currency_settlements` (нерасчётные дни по валютам), `boards` (справочник бордов).
@@ -4484,7 +4484,7 @@ paths:
             type: integer
             enum: [0, 1]
             default: 0
-          description: "`1` — выдать все даты года."
+          description: "`1` - выдать все даты года."
         - name: iss.only
           in: query
           schema:
@@ -4558,7 +4558,7 @@ paths:
   /iss/calendars/currency/session.json:
     get:
       tags:
-        - ISS Calendar — Валютный рынок
+        - ISS Calendar - Валютный рынок
       summary: Расписание торгов на ВР (текущий торговый день)
       operationId: calendarIssCalendarsCurrencySession
       description: |
@@ -4665,7 +4665,7 @@ paths:
   /iss/calendars/currency/securities.json:
     get:
       tags:
-        - ISS Calendar — Валютный рынок
+        - ISS Calendar - Валютный рынок
       summary: Календарь по инструментам ВР (приостановки, сдвиги расчётов)
       operationId: calendarIssCalendarsCurrencySecurities
       description: |
@@ -4741,7 +4741,7 @@ paths:
   /iss/calendars/currency/changes.json:
     get:
       tags:
-        - ISS Calendar — Валютный рынок
+        - ISS Calendar - Валютный рынок
       summary: Изменения по приостановкам инструментов ВР
       operationId: calendarIssCalendarsCurrencyChanges
       description: |
@@ -4801,11 +4801,11 @@ paths:
   /iss/calendars/futures.json:
     get:
       tags:
-        - ISS Calendar — Срочный рынок
+        - ISS Calendar - Срочный рынок
       summary: Календарь неторговых дней по СР
       operationId: calendarIssCalendarsFutures
       description: |
-        Таблица `off_days` — неторговые дни по Срочному рынку. Исключения к официальным праздникам + рабочие выходные.
+        Таблица `off_days` - неторговые дни по Срочному рынку. Исключения к официальным праздникам + рабочие выходные.
 
         [Описание полей](/docs/description/calendar-iss#срочный-рынок-ср)
       parameters:
@@ -4829,7 +4829,7 @@ paths:
             type: integer
             enum: [0, 1]
             default: 0
-          description: "`1` — выдать все даты года."
+          description: "`1` - выдать все даты года."
         - name: iss.only
           in: query
           schema:
@@ -4875,7 +4875,7 @@ paths:
   /iss/calendars/futures/securities.json:
     get:
       tags:
-        - ISS Calendar — Срочный рынок
+        - ISS Calendar - Срочный рынок
       summary: Таблица фьючерсов и опционов (серии и контракты)
       operationId: calendarIssCalendarsFuturesSecurities
       description: |
@@ -4883,11 +4883,11 @@ paths:
         Каждый раздел возвращается как отдельный ISS-блок со своим набором полей.
         Работает фильтрация `from` / `till` внутри одного года.
 
-        **Раздел options** — поля: `asset_type_name`, `asset_code`, `series_name`, `series_type`,
+        **Раздел options** - поля: `asset_type_name`, `asset_code`, `series_name`, `series_type`,
         `exec_type`, `margin_style`, `contract_name`, `expiration_date`, `expiration_type`,
         `expiration_time`, `weekend_session`.
 
-        **Раздел forts** — поля: `secid`, `asset_code`, `shortname`, `exec_type`, `contract_name`,
+        **Раздел forts** - поля: `secid`, `asset_code`, `shortname`, `exec_type`, `contract_name`,
         `expiration_date`, `end_date`, `expiration_type`, `expiration_time`, `weekend_session`.
 
         [Описание полей](/docs/description/calendar-iss#securities-опционы--фьючерсы--get-isscalendarsfuturessecuritiesjson)
@@ -4987,7 +4987,7 @@ paths:
   /iss/calendars/futures/session.json:
     get:
       tags:
-        - ISS Calendar — Срочный рынок
+        - ISS Calendar - Срочный рынок
       summary: Расписание торгов на СР
       operationId: calendarIssCalendarsFuturesSession
       description: |
@@ -5070,7 +5070,7 @@ paths:
   /iss/calendars/stock.json:
     get:
       tags:
-        - ISS Calendar — Фондовый рынок
+        - ISS Calendar - Фондовый рынок
       summary: Календарь неторговых дней по ФР
       operationId: calendarIssCalendarsStock
       description: |
@@ -5098,7 +5098,7 @@ paths:
             type: integer
             enum: [0, 1]
             default: 0
-          description: "`1` — выдать все даты года."
+          description: "`1` - выдать все даты года."
         - name: iss.only
           in: query
           schema:
@@ -5144,7 +5144,7 @@ paths:
   /iss/calendars/stock/static.json:
     get:
       tags:
-        - ISS Calendar — Фондовый рынок
+        - ISS Calendar - Фондовый рынок
       summary: Статические справочники ФР (классификаторы рынков и бордов)
       operationId: calendarIssCalendarsStockStatic
       description: |
@@ -5160,7 +5160,7 @@ paths:
             enum:
               - markets_classifier
               - boards_classifier
-          description: "`markets_classifier` — классификатор рынков; `boards_classifier` — классификатор режимов торгов."
+          description: "`markets_classifier` - классификатор рынков; `boards_classifier` - классификатор режимов торгов."
         - name: start
           in: query
           schema:
@@ -5209,11 +5209,11 @@ paths:
   /iss/calendars/stock/securities/boards.json:
     get:
       tags:
-        - ISS Calendar — Фондовый рынок
+        - ISS Calendar - Фондовый рынок
       summary: Торгуемость инструментов на бордах
       operationId: calendarIssCalendarsStockSecuritiesBoards
       description: |
-        Таблица `securities_boards` — перечень режимов торгов каждого инструмента на дату.
+        Таблица `securities_boards` - перечень режимов торгов каждого инструмента на дату.
 
         [Описание полей](/docs/description/calendar-iss#securities_boards--get-isscalendarsstocksecuritiesboardsjson)
       parameters:
@@ -5277,11 +5277,11 @@ paths:
   /iss/calendars/stock/session/settlecodes.json:
     get:
       tags:
-        - ISS Calendar — Фондовый рынок
+        - ISS Calendar - Фондовый рынок
       summary: Справочник расчётных кодов на текущий торговый день
       operationId: calendarIssCalendarsStockSessionSettlecodes
       description: |
-        Таблица `settlecodes` — даты расчётов по кодам на текущий торговый день. Для ДСВД все расчёты в понедельник.
+        Таблица `settlecodes` - даты расчётов по кодам на текущий торговый день. Для ДСВД все расчёты в понедельник.
 
         [Описание полей](/docs/description/calendar-iss#settlecodes--get-isscalendarsstocksessionsettlecodesjson)
       parameters:
@@ -5333,14 +5333,14 @@ paths:
   /iss/calendars/stock/securities/suspended/details.json:
     get:
       tags:
-        - ISS Calendar — Фондовый рынок
+        - ISS Calendar - Фондовый рынок
       summary: Запреты торгов по событиям (детали)
       operationId: calendarIssCalendarsStockSecuritiesSuspendedDetails
       description: |
         Блоки: `suspended` (запреты по событиям на будущие периоды), `suspended.reasons` (справочник причин).
 
-        `null` по `boardid` — запрет по инструменту на всех допущенных режимах.
-        `null` по `date_till` — дата окончания запрета неизвестна.
+        `null` по `boardid` - запрет по инструменту на всех допущенных режимах.
+        `null` по `date_till` - дата окончания запрета неизвестна.
 
         [Описание полей](/docs/description/calendar-iss#suspended--suspendedreasons--get-isscalendarsstocksecuritiessuspendeddetailsjson)
       parameters:
@@ -5412,12 +5412,12 @@ paths:
   /iss/calendars/stock/securities/changes.json:
     get:
       tags:
-        - ISS Calendar — Фондовый рынок
+        - ISS Calendar - Фондовый рынок
       summary: Изменения параметров инструмента
       operationId: calendarIssCalendarsStockSecuritiesChanges
       description: |
         Блоки: `securities` (изменения атрибутов), `securities.attributes` (справочник атрибутов).
-        По умолчанию — текущая дата. Пример: `?date=2025-01-21`.
+        По умолчанию - текущая дата. Пример: `?date=2025-01-21`.
 
         [Описание полей](/docs/description/calendar-iss#securities--securitiesattributes--get-isscalendarsstocksecuritieschangesjson)
       parameters:
@@ -5427,7 +5427,7 @@ paths:
             type: string
             format: date
             example: "2025-01-21"
-          description: Дата изменений (по умолчанию — текущая).
+          description: Дата изменений (по умолчанию - текущая).
         - name: start
           in: query
           schema:
@@ -5481,7 +5481,7 @@ paths:
   /iss/calendars/stock/session/suspended.json:
     get:
       tags:
-        - ISS Calendar — Фондовый рынок
+        - ISS Calendar - Фондовый рынок
       summary: Исключения по кодам расчётов (бумага–борд) на текущий день
       operationId: calendarIssCalendarsStockSessionSuspended
       description: |
@@ -5547,14 +5547,14 @@ paths:
   /iss/calendars/stock/session.json:
     get:
       tags:
-        - ISS Calendar — Фондовый рынок
+        - ISS Calendar - Фондовый рынок
       summary: Расписание торгов по режимам (ФР)
       operationId: calendarIssCalendarsStockSession
       description: |
-        Таблица `session_schedule` — расписание по режимам, включая периоды внутри режима (кроме дискретного аукциона).
+        Таблица `session_schedule` - расписание по режимам, включая периоды внутри режима (кроме дискретного аукциона).
         Справочник `session_schedule.types`.
 
-        `tradingsession`: `0` — утренняя, `1` — основная, `2` — вечерняя, `5` — ДСВД, `-999` — не предусмотрено.
+        `tradingsession`: `0` - утренняя, `1` - основная, `2` - вечерняя, `5` - ДСВД, `-999` - не предусмотрено.
 
         [Описание полей](/docs/description/calendar-iss#session_schedule--session_scheduletypes-1--get-isscalendarsstocksessionjson)
       parameters:
@@ -5633,11 +5633,11 @@ paths:
   /iss/archives/files/calendars_stock_suspended_planned:
     get:
       tags:
-        - ISS Calendar — Фондовый рынок
+        - ISS Calendar - Фондовый рынок
       summary: Архив запретов торгов по событиям (ZIP-файлы)
       operationId: calendarIssArchivesStockSuspendedPlanned
       description: |
-        Таблица `files` — список ZIP-архивов с данными таблицы `suspended` из
+        Таблица `files` - список ZIP-архивов с данными таблицы `suspended` из
         `/iss/calendars/stock/securities/suspended/details.json`.
         Данные предоставляются на период с текущего календарного года + 3 года вперёд.
         Скачивание по относительному пути из поля `url` (например,
@@ -5680,11 +5680,11 @@ paths:
   /iss/archives/files/calendar_stock_session_suspended_latest:
     get:
       tags:
-        - ISS Calendar — Фондовый рынок
+        - ISS Calendar - Фондовый рынок
       summary: Архив исключений по кодам расчётов (ZIP-файлы, последняя дата)
       operationId: calendarIssArchivesStockSessionSuspendedLatest
       description: |
-        Таблица `files` — список ZIP-архивов с данными таблицы `suspended` из
+        Таблица `files` - список ZIP-архивов с данными таблицы `suspended` из
         `/iss/calendars/stock/session/suspended.json` за последнюю доступную дату.
         Скачивание по относительному пути из поля `url`.
 

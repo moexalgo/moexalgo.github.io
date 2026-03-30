@@ -25,12 +25,13 @@ tags:
     description: Торговые аномалии
   - name: ISS Calendar - Общий
     description: Календарь по всем рынкам
-  - name: ISS Calendar - Валютный рынок
-    description: Валютный рынок - неторговые и нерасчётные дни, расписание, инструменты
-  - name: ISS Calendar - Срочный рынок
-    description: Срочный рынок - неторговые дни, контракты, расписание
   - name: ISS Calendar - Фондовый рынок
     description: Фондовый рынок - неторговые дни, классификаторы, расписание, приостановки
+  - name: ISS Calendar - Срочный рынок
+    description: Срочный рынок - неторговые дни, контракты, расписание
+  - name: ISS Calendar - Валютный рынок
+    description: Валютный рынок - неторговые и нерасчётные дни, расписание, инструменты
+
 
 paths:
   /iss/engines/stock/markets/shares/boards/tqbr/securities.json:

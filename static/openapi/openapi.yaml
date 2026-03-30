@@ -4403,7 +4403,6 @@ paths:
             enum: [0, 1]
             default: 0
           description: "`1` - выдать все календарные даты года в `off_days`."
-          description: "`1` - выдать все календарные даты года в `off_days`."
         - name: iss.only
           in: query
           schema:
@@ -4488,7 +4487,6 @@ paths:
             type: integer
             enum: [0, 1]
             default: 0
-          description: "`1` - выдать все даты года."
           description: "`1` - выдать все даты года."
         - name: iss.only
           in: query
@@ -5146,7 +5144,6 @@ paths:
             enum: [0, 1]
             default: 0
           description: "`1` - выдать все даты года."
-          description: "`1` - выдать все даты года."
         - name: iss.only
           in: query
           schema:
@@ -5417,7 +5414,6 @@ paths:
             type: integer
             enum: [0, 1]
             default: 0
-          description: "`1` - выдать все даты года."
           description: "`1` - выдать все даты года."
         - name: iss.only
           in: query

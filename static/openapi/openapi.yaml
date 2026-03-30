@@ -23,6 +23,14 @@ tags:
     description: Индекс рыночной концентрации
   - name: Mega Alerts
     description: Торговые аномалии
+  - name: ISS Calendar — Общий
+    description: Календарь по всем рынкам (ФР, ВР, СР)
+  - name: ISS Calendar — Валютный рынок
+    description: ВР — неторговые и нерасчётные дни, расписание, инструменты
+  - name: ISS Calendar — Срочный рынок
+    description: СР — неторговые дни, контракты, расписание
+  - name: ISS Calendar — Фондовый рынок
+    description: ФР — неторговые дни, классификаторы, расписание, приостановки
 
 paths:
   /iss/engines/stock/markets/shares/boards/tqbr/securities.json:
@@ -52,8 +60,8 @@ paths:
         Блоки данных:
           * securities - торговые параметры акций (наименование, шаг цены, лотность, ...)
           * marketdata - торговая статистика по акциям (цены, объемы, ...)
-                
-        [Описание метрик](/docs/description/realtime#marketstatistics) 
+
+        [Описание метрик](/docs/description/realtime#marketstatistics)
       responses:
         '200':
           description: Successful response
@@ -256,7 +264,7 @@ paths:
                   data: []
         '401':
           description: Unauthorized
-        
+
 
   /iss/engines/stock/markets/shares/boards/tqbr/securities/{ticker}.json:
     get:
@@ -281,8 +289,8 @@ paths:
         | ---------------- | ------ | -----------------------------------|
         | AUTHORIZED       | apim   | Real-time                          |
         | NOT AUTHORIZED   | iss    | 15 мин. задержанные данные         |
-      
-        [Описание метрик](/docs/description/realtime#marketstatistics) 
+
+        [Описание метрик](/docs/description/realtime#marketstatistics)
       responses:
         '200':
           description: Successful response
@@ -670,7 +678,7 @@ paths:
                     - [8757, 20260112092255, "2026-01-12", "2026-01-12"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/engines/stock/markets/shares/boards/tqbr/securities/{ticker}/trades.json:
     get:
@@ -820,7 +828,7 @@ paths:
                   data: []
         '401':
           description: Unauthorized
-        
+
 
   /iss/engines/futures/markets/forts/boards/rfud/securities.json:
     get:
@@ -829,7 +837,7 @@ paths:
       summary: Торговая статистика по фьючерсам за сегодня
       operationId: getAllFuturesStatistics
       parameters:
-        
+
         - name: limit
           in: query
           schema:
@@ -850,8 +858,8 @@ paths:
         Блоки данных:
           * securities - торговые параметры фьючерсов (наименование, шаг цены, лотность, ...)
           * marketdata - торговая статистика по фьючерсам (цены, объемы, ...)
-                
-        [Описание метрик](/docs/description/realtime#marketstatistics-1) 
+
+        [Описание метрик](/docs/description/realtime#marketstatistics-1)
       responses:
         '200':
           description: Successful response
@@ -942,7 +950,7 @@ paths:
                   data: []
         '401':
           description: Unauthorized
-        
+
 
   /iss/engines/futures/markets/forts/boards/rfud/securities/{ticker}.json:
     get:
@@ -1314,7 +1322,7 @@ paths:
                   data: []
         '401':
           description: Unauthorized
-        
+
 
   /iss/engines/futures/markets/forts/boards/rfud/securities/{ticker}/candles.json:
     get:
@@ -1396,7 +1404,7 @@ paths:
                     - [3197, 3197, 3197, 3197, 0, 2, "2025-12-26 09:40:00", "2025-12-26 09:45:21"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/engines/futures/markets/forts/boards/rfud/securities/{ticker}/orderbook.json:
     get:
@@ -1422,7 +1430,7 @@ paths:
         | ---------------- | ------ | -----------------------------------|
         | AUTHORIZED       | apim   | Real-time стакан                   |
         | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
-       
+
         [Описание метрик](/docs/description/realtime#orderbook-1)
       responses:
         '200':
@@ -1496,7 +1504,7 @@ paths:
                     - [12668, 20260112092655, "2026-01-12", "2026-01-12"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/engines/futures/markets/forts/boards/rfud/securities/{ticker}/trades.json:
     get:
@@ -1538,7 +1546,7 @@ paths:
                 $ref: '#/components/schemas/FuturesTradesResponse'
         '401':
           description: Unauthorized
-        
+
 
   # Super Candles - Акции
   /iss/datashop/algopack/eq/tradestats.json:
@@ -1563,7 +1571,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        
+
         - name: limit
           in: query
           schema:
@@ -1579,7 +1587,7 @@ paths:
         | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
         | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
 
-        [Описание метрик](/docs/description/supercandles#tradestats) | [Методология расчета](/docs/method/supercandles#tradestats) 
+        [Описание метрик](/docs/description/supercandles#tradestats) | [Методология расчета](/docs/method/supercandles#tradestats)
       responses:
         '200':
           description: Successful response
@@ -1673,7 +1681,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/eq/tradestats/{ticker}.json:
     get:
@@ -1710,7 +1718,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -1721,7 +1729,7 @@ paths:
         | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
         | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
 
-        [Описание метрик](/docs/description/supercandles#tradestats) | [Методология расчета](/docs/method/supercandles#tradestats) 
+        [Описание метрик](/docs/description/supercandles#tradestats) | [Методология расчета](/docs/method/supercandles#tradestats)
       responses:
         '200':
           description: Successful response
@@ -1859,7 +1867,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/eq/obstats.json:
     get:
@@ -1883,7 +1891,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -1894,7 +1902,7 @@ paths:
         | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
         | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
 
-        [Описание метрик](/docs/description/supercandles#obstats) | [Методология расчета](/docs/method/supercandles#obstats) 
+        [Описание метрик](/docs/description/supercandles#obstats) | [Методология расчета](/docs/method/supercandles#obstats)
       responses:
         '200':
           description: Successful response
@@ -1976,7 +1984,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/eq/obstats/{ticker}.json:
     get:
@@ -2013,7 +2021,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -2024,7 +2032,7 @@ paths:
         | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
         | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
 
-        [Описание метрик](/docs/description/supercandles#obstats) | [Методология расчета](/docs/method/supercandles#obstats) 
+        [Описание метрик](/docs/description/supercandles#obstats) | [Методология расчета](/docs/method/supercandles#obstats)
       responses:
         '200':
           description: Successful response
@@ -2106,7 +2114,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/eq/orderstats.json:
     get:
@@ -2130,7 +2138,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -2141,7 +2149,7 @@ paths:
         | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
         | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
 
-        [Описание метрик](/docs/description/supercandles#orderstats) | [Методология расчета](/docs/method/supercandles#orderstats) 
+        [Описание метрик](/docs/description/supercandles#orderstats) | [Методология расчета](/docs/method/supercandles#orderstats)
       responses:
         '200':
           description: Successful response
@@ -2233,7 +2241,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/eq/orderstats/{ticker}.json:
     get:
@@ -2270,7 +2278,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -2281,7 +2289,7 @@ paths:
         | AUTHORIZED       | apim   | Real-time данные (обновление каждые 5 мин) |
         | NOT AUTHORIZED   | iss    | Информация доступна только подписчикам |
 
-        [Описание метрик](/docs/description/supercandles#orderstats) | [Методология расчета](/docs/method/supercandles#orderstats) 
+        [Описание метрик](/docs/description/supercandles#orderstats) | [Методология расчета](/docs/method/supercandles#orderstats)
       responses:
         '200':
           description: Successful response
@@ -2373,7 +2381,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   # Super Candles - Фьючерсы
   /iss/datashop/algopack/fo/tradestats.json:
@@ -2398,7 +2406,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -2512,7 +2520,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/fo/tradestats/{ticker}.json:
     get:
@@ -2549,7 +2557,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -2666,7 +2674,7 @@ paths:
                     - ["2023-12-07", "2024-06-19"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/fo/obstats.json:
     get:
@@ -2690,7 +2698,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -2811,7 +2819,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/fo/obstats/{ticker}.json:
     get:
@@ -2848,7 +2856,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -2969,7 +2977,7 @@ paths:
                     - ["2025-06-05", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   # Super Candles - Валюта
   /iss/datashop/algopack/fx/tradestats.json:
@@ -2994,7 +3002,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -3099,7 +3107,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/fx/tradestats/{ticker}.json:
     get:
@@ -3136,7 +3144,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -3241,7 +3249,7 @@ paths:
                     - ["2020-03-26", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/fx/obstats.json:
     get:
@@ -3265,7 +3273,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -3376,7 +3384,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/fx/obstats/{ticker}.json:
     get:
@@ -3413,7 +3421,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -3524,7 +3532,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/fx/orderstats.json:
     get:
@@ -3548,7 +3556,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанную дату
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -3639,7 +3647,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/fx/orderstats/{ticker}.json:
     get:
@@ -3676,7 +3684,7 @@ paths:
             enum: [0, 1]
             default: 0
           description: Флаг latest=1 возвращает последнюю пятиминутку за указанный период
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -3767,7 +3775,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   # Futures Open Interest (FUTOI)
   /iss/analyticalproducts/futoi/securities.json:
@@ -3861,7 +3869,7 @@ paths:
                     - ["2020-05-08", "2024-04-17", "2024-04-16", null]
         '401':
           description: Unauthorized
-        
+
 
   /iss/analyticalproducts/futoi/securities/{ticker}.json:
     get:
@@ -3963,7 +3971,7 @@ paths:
                     - ["2020-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   # Market Concentration (HI2)
   /iss/datashop/algopack/{market}/hi2.json:
@@ -3991,7 +3999,7 @@ paths:
             type: string
             format: date
           description: Дата торгов (YYYY-MM-DD)
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -4056,7 +4064,7 @@ paths:
                     - ["2024-01-03", "2024-04-16"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/{market}/hi2/{ticker}.json:
     get:
@@ -4096,7 +4104,7 @@ paths:
             type: string
             format: date
           description: Дата окончания периода (YYYY-MM-DD)
-        
+
       security:
         - bearerAuth: []
       description: |-
@@ -4161,7 +4169,7 @@ paths:
                     - ["2020-01-03", "2025-11-01"]
         '401':
           description: Unauthorized
-        
+
 
   # MegaAlerts
   /iss/datashop/algopack/{market}/alerts.json:
@@ -4254,7 +4262,7 @@ paths:
                     - ["2024-01-03", "2026-01-09"]
         '401':
           description: Unauthorized
-        
+
 
   /iss/datashop/algopack/{market}/alerts/{ticker}.json:
     get:
@@ -4359,7 +4367,1361 @@ paths:
                     - ["2024-01-03", "2025-12-29"]
         '401':
           description: Unauthorized
-        
+
+  /iss/calendars.json:
+    get:
+      tags:
+        - ISS Calendar — Общий
+      summary: Календарь неторговых дней по всем рынкам (ФР, ВР, СР)
+      operationId: calendarIssCalendarsRoot
+      description: |
+        Таблица `off_days` — календарь по валютному, срочному и фондовому рынкам в одной строке на дату
+        (поля `currency_*`, `futures_*`, `stock_*`).
+
+        [Описание полей](/docs/description/calendar-iss#off_days--get-isscalendarsjson)
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-01"
+          description: Начало периода (ISO date, внутри одного календарного года вместе с `till`).
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-12-31"
+          description: Конец периода (ISO date).
+        - name: show_all_days
+          in: query
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: "`1` — выдать все календарные даты года в `off_days`."
+        - name: iss.only
+          in: query
+          schema:
+            type: string
+            example: off_days
+          description: Ограничить ответ одной таблицей ISS (например `off_days`).
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации — номер следующей строки.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarRootResponse'
+              example:
+                off_days:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    currency_workday: { type: int64 }
+                    currency_trade_session_date: { type: date, bytes: 30, max_size: 0 }
+                    currency_reason: { type: string, bytes: 3, max_size: 0 }
+                    futures_workday: { type: int64 }
+                    futures_trade_session_date: { type: date, bytes: 30, max_size: 0 }
+                    futures_reason: { type: string, bytes: 3, max_size: 0 }
+                    stock_workday: { type: int64 }
+                    stock_trade_session_date: { type: date, bytes: 30, max_size: 0 }
+                    stock_reason: { type: string, bytes: 3, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - currency_workday
+                    - currency_trade_session_date
+                    - currency_reason
+                    - futures_workday
+                    - futures_trade_session_date
+                    - futures_reason
+                    - stock_workday
+                    - stock_trade_session_date
+                    - stock_reason
+                  data:
+                    - ["2025-01-01", 0, null, "H", 0, null, "H", 0, null, "H"]
+                    - ["2025-01-08", 1, null, "H", 1, null, null, 1, null, null]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/currency.json:
+    get:
+      tags:
+        - ISS Calendar — Валютный рынок
+      summary: Календарь ВР — неторговые и нерасчётные дни, борды
+      operationId: calendarIssCalendarsCurrency
+      description: |
+        Блоки: `off_days`, `currency_settlements` (нерасчётные дни по валютам), `boards` (справочник бордов).
+
+        [Описание полей](/docs/description/calendar-iss#валютный-рынок-вр)
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-01"
+          description: Начало периода (ISO date).
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-12-31"
+          description: Конец периода (ISO date).
+        - name: show_all_days
+          in: query
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: "`1` — выдать все даты года."
+        - name: iss.only
+          in: query
+          schema:
+            type: string
+            example: off_days
+          description: Ограничить ответ одной таблицей ISS.
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarCurrencyResponse'
+              example:
+                off_days:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    is_traded: { type: int32 }
+                    trade_session_date: { type: date, bytes: 10, max_size: 0 }
+                    reason: { type: string, bytes: 3, max_size: 0 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - is_traded
+                    - trade_session_date
+                    - reason
+                    - updatetime
+                  data:
+                    - ["2025-01-01", 0, null, "H", "2025-02-22 14:23:44"]
+                    - ["2025-01-02", 0, null, "H", "2025-02-22 14:23:44"]
+                currency_settlements:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    currencyid: { type: string, bytes: 9, max_size: 0 }
+                    is_traded: { type: int32 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - currencyid
+                    - is_traded
+                    - updatetime
+                  data:
+                    - ["2024-01-01", "-", 0, "2024-01-17 18:46:01"]
+                    - ["2024-01-03", "AED", 0, "2024-01-17 18:46:01"]
+                boards:
+                  metadata:
+                    boardid: { type: string, bytes: 12, max_size: 0 }
+                    title: { type: string, bytes: 381, max_size: 0 }
+                    title_en: { type: string, bytes: 381, max_size: 0 }
+                    is_traded: { type: int32 }
+                  columns:
+                    - boardid
+                    - title
+                    - title_en
+                    - is_traded
+                  data:
+                    - ["AUCB", "Аукцион ЦБР - адрес.", "Auction CBR - negotiated", 1]
+                    - ["CETS", "Системные сделки - безадрес.", "System deals - order-driven", 1]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/currency/session.json:
+    get:
+      tags:
+        - ISS Calendar — Валютный рынок
+      summary: Расписание торгов на ВР (текущий торговый день)
+      operationId: calendarIssCalendarsCurrencySession
+      description: |
+        Блоки: `securities` (инструменты сессии), `session_schedule` (расписание), `session_schedule.types` (справочник типов).
+
+        [Описание полей](/docs/description/calendar-iss#securities--session_schedule--get-isscalendarscurrencysessionjson)
+      parameters:
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-23"
+          description: Дата (фильтр на один день).
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-01"
+          description: Начало периода.
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-12-31"
+          description: Конец периода.
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarCurrencySessionResponse'
+              example:
+                securities:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    secid: { type: string, bytes: 36, max_size: 0 }
+                    boardid: { type: string, bytes: 12, max_size: 0 }
+                    currencyid: { type: string, bytes: 12, max_size: 0 }
+                    faceunit: { type: string, bytes: 12, max_size: 0 }
+                    prevdate: { type: date, bytes: 10, max_size: 0 }
+                    settledate: { type: date, bytes: 10, max_size: 0 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - secid
+                    - boardid
+                    - currencyid
+                    - faceunit
+                    - prevdate
+                    - settledate
+                    - updatetime
+                  data:
+                    - ["2025-01-23", "CNYRUB_TOM", "CETS", "RUB", "CNY", "2025-01-22", "2025-01-24", "2025-01-23 06:15:07"]
+                session_schedule:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    boardid: { type: string, bytes: 36, max_size: 0 }
+                    secid: { type: string, bytes: 12, max_size: 0 }
+                    type: { type: string, bytes: 51, max_size: 0 }
+                    time_from: { type: time, bytes: 10, max_size: 0 }
+                    time_till: { type: time, bytes: 10, max_size: 0 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - boardid
+                    - secid
+                    - type
+                    - time_from
+                    - time_till
+                    - updatetime
+                  data:
+                    - ["2025-01-23", "CETS", "CNYRUB_TOM", "oa_booking", "09:50:00", "09:59:30", "2025-01-23 06:22:13"]
+                    - ["2025-01-23", "CETS", "CNYRUB_TOM", "oa_pricing", "09:59:30", null, "2025-01-23 06:22:13"]
+                session_schedule.types:
+                  metadata:
+                    type: { type: string, bytes: 51, max_size: 0 }
+                    title: { type: string, bytes: 282, max_size: 0 }
+                  columns:
+                    - type
+                    - title
+                  data:
+                    - ["oa_booking", "Аукцион открытия - период сбора заявок"]
+                    - ["oa_pricing", "Аукцион открытия - Начало фазы случайного определения цены"]
+                    - ["system", "Системный режим торгов"]
+                    - ["neg_multiple", "Внесистемный режим торгов (с разных расчетных кодов)"]
+                    - ["neg_single", "Внесистемный режим торгов (с одного расчетного кода)"]
+                    - ["neg_service_break", "Внесистемный режим торгов (с одного расчетного кода) - Технические перерывы"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/currency/securities.json:
+    get:
+      tags:
+        - ISS Calendar — Валютный рынок
+      summary: Календарь по инструментам ВР (приостановки, сдвиги расчётов)
+      operationId: calendarIssCalendarsCurrencySecurities
+      description: |
+        Блоки: `suspended` (неторговые дни по инструменту на год вперёд),
+        `settledate_shifts` (изменения дат расчётов на год вперёд).
+
+        [Описание полей](/docs/description/calendar-iss#suspended--settledate_shifts--get-isscalendarscurrencysecuritiesjson)
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-01"
+          description: Начало периода.
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-12-31"
+          description: Конец периода.
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarCurrencySecuritiesResponse'
+              example:
+                suspended:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    secid: { type: string, bytes: 36, max_size: 0 }
+                    boardid: { type: string, bytes: 12, max_size: 0 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - secid
+                    - boardid
+                    - updatetime
+                  data:
+                    - ["2025-01-03", "CHYRUBTODTOM", "CNGD", "2024-12-19 13:13:20"]
+                    - ["2025-01-03", "CHYRUB_TOD", "CNGD", "2024-12-19 13:13:20"]
+                settledate_shifts:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    secid: { type: string, bytes: 36, max_size: 0 }
+                    settledate: { type: date, bytes: 10, max_size: 0 }
+                    boardid: { type: string, bytes: 12, max_size: 0 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - secid
+                    - settledate
+                    - boardid
+                    - updatetime
+                  data:
+                    - ["2025-01-03", "CNYRUB_TOM", "2025-01-09", "CETS", "2024-10-03 18:43:14"]
+                    - ["2025-01-03", "CNYRUB_WAP0", "2025-01-09", "WAPS", "2024-10-03 18:43:14"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/currency/changes.json:
+    get:
+      tags:
+        - ISS Calendar — Валютный рынок
+      summary: Изменения по приостановкам инструментов ВР
+      operationId: calendarIssCalendarsCurrencyChanges
+      description: |
+        Нестандартные статусы (`inserted` / `removed`) по таблице `suspended` ВР.
+        В таблицу попадают новые значения в день обновления данных.
+
+        [Описание полей](/docs/description/calendar-iss#changes--get-isscalendarscurrencychangesjson)
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-01"
+          description: Начало периода.
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-12-31"
+          description: Конец периода.
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarCurrencyChangesResponse'
+              example:
+                changes:
+                  metadata:
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                    action: { type: string, bytes: 36, max_size: 0 }
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    secid: { type: string, bytes: 36, max_size: 0 }
+                  columns:
+                    - updatetime
+                    - action
+                    - tradedate
+                    - secid
+                  data:
+                    - ["2025-01-03 14:10:25", "inserted", "2025-03-25", "KZTRUB_TOD"]
+                    - ["2025-01-03 14:10:25", "inserted", "2025-03-10", "KZTRUBTODTOM"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/futures.json:
+    get:
+      tags:
+        - ISS Calendar — Срочный рынок
+      summary: Календарь неторговых дней по СР
+      operationId: calendarIssCalendarsFutures
+      description: |
+        Таблица `off_days` — неторговые дни по Срочному рынку. Исключения к официальным праздникам + рабочие выходные.
+
+        [Описание полей](/docs/description/calendar-iss#срочный-рынок-ср)
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-01"
+          description: Начало периода.
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-12-31"
+          description: Конец периода.
+        - name: show_all_days
+          in: query
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: "`1` — выдать все даты года."
+        - name: iss.only
+          in: query
+          schema:
+            type: string
+            example: off_days
+          description: Ограничить ответ одной таблицей ISS.
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarFuturesOffDaysResponse'
+              example:
+                off_days:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    is_traded: { type: int32 }
+                    trade_session_date: { type: date, bytes: 10, max_size: 0 }
+                    reason: { type: string, bytes: 3, max_size: 0 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - is_traded
+                    - trade_session_date
+                    - reason
+                    - updatetime
+                  data:
+                    - ["2025-01-01", 0, null, "H", "2025-02-22 14:23:44"]
+                    - ["2025-01-02", 0, null, "H", "2025-02-22 14:23:44"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/futures/securities.json:
+    get:
+      tags:
+        - ISS Calendar — Срочный рынок
+      summary: Таблица фьючерсов и опционов (серии и контракты)
+      operationId: calendarIssCalendarsFuturesSecurities
+      description: |
+        Блок `securities` содержит два раздела на одной странице: опционы (options) и фьючерсы (forts).
+        Каждый раздел возвращается как отдельный ISS-блок со своим набором полей.
+        Работает фильтрация `from` / `till` внутри одного года.
+
+        **Раздел options** — поля: `asset_type_name`, `asset_code`, `series_name`, `series_type`,
+        `exec_type`, `margin_style`, `contract_name`, `expiration_date`, `expiration_type`,
+        `expiration_time`, `weekend_session`.
+
+        **Раздел forts** — поля: `secid`, `asset_code`, `shortname`, `exec_type`, `contract_name`,
+        `expiration_date`, `end_date`, `expiration_type`, `expiration_time`, `weekend_session`.
+
+        [Описание полей](/docs/description/calendar-iss#securities-опционы--фьючерсы--get-isscalendarsfuturessecuritiesjson)
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2024-01-26"
+          description: Начало периода.
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2024-01-29"
+          description: Конец периода.
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarFuturesSecuritiesResponse'
+              examples:
+                options:
+                  summary: Раздел options (опционные серии)
+                  value:
+                    securities:
+                      metadata:
+                        asset_type_name: { type: string, bytes: 96, max_size: 0 }
+                        asset_code: { type: string, bytes: 36, max_size: 0 }
+                        series_name: { type: string, bytes: 93, max_size: 0 }
+                        series_type: { type: string, bytes: 3, max_size: 0 }
+                        exec_type: { type: string, bytes: 3, max_size: 0 }
+                        margin_style: { type: string, bytes: 3, max_size: 0 }
+                        contract_name: { type: string, bytes: 765, max_size: 0 }
+                        expiration_date: { type: date, bytes: 10, max_size: 0 }
+                        expiration_type: { type: string, bytes: 765, max_size: 0 }
+                        expiration_time: { type: time, bytes: 10, max_size: 0 }
+                        weekend_session: { type: int32 }
+                      columns:
+                        - asset_type_name
+                        - asset_code
+                        - series_name
+                        - series_type
+                        - exec_type
+                        - margin_style
+                        - contract_name
+                        - expiration_date
+                        - expiration_type
+                        - expiration_time
+                        - weekend_session
+                      data:
+                        - ["Акции", "SBRF", "SBRF-6.24M2", "M", "A", "M", "Маржируемый опцион на фьючерсный контракт на обыкновенные акции ПАО Сбербанк", "2024-03-27", "tc", "00:00:00", 0]
+                forts:
+                  summary: Раздел forts (фьючерсные контракты)
+                  value:
+                    securities:
+                      metadata:
+                        secid: { type: string, bytes: 51, max_size: 0 }
+                        asset_code: { type: string, bytes: 51, max_size: 0 }
+                        shortname: { type: string, bytes: 189, max_size: 0 }
+                        exec_type: { type: string, bytes: 3, max_size: 0 }
+                        contract_name: { type: string, bytes: 9216, max_size: 0 }
+                        expiration_date: { type: date, bytes: 10, max_size: 0 }
+                        end_date: { type: date, bytes: 10, max_size: 0 }
+                        expiration_type: { type: string, bytes: 9216, max_size: 0 }
+                        expiration_time: { type: string, bytes: 3072, max_size: 0 }
+                        weekend_session: { type: int32 }
+                      columns:
+                        - secid
+                        - asset_code
+                        - shortname
+                        - exec_type
+                        - contract_name
+                        - expiration_date
+                        - end_date
+                        - expiration_type
+                        - expiration_time
+                        - weekend_session
+                      data:
+                        - ["CNYRUBF", "CNYRUBTOM", "CNYRUBF", "S", "Однодневный фьючерсный контракт с автопролонгацией на курс китайский юань - российский рубль", "2100-01-01", "2100-01-01", "tc", "00:00:00", 0]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/futures/session.json:
+    get:
+      tags:
+        - ISS Calendar — Срочный рынок
+      summary: Расписание торгов на СР
+      operationId: calendarIssCalendarsFuturesSession
+      description: |
+        Блоки: `session_schedule` (расписание), `session_schedule.types` (справочник типов).
+        Дополнительно транслируются поля `settlement_session` и `clearing_session`.
+
+        [Описание полей](/docs/description/calendar-iss#session_schedule--get-isscalendarsfuturessessionjson)
+      parameters:
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2024-03-27"
+          description: Дата (фильтр на один день).
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-01"
+          description: Начало периода.
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-12-31"
+          description: Конец периода.
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarFuturesSessionResponse'
+              example:
+                session_schedule:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    secid: { type: string, bytes: 36, max_size: 0 }
+                    boardid: { type: string, bytes: 12, max_size: 0 }
+                    type: { type: string, bytes: 45, max_size: 0 }
+                    time_from: { type: datetime, bytes: 19, max_size: 0 }
+                    time_till: { type: datetime, bytes: 19, max_size: 0 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - secid
+                    - boardid
+                    - type
+                    - time_from
+                    - time_till
+                    - updatetime
+                  data:
+                    - ["2024-03-27", "-", "-", "morning_session", "2024-03-27 09:00:00", "2024-03-27 10:00:00", "2024-03-27 00:24:43"]
+                    - ["2024-03-27", "-", "-", "main_session", "2024-03-27 10:00:00", "2024-03-27 18:50:00", "2024-03-27 00:24:43"]
+                session_schedule.types:
+                  metadata:
+                    type: { type: string, bytes: 51, max_size: 0 }
+                    title: { type: string, bytes: 282, max_size: 0 }
+                  columns:
+                    - type
+                    - title
+                  data:
+                    - ["oa_booking", "Аукцион открытия - период сбора заявок"]
+                    - ["oa_pricing", "Аукцион открытия - фаза случайного определения цены"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/stock.json:
+    get:
+      tags:
+        - ISS Calendar — Фондовый рынок
+      summary: Календарь неторговых дней по ФР
+      operationId: calendarIssCalendarsStock
+      description: |
+        Таблица `off_days`. Учитываются дни дополнительных сессий выходного дня (ДСВД).
+
+        [Описание полей](/docs/description/calendar-iss#фондовый-рынок-фр)
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-01"
+          description: Начало периода.
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-12-31"
+          description: Конец периода.
+        - name: show_all_days
+          in: query
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          description: "`1` — выдать все даты года."
+        - name: iss.only
+          in: query
+          schema:
+            type: string
+            example: off_days
+          description: Ограничить ответ одной таблицей ISS.
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarStockOffDaysResponse'
+              example:
+                off_days:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    is_traded: { type: int32 }
+                    trade_session_date: { type: date, bytes: 10, max_size: 0 }
+                    reason: { type: string, bytes: 3, max_size: 0 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - is_traded
+                    - trade_session_date
+                    - reason
+                    - updatetime
+                  data:
+                    - ["2025-01-01", 0, null, "H", "2025-02-22 14:23:44"]
+                    - ["2025-03-01", 1, "2025-03-03", "W", "2025-03-01 10:25:04"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/stock/static.json:
+    get:
+      tags:
+        - ISS Calendar — Фондовый рынок
+      summary: Статические справочники ФР (классификаторы рынков и бордов)
+      operationId: calendarIssCalendarsStockStatic
+      description: |
+        Передайте `iss.only=markets_classifier` или `iss.only=boards_classifier` для выбора нужной таблицы.
+
+        [Описание полей](/docs/description/calendar-iss#markets_classifier--boards_classifier--get-isscalendarsstockstaticjson)
+      parameters:
+        - name: iss.only
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - markets_classifier
+              - boards_classifier
+          description: "`markets_classifier` — классификатор рынков; `boards_classifier` — классификатор режимов торгов."
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarStockStaticResponse'
+              example:
+                markets_classifier:
+                  metadata:
+                    name: { type: string, bytes: 189, max_size: 0 }
+                    title: { type: string, bytes: 765, max_size: 0 }
+                  columns:
+                    - name
+                    - title
+                  data:
+                    - ["FNDT", "Фондовый рынок Т+"]
+                    - ["FOND", "Фондовый рынок"]
+                    - ["REPT", "Репо с ЦК"]
+                boards_classifier:
+                  metadata:
+                    stock_market_classifier: { type: string, bytes: 12, max_size: 0 }
+                    boardid: { type: string, bytes: 12, max_size: 0 }
+                    title: { type: string, bytes: 90, max_size: 0 }
+                    currencyid: { type: string, bytes: 9, max_size: 0 }
+                  columns:
+                    - stock_market_classifier
+                    - boardid
+                    - title
+                    - currencyid
+                  data:
+                    - ["FOND", "AUCT", "Аукцион", "RUB"]
+                    - ["FNDT", "TQBR", "Т+: Акции и ДР - безадрес.", "RUB"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/stock/securities/boards.json:
+    get:
+      tags:
+        - ISS Calendar — Фондовый рынок
+      summary: Торгуемость инструментов на бордах
+      operationId: calendarIssCalendarsStockSecuritiesBoards
+      description: |
+        Таблица `securities_boards` — перечень режимов торгов каждого инструмента на дату.
+
+        [Описание полей](/docs/description/calendar-iss#securities_boards--get-isscalendarsstocksecuritiesboardsjson)
+      parameters:
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2024-10-18"
+          description: Дата (фильтр на один день).
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-01"
+          description: Начало периода.
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-12-31"
+          description: Конец периода.
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarStockSecuritiesBoardsResponse'
+              example:
+                securities_boards:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    trade_session_date: { type: date, bytes: 10, max_size: 0 }
+                    secid: { type: string, bytes: 36, max_size: 0 }
+                    isin: { type: string, bytes: 36, max_size: 0 }
+                    boards: { type: string, bytes: 3072, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - trade_session_date
+                    - secid
+                    - isin
+                    - boards
+                  data:
+                    - ["2024-10-18", "2024-10-18", "ABIO", "RU000A0JNAB6", "CIQB,CIQR,CPEO,CPEU"]
+                    - ["2024-10-18", "2024-10-18", "ABRD", "RU000A0JS5T7", "CIQB,CIQR,CPEO,CPEU"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/stock/session/settlecodes.json:
+    get:
+      tags:
+        - ISS Calendar — Фондовый рынок
+      summary: Справочник расчётных кодов на текущий торговый день
+      operationId: calendarIssCalendarsStockSessionSettlecodes
+      description: |
+        Таблица `settlecodes` — даты расчётов по кодам на текущий торговый день. Для ДСВД все расчёты в понедельник.
+
+        [Описание полей](/docs/description/calendar-iss#settlecodes--get-isscalendarsstocksessionsettlecodesjson)
+      parameters:
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-23"
+          description: Дата (фильтр на один день).
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarStockSettlecodesResponse'
+              example:
+                settlecodes:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    settlecode: { type: string, bytes: 36, max_size: 0 }
+                    title: { type: string, bytes: 96, max_size: 0 }
+                    settledate: { type: date, bytes: 10, max_size: 0 }
+                    settledate2: { type: date, bytes: 10, max_size: 0 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - settlecode
+                    - title
+                    - settledate
+                    - settledate2
+                    - updatetime
+                  data:
+                    - ["2025-01-23", "--", "Код расчетов Индикат.Котировок", "2024-10-18", null, "2024-10-18 06:23:54"]
+                    - ["2025-01-23", "A0", "A0 calendar days", "2024-10-18", null, "2024-10-18 06:23:54"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/stock/securities/suspended/details.json:
+    get:
+      tags:
+        - ISS Calendar — Фондовый рынок
+      summary: Запреты торгов по событиям (детали)
+      operationId: calendarIssCalendarsStockSecuritiesSuspendedDetails
+      description: |
+        Блоки: `suspended` (запреты по событиям на будущие периоды), `suspended.reasons` (справочник причин).
+
+        `null` по `boardid` — запрет по инструменту на всех допущенных режимах.
+        `null` по `date_till` — дата окончания запрета неизвестна.
+
+        [Описание полей](/docs/description/calendar-iss#suspended--suspendedreasons--get-isscalendarsstocksecuritiessuspendeddetailsjson)
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2024-08-30"
+          description: Начало периода.
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-12-31"
+          description: Конец периода.
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 1000
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarStockSuspendedDetailsResponse'
+              example:
+                suspended:
+                  metadata:
+                    secid: { type: string, bytes: 36, max_size: 0 }
+                    reason_id: { type: string, bytes: 765, max_size: 0 }
+                    date_from: { type: date, bytes: 10, max_size: 0 }
+                    date_till: { type: date, bytes: 10, max_size: 0 }
+                    boardid: { type: string, bytes: 765, max_size: 0 }
+                    settle_codes: { type: string, bytes: 3072, max_size: 0 }
+                    changedate: { type: date, bytes: 10, max_size: 0 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - secid
+                    - reason_id
+                    - date_from
+                    - date_till
+                    - boardid
+                    - settle_codes
+                    - changedate
+                    - updatetime
+                  data:
+                    - ["RU000A107KC4", "1,4,9,11", "2025-01-01", null, "CIQB,CIQR,CPEY,TQCB", null, null, "2025-01-23 17:15:26"]
+                suspended.reasons:
+                  metadata:
+                    id: { type: int32 }
+                    title: { type: string, bytes: 384, max_size: 0 }
+                  columns:
+                    - id
+                    - title
+                  data:
+                    - [1, "Торги не проводятся в дату погашения облигаций"]
+                    - [2, "Допустимыми кодами расчетов являются коды расчётов, предусматривающие расчеты по сделкам внутри текущего купона"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/stock/securities/changes.json:
+    get:
+      tags:
+        - ISS Calendar — Фондовый рынок
+      summary: Изменения параметров инструмента
+      operationId: calendarIssCalendarsStockSecuritiesChanges
+      description: |
+        Блоки: `securities` (изменения атрибутов), `securities.attributes` (справочник атрибутов).
+        По умолчанию — текущая дата. Пример: `?date=2025-01-21`.
+
+        [Описание полей](/docs/description/calendar-iss#securities--securitiesattributes--get-isscalendarsstocksecuritieschangesjson)
+      parameters:
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-21"
+          description: Дата изменений (по умолчанию — текущая).
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarStockSecuritiesChangesResponse'
+              example:
+                securities:
+                  metadata:
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                    action: { type: string, bytes: 24, max_size: 0 }
+                    secid: { type: string, bytes: 72, max_size: 0 }
+                    attribute_name: { type: string, bytes: 189, max_size: 0 }
+                    before_value: { type: string, bytes: 3072, max_size: 0 }
+                    after_value: { type: string, bytes: 3072, max_size: 0 }
+                  columns:
+                    - updatetime
+                    - action
+                    - secid
+                    - attribute_name
+                    - before_value
+                    - after_value
+                  data:
+                    - ["2024-09-28 00:20:29", "removed", "RU000A0JUW72", "COUPONDATE", "2024-09-30", null]
+                    - ["2024-09-28 00:20:29", "updated", "RU000A0JX3M0", "FACEVALUE", "69.12", "64.92"]
+                securities.attributes:
+                  metadata:
+                    name: { type: string, bytes: 189, max_size: 0 }
+                    type: { type: string, bytes: 3, max_size: 0 }
+                    title: { type: string, bytes: 765, max_size: 0 }
+                  columns:
+                    - name
+                    - type
+                    - title
+                  data:
+                    - ["BUYBACKDATE", "D", "Дата, к которой рассчитывается доходность"]
+                    - ["COUPONDATE", "D", "Дата выплаты купона"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/stock/session/suspended.json:
+    get:
+      tags:
+        - ISS Calendar — Фондовый рынок
+      summary: Исключения по кодам расчётов (бумага–борд) на текущий день
+      operationId: calendarIssCalendarsStockSessionSuspended
+      description: |
+        Блоки: `suspended` (исключения на текущий торговый день), `suspended.reasons` (справочник причин).
+
+        [Описание полей](/docs/description/calendar-iss#suspended--suspendedreasons-1--get-isscalendarsstocksessionsuspendedjson)
+      parameters:
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2024-12-12"
+          description: Дата (фильтр на один день).
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 3000
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarStockSessionSuspendedResponse'
+              example:
+                suspended:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    secid: { type: string, bytes: 36, max_size: 0 }
+                    boardid: { type: string, bytes: 765, max_size: 0 }
+                    reason_id: { type: string, bytes: 765, max_size: 0 }
+                    settle_codes: { type: string, bytes: 3072, max_size: 0 }
+                    updated_at: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - secid
+                    - boardid
+                    - reason_id
+                    - settle_codes
+                    - updated_at
+                  data:
+                    - ["2024-08-21", "MGTS", "PSEQ", "5002", "Z0", "2024-10-01 18:10:16"]
+                    - ["2024-08-21", "MGTSP", "PSEQ", "5002", "Y1", "2024-10-01 18:10:16"]
+                suspended.reasons:
+                  metadata:
+                    id: { type: int32 }
+                    title: { type: string, bytes: 384, max_size: 0 }
+                  columns:
+                    - id
+                    - title
+                  data:
+                    - [1, "Торги не проводятся в дату погашения облигаций"]
+                    - [2, "Допустимыми кодами расчетов являются коды расчётов, предусматривающие расчеты по сделкам внутри текущего купона"]
+        '401':
+          description: Unauthorized
+
+  /iss/calendars/stock/session.json:
+    get:
+      tags:
+        - ISS Calendar — Фондовый рынок
+      summary: Расписание торгов по режимам (ФР)
+      operationId: calendarIssCalendarsStockSession
+      description: |
+        Таблица `session_schedule` — расписание по режимам, включая периоды внутри режима (кроме дискретного аукциона).
+        Справочник `session_schedule.types`.
+
+        `tradingsession`: `0` — утренняя, `1` — основная, `2` — вечерняя, `5` — ДСВД, `-999` — не предусмотрено.
+
+        [Описание полей](/docs/description/calendar-iss#session_schedule--session_scheduletypes-1--get-isscalendarsstocksessionjson)
+      parameters:
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2024-10-23"
+          description: Дата (фильтр на один день).
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-01-01"
+          description: Начало периода.
+        - name: till
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2025-12-31"
+          description: Конец периода.
+        - name: start
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            example: 100
+          description: Смещение для пагинации.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarStockSessionResponse'
+              example:
+                session_schedule:
+                  metadata:
+                    tradedate: { type: date, bytes: 10, max_size: 0 }
+                    tradingsession: { type: int32 }
+                    boardid: { type: string, bytes: 12, max_size: 0 }
+                    secid: { type: string, bytes: 36, max_size: 0 }
+                    type: { type: string, bytes: 30, max_size: 0 }
+                    time_from: { type: time, bytes: 10, max_size: 0 }
+                    time_till: { type: time, bytes: 10, max_size: 0 }
+                    updatetime: { type: datetime, bytes: 19, max_size: 0 }
+                  columns:
+                    - tradedate
+                    - tradingsession
+                    - boardid
+                    - secid
+                    - type
+                    - time_from
+                    - time_till
+                    - updatetime
+                  data:
+                    - ["2024-10-23", 1, "CPEY", "RU000A109478", "system", "15:30:00", "18:59:59", "2024-10-23 06:30:10"]
+                session_schedule.types:
+                  metadata:
+                    type: { type: string, bytes: 51, max_size: 0 }
+                    title: { type: string, bytes: 282, max_size: 0 }
+                  columns:
+                    - type
+                    - title
+                  data:
+                    - ["oa_booking", "Аукцион открытия - период сбора заявок"]
+                    - ["system", "Системный режим торгов"]
+        '401':
+          description: Unauthorized
+
+  /iss/archives/files/calendars_stock_suspended_planned:
+    get:
+      tags:
+        - ISS Calendar — Фондовый рынок
+      summary: Архив запретов торгов по событиям (ZIP-файлы)
+      operationId: calendarIssArchivesStockSuspendedPlanned
+      description: |
+        Таблица `files` — список ZIP-архивов с данными таблицы `suspended` из
+        `/iss/calendars/stock/securities/suspended/details.json`.
+        Данные предоставляются на период с текущего календарного года + 3 года вперёд.
+        Скачивание по относительному пути из поля `url` (например,
+        `/iss/downloads/calendars/stock/suspended_details.csv.zip`).
+
+        [Описание полей](/docs/description/calendar-iss#files--get-issarchivesfilescalendars_stock_suspended_planned)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarArchiveFilesResponse'
+              example:
+                files:
+                  metadata:
+                    group_name: { type: string, bytes: 153, max_size: 0 }
+                    extension: { type: string, bytes: 12, max_size: 0 }
+                    date_from: { type: date, bytes: 30, max_size: 0 }
+                    date_till: { type: date, bytes: 30, max_size: 0 }
+                    file_size: { type: int64 }
+                    rows_count: { type: int64 }
+                    url: { type: string, bytes: 765, max_size: 0 }
+                  columns:
+                    - group_name
+                    - extension
+                    - date_from
+                    - date_till
+                    - file_size
+                    - rows_count
+                    - url
+                  data:
+                    - ["calendars_stock_suspended_planned", "csv", null, null, 20683, 3750, "/iss/downloads/calendars/stock/suspended_details.csv.zip"]
+                    - ["calendars_stock_suspended_planned", "json", null, null, 21596, 3750, "/iss/downloads/calendars/stock/suspended_details.json.zip"]
+        '401':
+          description: Unauthorized
+
+  /iss/archives/files/calendar_stock_session_suspended_latest:
+    get:
+      tags:
+        - ISS Calendar — Фондовый рынок
+      summary: Архив исключений по кодам расчётов (ZIP-файлы, последняя дата)
+      operationId: calendarIssArchivesStockSessionSuspendedLatest
+      description: |
+        Таблица `files` — список ZIP-архивов с данными таблицы `suspended` из
+        `/iss/calendars/stock/session/suspended.json` за последнюю доступную дату.
+        Скачивание по относительному пути из поля `url`.
+
+        [Описание полей](/docs/description/calendar-iss#files--get-issarchivesfilescalendar_stock_session_suspended_latest)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarArchiveFilesResponse'
+              example:
+                files:
+                  metadata:
+                    group_name: { type: string, bytes: 153, max_size: 0 }
+                    extension: { type: string, bytes: 12, max_size: 0 }
+                    date_from: { type: date, bytes: 30, max_size: 0 }
+                    date_till: { type: date, bytes: 30, max_size: 0 }
+                    file_size: { type: int64 }
+                    rows_count: { type: int64 }
+                    url: { type: string, bytes: 765, max_size: 0 }
+                  columns:
+                    - group_name
+                    - extension
+                    - date_from
+                    - date_till
+                    - file_size
+                    - rows_count
+                    - url
+                  data:
+                    - ["calendar_stock_session_suspended_latest", "csv", "2024-08-21", "2024-08-21", 21324, 5870, "/iss/downloads/calendars/stock/session_suspended_2024-08-21.csv.zip"]
+                    - ["calendar_stock_session_suspended_latest", "json", "2024-08-21", "2024-08-21", 22512, 5870, "/iss/downloads/calendars/stock/session_suspended_2024-08-21.json.zip"]
+        '401':
+          description: Unauthorized
+
 
 components:
   securitySchemes:
@@ -4487,3 +5849,152 @@ components:
           $ref: '#/components/schemas/DataBlock'
         data.dates:
           $ref: '#/components/schemas/DataBlock'
+
+    IssDataBlock:
+      type: object
+      description: Табличный блок ИСС (метаданные колонок + строки `data`).
+      properties:
+        metadata:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              type:
+                type: string
+              bytes:
+                type: integer
+              max_size:
+                type: integer
+        columns:
+          type: array
+          items:
+            type: string
+        data:
+          type: array
+          items:
+            type: array
+            items: {}
+
+    CalendarRootResponse:
+      type: object
+      properties:
+        off_days:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarCurrencyResponse:
+      type: object
+      properties:
+        off_days:
+          $ref: '#/components/schemas/IssDataBlock'
+        currency_settlements:
+          $ref: '#/components/schemas/IssDataBlock'
+        boards:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarCurrencySessionResponse:
+      type: object
+      properties:
+        securities:
+          $ref: '#/components/schemas/IssDataBlock'
+        session_schedule:
+          $ref: '#/components/schemas/IssDataBlock'
+        session_schedule.types:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarCurrencySecuritiesResponse:
+      type: object
+      properties:
+        suspended:
+          $ref: '#/components/schemas/IssDataBlock'
+        settledate_shifts:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarCurrencyChangesResponse:
+      type: object
+      properties:
+        changes:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarFuturesOffDaysResponse:
+      type: object
+      properties:
+        off_days:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarFuturesSecuritiesResponse:
+      type: object
+      properties:
+        securities:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarFuturesSessionResponse:
+      type: object
+      properties:
+        session_schedule:
+          $ref: '#/components/schemas/IssDataBlock'
+        session_schedule.types:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarStockOffDaysResponse:
+      type: object
+      properties:
+        off_days:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarStockStaticResponse:
+      type: object
+      properties:
+        markets_classifier:
+          $ref: '#/components/schemas/IssDataBlock'
+        boards_classifier:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarStockSecuritiesBoardsResponse:
+      type: object
+      properties:
+        securities_boards:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarStockSettlecodesResponse:
+      type: object
+      properties:
+        settlecodes:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarStockSuspendedDetailsResponse:
+      type: object
+      properties:
+        suspended:
+          $ref: '#/components/schemas/IssDataBlock'
+        suspended.reasons:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarStockSecuritiesChangesResponse:
+      type: object
+      properties:
+        securities:
+          $ref: '#/components/schemas/IssDataBlock'
+        securities.attributes:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarStockSessionSuspendedResponse:
+      type: object
+      properties:
+        suspended:
+          $ref: '#/components/schemas/IssDataBlock'
+        suspended.reasons:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarStockSessionResponse:
+      type: object
+      properties:
+        session_schedule:
+          $ref: '#/components/schemas/IssDataBlock'
+        session_schedule.types:
+          $ref: '#/components/schemas/IssDataBlock'
+
+    CalendarArchiveFilesResponse:
+      type: object
+      properties:
+        files:
+          $ref: '#/components/schemas/IssDataBlock'

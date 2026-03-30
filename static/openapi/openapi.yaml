@@ -4372,11 +4372,9 @@ paths:
     get:
       tags:
         - ISS Calendar - Общий
-        - ISS Calendar - Общий
       summary: Календарь неторговых дней по всем рынкам (ФР, ВР, СР)
       operationId: calendarIssCalendarsRoot
       description: |
-        Таблица `off_days` - календарь по валютному, срочному и фондовому рынкам в одной строке на дату
         Таблица `off_days` - календарь по валютному, срочному и фондовому рынкам в одной строке на дату
         (поля `currency_*`, `futures_*`, `stock_*`).
 
@@ -4415,7 +4413,6 @@ paths:
             type: integer
             minimum: 0
             example: 100
-          description: Смещение для пагинации - номер следующей строки.
           description: Смещение для пагинации - номер следующей строки.
       security:
         - bearerAuth: []
@@ -4870,7 +4867,7 @@ paths:
     get:
       tags:
         - ISS Calendar - Фондовый рынок
-      summary: Исключения по кодам расчётов (бумага-борд) на текущий день
+      summary: Исключения по кодам расчётов (бумага–борд) на текущий день
       operationId: calendarIssCalendarsStockSessionSuspended
       description: |
         `suspended` (исключения на текущий торговый день), `suspended.reasons` (справочник причин).
@@ -5114,11 +5111,9 @@ paths:
     get:
       tags:
         - ISS Calendar - Срочный рынок
-        - ISS Calendar - Срочный рынок
       summary: Календарь неторговых дней по СР
       operationId: calendarIssCalendarsFutures
       description: |
-        Таблица `off_days` - неторговые дни по Срочному рынку. Исключения к официальным праздникам + рабочие выходные.
         Таблица `off_days` - неторговые дни по Срочному рынку. Исключения к официальным праздникам + рабочие выходные.
 
         [Описание полей](/docs/description/calendar-iss#off_days-2)
@@ -5189,7 +5184,6 @@ paths:
   /iss/calendars/futures/securities.json:
     get:
       tags:
-        - ISS Calendar - Срочный рынок
         - ISS Calendar - Срочный рынок
       summary: Таблица фьючерсов и опционов (серии и контракты)
       operationId: calendarIssCalendarsFuturesSecurities
@@ -5302,7 +5296,6 @@ paths:
   /iss/calendars/futures/session.json:
     get:
       tags:
-        - ISS Calendar - Срочный рынок
         - ISS Calendar - Срочный рынок
       summary: Расписание торгов на СР
       operationId: calendarIssCalendarsFuturesSession

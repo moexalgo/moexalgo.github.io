@@ -4547,13 +4547,6 @@ paths:
               - markets_classifier
               - boards_classifier
           description: "`markets_classifier` - классификатор рынков; `boards_classifier` - классификатор режимов торгов."
-        - name: start
-          in: query
-          schema:
-            type: integer
-            minimum: 0
-            example: 100
-          description: Смещение для пагинации.
       security:
         - bearerAuth: []
       responses:
@@ -4602,35 +4595,6 @@ paths:
         Таблица `securities_boards` - перечень режимов торгов каждого инструмента на дату.
 
         [Описание полей](/docs/description/calendar-iss#securities_boards)
-      parameters:
-        - name: date
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2024-10-18"
-          description: Дата (ISO date, фильтр на один день).
-        - name: from
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2025-01-01"
-          description: Начало периода (ISO date).
-        - name: till
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2025-12-31"
-          description: Конец периода (ISO date).
-        - name: start
-          in: query
-          schema:
-            type: integer
-            minimum: 0
-            example: 100
-          description: Смещение для пагинации.
       security:
         - bearerAuth: []
       responses:
@@ -4670,21 +4634,6 @@ paths:
         Таблица `settlecodes` - даты расчётов по кодам на текущий торговый день. Для ДСВД все расчёты в понедельник.
 
         [Описание полей](/docs/description/calendar-iss#settlecodes)
-      parameters:
-        - name: date
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2025-01-23"
-          description: Дата (ISO date, фильтр на один день).
-        - name: start
-          in: query
-          schema:
-            type: integer
-            minimum: 0
-            example: 100
-          description: Смещение для пагинации.
       security:
         - bearerAuth: []
       responses:
@@ -4874,21 +4823,6 @@ paths:
         `suspended` (исключения на текущий торговый день), `suspended.reasons` (справочник причин).
 
         [Описание полей](/docs/description/calendar-iss#suspended-1)
-      parameters:
-        - name: date
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2024-12-12"
-          description: Дата (ISO date, фильтр на один день).
-        - name: start
-          in: query
-          schema:
-            type: integer
-            minimum: 0
-            example: 3000
-          description: Смещение для пагинации.
       security:
         - bearerAuth: []
       responses:
@@ -4943,35 +4877,6 @@ paths:
         `tradingsession`: `0` - утренняя, `1` - основная, `2` - вечерняя, `5` - ДСВД, `-999` - не предусмотрено.
 
         [Описание полей](/docs/description/calendar-iss#session_schedule)
-      parameters:
-        - name: date
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2024-10-23"
-          description: Дата (ISO date, фильтр на один день).
-        - name: from
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2025-01-01"
-          description: Начало периода (ISO date).
-        - name: till
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2025-12-31"
-          description: Конец периода (ISO date).
-        - name: start
-          in: query
-          schema:
-            type: integer
-            minimum: 0
-            example: 100
-          description: Смещение для пагинации.
       security:
         - bearerAuth: []
       responses:
@@ -5305,35 +5210,6 @@ paths:
         Дополнительно транслируются поля `settlement_session` и `clearing_session`.
 
         [Описание полей](/docs/description/calendar-iss#session_schedule-1)
-      parameters:
-        - name: date
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2024-03-27"
-          description: Дата (ISO date, фильтр на один день).
-        - name: from
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2025-01-01"
-          description: Начало периода (ISO date).
-        - name: till
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2025-12-31"
-          description: Конец периода (ISO date).
-        - name: start
-          in: query
-          schema:
-            type: integer
-            minimum: 0
-            example: 100
-          description: Смещение для пагинации.
       security:
         - bearerAuth: []
       responses:
@@ -5489,35 +5365,6 @@ paths:
         `securities` (инструменты сессии), `session_schedule` (расписание), `session_schedule.types` (справочник типов).
 
         [Описание полей](/docs/description/calendar-iss#securities-2)
-      parameters:
-        - name: date
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2025-01-23"
-          description: Дата (ISO date, фильтр на один день).
-        - name: from
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2025-01-01"
-          description: Начало периода (ISO date).
-        - name: till
-          in: query
-          schema:
-            type: string
-            format: date
-            example: "2025-12-31"
-          description: Конец периода (ISO date).
-        - name: start
-          in: query
-          schema:
-            type: integer
-            minimum: 0
-            example: 100
-          description: Смещение для пагинации.
       security:
         - bearerAuth: []
       responses:

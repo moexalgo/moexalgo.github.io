@@ -1580,6 +1580,8 @@ paths:
             default: 1000
             maximum: 1000
           description: Number of records to return.
+      security:
+        - bearerAuth: []
       description: |-
         Метрики рассчитанные на основе потока сделок (tradestats).
 

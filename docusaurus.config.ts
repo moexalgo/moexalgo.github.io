@@ -240,7 +240,20 @@ const config: Config = {
       language: ["en", "ru"],
       maxSearchResults: 8,
     }
-    ]
+    ],
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          { from: "/api/rest", to: "/docs/api" },
+          { from: "/modules/supercandles", to: "/docs/modules/supercandles" },
+          { from: "/modules/realtime", to: "/docs/modules/realtime" },
+          { from: "/modules/futoi", to: "/docs/modules/futoi" },
+          { from: "/modules/hi2", to: "/docs/modules/hi2" },
+          { from: "/modules/megaalerts", to: "/docs/modules/megaalerts" },
+        ],
+      },
+    ],
   ],
 
   themes: ["docusaurus-theme-openapi-docs"],

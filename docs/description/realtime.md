@@ -4,7 +4,7 @@ sidebar_label: Real-time market data
 custom_edit_url: null
 ---
 # Real-time market data
-Онлайн данные по акциям и фьючерсам. Свечи, стаканы котировок и сделки
+Онлайн данные по акциям и фьючерсам. Свечи, стаканы и сделки
 
 ## Акции
 

@@ -27,5 +27,5 @@ custom_edit_url: null
 Эти данные можно получать через API:
 https://iss.moex.com/iss/datashop/algopack/eq/tradestats/sber.json?from=2024-11-12&till=2024-11-12
 
-Помимо SuperCandles tradestats доступны метрики на основе стакана котировок obStats и на основе потока сделок orderStats
+Помимо SuperCandles tradestats доступны метрики на основе стакана obStats и на основе потока сделок orderStats
 :::

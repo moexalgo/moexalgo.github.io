@@ -14,7 +14,7 @@ import TelegramButton from '@site/src/components/TelegramButton';
 
 ## Группа Telegram
 
-В группе можно общаться с сообществом и разработчиками AlgoPack. Присодиняйтесь, мы тут - @moex_algopack
+В группе можно общаться с сообществом и разработчиками AlgoPack. Присоединяйтесь, мы тут - @moex_algopack
 
 <TelegramButton href="https://t.me/+8c1vjDEVY082NTgy">Присоединиться</TelegramButton>
 

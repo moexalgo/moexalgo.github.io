@@ -4,7 +4,7 @@ sidebar_label: Futures Open Interest (FUTOI)
 custom_edit_url: null
 ---
 # Futures Open Interest (FUTOI)
-Открытые позиции по фьючерсныфм контрактам в разрезе физ. и юр. лиц 
+Открытые позиции по фьючерсным контрактам в разрезе физ. и юр. лиц
 
 ```
 https://apim.moex.com/iss/analyticalproducts/futoi/securities

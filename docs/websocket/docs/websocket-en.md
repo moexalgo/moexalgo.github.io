@@ -1044,7 +1044,7 @@ Each market contains enums (enumerated values) and streams with parameters and o
 SUBSCRIBE
 id: sub1
 destination: MXSE.securities
-selector: TICKER="SBER"
+selector: TICKER="MXSE.TQBR.SBER"
 ```
 
 ### Subscribing to Order Book
@@ -1052,7 +1052,7 @@ selector: TICKER="SBER"
 SUBSCRIBE
 id: sub2
 destination: MXSE.orderbooks
-selector: TICKER="SBER"
+selector: TICKER="MXSE.TQBR.SBER"
 ```
 
 ### Subscribing to Candles
@@ -1060,7 +1060,7 @@ selector: TICKER="SBER"
 SUBSCRIBE
 id: sub3
 destination: MXSE.candles
-selector: ticker="SBER" and interval="M1"
+selector: ticker="MXSE.TQBR.SBER" and interval="M1"
 ```
 
 ### Searching for Securities

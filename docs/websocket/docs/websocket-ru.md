@@ -1044,7 +1044,7 @@ sidebar_position: 1
 SUBSCRIBE
 id: sub1
 destination: MXSE.securities
-selector: TICKER="SBER"
+selector: TICKER="MXSE.TQBR.SBER"
 ```
 
 ### Подписка на книгу заявок
@@ -1052,7 +1052,7 @@ selector: TICKER="SBER"
 SUBSCRIBE
 id: sub2
 destination: MXSE.orderbooks
-selector: TICKER="SBER"
+selector: TICKER="MXSE.TQBR.SBER"
 ```
 
 ### Подписка на свечи
@@ -1060,7 +1060,7 @@ selector: TICKER="SBER"
 SUBSCRIBE
 id: sub3
 destination: MXSE.candles
-selector: ticker="SBER" and interval="M1"
+selector: ticker="MXSE.TQBR.SBER" and interval="M1"
 ```
 
 ### Поиск инструментов

@@ -11,7 +11,7 @@ const config: Config = {
   tagline: "ALGOPACK",
   url: "https://moexalgo.github.io",
   baseUrl: "/",
-  organizationName: "moexalgo", 
+  organizationName: "moexalgo",
   projectName: "moexalgo.github.io",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
@@ -21,7 +21,7 @@ const config: Config = {
     defaultLocale: "ru",
     locales: ["ru"],
   },
-  
+
   stylesheets: [
     "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7/css/all.min.css",
   ],
@@ -31,9 +31,11 @@ const config: Config = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.ts"),
-          editUrl: ({docPath}) => {
-            if (docPath.startsWith('examples/')) {
-              const notebookPath = docPath.replace('.mdx', '.ipynb').replace('docs/', '');
+          editUrl: ({ docPath }) => {
+            if (docPath.startsWith("examples/")) {
+              const notebookPath = docPath
+                .replace(".mdx", ".ipynb")
+                .replace("docs/", "");
               return `https://github.com/moexalgo/moexalgo.github.io/edit/main/${notebookPath}`;
             }
             return `https://github.com/moexalgo/moexalgo.github.io/edit/main/docs/${docPath}`;
@@ -49,95 +51,93 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-  
 
-  themeConfig:
-    { 
-      tableOfContents: {
-        minHeadingLevel: 2,
-        maxHeadingLevel: 4,
+  themeConfig: {
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 4,
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
       },
-      docs: {
-        sidebar: {
-          hideable: true,
-        },
+    },
+    navbar: {
+      hideOnScroll: true,
+      title: "ALGOPACK",
+      logo: {
+        alt: "ALGOPACK",
+        src: "img/AlgoPack.png",
+        href: "/",
       },
-      navbar: {
-        hideOnScroll: true,
-        title: "ALGOPACK",
-        logo: {
-          alt: "ALGOPACK",
-          src: "img/AlgoPack.png",
-          href: '/',
-        },
-        style: 'primary',
-        items: [
+      style: "primary",
+      items: [
         {
           label: "API",
           position: "left",
           to: "/docs/api",
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'datasetsSidebar',
-          position: 'left',
-          label: 'Датасеты',
+          type: "docSidebar",
+          sidebarId: "datasetsSidebar",
+          position: "left",
+          label: "Датасеты",
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'descriptionSidebar',
-          position: 'left',
-          label: 'Описание данных',
+          type: "docSidebar",
+          sidebarId: "descriptionSidebar",
+          position: "left",
+          label: "Описание данных",
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'methodologySidebar',
-          position: 'left',
-          label: 'Методология',
+          type: "docSidebar",
+          sidebarId: "methodologySidebar",
+          position: "left",
+          label: "Методология",
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'examplesSidebar',
-          position: 'left',
-          label: 'Примеры',
+          type: "docSidebar",
+          sidebarId: "examplesSidebar",
+          position: "left",
+          label: "Примеры",
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'pythonSidebar',
-          position: 'left',
-          label: 'Python',
+          type: "docSidebar",
+          sidebarId: "pythonSidebar",
+          position: "left",
+          label: "Python",
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'contactsSidebar',
-          position: 'left',
-          label: 'Обратная связь',
+          type: "docSidebar",
+          sidebarId: "contactsSidebar",
+          position: "left",
+          label: "Обратная связь",
         },
         {
-          type: 'search',
-          position: 'right',
+          type: "search",
+          position: "right",
         },
         {
-          type: 'custom-github-repo',
-          position: 'right',
-          owner: 'moexalgo',
-          repo: 'moexalgo'
+          type: "custom-github-repo",
+          position: "right",
+          owner: "moexalgo",
+          repo: "moexalgo",
         },
-        ],
-      },
-      prism: {
-        additionalLanguages: [
-          "ruby",
-          "csharp",
-          "php",
-          "java",
-          "powershell",
-          "json",
-          "bash",
-          "r",
-        ],
-      },
-      languageTabs: [
+      ],
+    },
+    prism: {
+      additionalLanguages: [
+        "ruby",
+        "csharp",
+        "php",
+        "java",
+        "powershell",
+        "json",
+        "bash",
+        "r",
+      ],
+    },
+    languageTabs: [
       {
         highlight: "python",
         language: "python",
@@ -210,7 +210,7 @@ const config: Config = {
         logoClass: "c",
       },
     ],
-    } satisfies Preset.ThemeConfig,
+  } satisfies Preset.ThemeConfig,
 
   plugins: [
     [
@@ -222,7 +222,7 @@ const config: Config = {
           algopack: {
             specPath: "static/openapi/openapi.yaml",
             outputDir: "docs/api",
-            infoTemplate: 'docs/algopack-api.mdx',
+            infoTemplate: "docs/algopack-api.mdx",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -233,18 +233,19 @@ const config: Config = {
     ],
     [
       require.resolve("@cmfcmf/docusaurus-search-local"),
-    {
-      indexDocs: true,
-      indexBlog: true,
-      indexPages: true,
-      language: ["en", "ru"],
-      maxSearchResults: 8,
-    }
+      {
+        indexDocs: true,
+        indexBlog: true,
+        indexPages: true,
+        language: ["en", "ru"],
+        maxSearchResults: 8,
+      },
     ],
     [
       "@docusaurus/plugin-client-redirects",
       {
         redirects: [
+          { from: "/start", to: "/" },
           { from: "/api/rest", to: "/docs/api" },
           { from: "/modules/supercandles", to: "/docs/modules/supercandles" },
           { from: "/modules/realtime", to: "/docs/modules/realtime" },

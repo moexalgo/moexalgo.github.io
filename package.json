@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
+    "prepare-api-docs": "docusaurus clean-api-docs algopack && docusaurus gen-api-docs algopack",
+    "prestart": "npm run prepare-api-docs",
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",

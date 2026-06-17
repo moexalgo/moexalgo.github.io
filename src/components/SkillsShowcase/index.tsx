@@ -173,11 +173,7 @@ export default function SkillsShowcase() {
       <div className={styles.terminalShell}>
         <div className={styles.terminalTopBar}>
           <div className={styles.terminalMeta}>
-            <div className={styles.terminalDots}>
-              <span className={`${styles.terminalDot} ${styles.dotRed}`} />
-              <span className={`${styles.terminalDot} ${styles.dotYellow}`} />
-              <span className={`${styles.terminalDot} ${styles.dotGreen}`} />
-            </div>
+            <i className={`fas fa-terminal ${styles.terminalIcon}`} aria-hidden="true" />
             <span className={styles.terminalTitle}>algopack-skills</span>
           </div>
           <a

@@ -25,7 +25,7 @@ const TERMINAL_LINES: TerminalLine[] = [
   {
     kind: 'success',
     prefix: '✓',
-    text: 'Установлены 7 инструкций (skills) для работы с ALGOPACK',
+    text: 'Установлены 12 инструкций (skills) для работы с ALGOPACK',
   },
   {
     kind: 'command',

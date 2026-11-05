@@ -71,9 +71,9 @@ HI2 = 50² + 30² + 20² = 2500 + 900 + 400 = 3800
 * **hhi_passive** - по мейкерским объемам
 * **hhi_agressive** - по тейкерским объемам
 * **hhi_passive_buy** - по мейкерским объемам (покупки)
-* **hhi_agressive_buy** - по тейкерским объемам (продажи)
+* **hhi_agressive_buy** - по тейкерским объемам (покупки)
 * **hhi_passive_sell** - по мейкерским объемам (продажи)
-* **hhi_agressive_sell** - по тейкерским объемам (покупки)
+* **hhi_agressive_sell** - по тейкерским объемам (продажи)
 
 > *volume = buy + sell = passive + aggressive*
 
